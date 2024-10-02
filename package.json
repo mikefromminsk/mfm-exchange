@@ -1,0 +1,8 @@
+{
+    "name": "mfm-exchange",
+    "version": "1.0.5",
+    "author": "x29a100@gmail.com",
+    "dependencies": {
+        "mfm-token": "^1.0.0"
+    }
+}
