@@ -1,6 +1,6 @@
 function openExchange(domain, is_sell) {
     window.$mdDialog.show({
-        templateUrl: '/mfm-wallet/token/exchange/index.html',
+        templateUrl: '/mfm-exchange/exchange/index.html',
         controller: function ($scope) {
             addFormats($scope)
             $scope.domain = domain

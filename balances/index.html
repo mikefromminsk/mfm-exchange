@@ -1,0 +1,20 @@
+<md-dialog class="col fill">
+    <div class="row header align-center">
+        <img class="ripple" src="/mfm-wallet/img/back.svg" ng-click="close()">
+        <div class="row block align-start-center">
+            <p>Balances</p>
+        </div>
+    </div>
+    <div class="flex col content scroll">
+        <div class="flex col block input-content">
+            <div class="row gap16 align-start-center" ng-repeat="(key, item) in balances">
+                <p class="flex">{{item.domain}} {{item.address}}</p>
+                <p>{{item.balance}}</p>
+                <div class="button"
+                     ng-click="send(item.domain, item.address, 10000)">
+                    +
+                </div>
+            </div>
+        </div>
+    </div>
+</md-dialog>

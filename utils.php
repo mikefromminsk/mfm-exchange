@@ -2,6 +2,18 @@
 include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-token/utils.php";
 
 
+function placeAndCommit($domain, $address, int $is_sell, $price, $amount, $pass = ":")
+{
+    requestEquals("/mfm-exchange/place.php", [
+        domain => $domain,
+        address => $address,
+        is_sell => "$is_sell",
+        price => $price,
+        amount => $amount,
+        pass => $pass,
+    ]);
+}
+
 function place($domain, $address, int $is_sell, $price, $amount, $pass = ":")
 {
     tokenScriptReg($domain, exchange_ . $domain, "mfm-exchange/place.php");
@@ -59,13 +71,8 @@ function place($domain, $address, int $is_sell, $price, $amount, $pass = ":")
     }
 
     if ($last_trade_price != null) {
-        trackAccumulate($domain . _volume, $trade_volume);
-        trackLinear($domain . _price, $last_trade_price);
-
-        broadcast(place, [
-            domain => $domain,
-            price => $last_trade_price,
-        ]);
+        tokenSetVolume($domain, $trade_volume);
+        tokenSetPrice($domain, $last_trade_price);
     }
 
     broadcast(orderbook, [
@@ -88,7 +95,7 @@ function placeRange($domain, $min_price, $max_price, $count, $amount_usdt, $is_s
         $price = ($is_sell == 1) ? $min_price : $max_price;
         $amount_base = round($amount_usdt / $price, 2);
         if ($amount_base > 0) {
-            place($domain, $address, $is_sell, $price, $amount_base, $pass);
+            placeAndCommit($domain, $address, $is_sell, $price, $amount_base, $pass);
         }
     } else {
         $price = $min_price;
@@ -112,7 +119,7 @@ function placeRange($domain, $min_price, $max_price, $count, $amount_usdt, $is_s
             }
             if ($amount_base > 0) {
                 //echo $sum_amount . " $price $amount_base\n";
-                place($domain, $address, $is_sell, $price, $amount_base, $pass);
+                placeAndCommit($domain, $address, $is_sell, $price, $amount_base, $pass);
             }
 
             $price += $price_step;
@@ -120,27 +127,54 @@ function placeRange($domain, $min_price, $max_price, $count, $amount_usdt, $is_s
     }
 }
 
+function getPriceLevels($domain, $is_sell, $count)
+{
+    $levels = select("select price, sum(amount) - sum(filled) as amount from orders "
+        . " where `domain` = '$domain' and is_sell = $is_sell and status = 0"
+        . " group by price order by price " . ($is_sell == 1 ? ASC : DESC) . " limit $count");
+    if ($levels == null) return [];
+    $sum = array_sum(array_column($levels, amount));
+    if ($is_sell == 1)
+        $levels = array_reverse($levels);
+    $accumulate_amount = 0;
+    foreach ($levels as &$level) {
+        $accumulate_amount += $level[amount];
+        $level[percent] = $accumulate_amount / $sum * 100;
+    }
+    return $levels;
+}
 
 function getOrderbook($domain, $count = 6)
 {
-    function getPriceLevels($domain, $is_sell, $count)
-    {
-        $levels = select("select price, sum(amount) - sum(filled) as amount from orders "
-            . " where `domain` = '$domain' and is_sell = $is_sell and status = 0"
-            . " group by price order by price " . ($is_sell == 1 ? ASC : DESC) . " limit $count");
-        $sum = array_sum(array_column($levels, amount));
-        if ($is_sell == 1)
-            $levels = array_reverse($levels);
-        $accumulate_amount = 0;
-        foreach ($levels as &$level) {
-            $accumulate_amount += $level[amount];
-            $level[percent] = $accumulate_amount / $sum * 100;
-        }
-        return $levels;
-    }
-
     $response[sell] = getPriceLevels($domain, 1, $count);
     $response[buy] = getPriceLevels($domain, 0, $count);
-
     return $response;
+}
+
+function tokenSetPrice($domain, $price)
+{
+    $last_trade_price = getCandleLastValue($domain . _price);
+    if ($price != $last_trade_price) {
+        trackLinear($domain . _price, $price);
+        broadcast(price, [
+            domain => $domain,
+            price => $price,
+        ]);
+    }
+}
+
+function tokenPrice($domain)
+{
+    return getCandleLastValue($domain . _price);
+}
+
+
+function tokenSetVolume($domain, $volume)
+{
+    trackAccumulate($domain . _volume, $volume);
+}
+
+function tokenVolume24($domain)
+{
+    return getCandleChange24($domain . _volume);
 }

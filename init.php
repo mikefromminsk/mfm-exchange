@@ -1,7 +1,8 @@
 <?php
-include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-db/db.php";
 
-if (!DEBUG) error("cannot use not in debug session");
+include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-token/utils.php";
+
+onlyInDebug();
 
 query("DROP TABLE IF EXISTS `orders`;");
 query("CREATE TABLE IF NOT EXISTS `orders` (
@@ -17,6 +18,24 @@ query("CREATE TABLE IF NOT EXISTS `orders` (
    PRIMARY KEY (`order_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;");
 
-$response[success] = true;
 
-echo json_encode($response);
+$address = get_required(address);
+$password = get_required(password);
+
+requestEquals("/mfm-wallet/api/init.php", [
+    address => $address,
+    password => $password
+]);
+
+foreach (getDomains() as $domain) {
+    requestEquals("/mfm-exchange/bot/spred/init.php", [
+        domain => $domain
+    ]);
+    tokenSendAndCommit($domain, $address, bot_spred, $password, 1000);
+    tokenSendAndCommit($gas_domain, $address, bot_spred_ . $domain, $password, 1000);
+}
+
+
+requestEquals("/mfm-exchange/bot/spred/fill.php");
+
+commit();

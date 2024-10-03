@@ -1,113 +1,24 @@
 function openExchangeSettings(domain, success) {
     window.$mdDialog.show({
-        templateUrl: '/mfm-wallet/token/exchange/settings/index.html',
+        templateUrl: '/mfm-exchange/exchange/settings/index.html',
         controller: function ($scope) {
             addFormats($scope)
 
-            $scope.domain = domain
-            $scope.multiplicator = 1
-
-            $scope.generateStartN = function () {
-                $scope.startN = Math.floor(Math.random() * 1000)
-                $scope.loadChart()
-            }
-
-            $scope.generateMultiplicator = function () {
-                $scope.multiplicator = Math.floor(Math.random() * 100) / 100
-                $scope.loadChart()
-            }
-
-            function loadPumpVals() {
-                dataGet("exchange/pump/" + domain + "/startN", function (val) {
-                    $scope.startN = val
-                    $scope.$apply()
-                    if (val != null)
-                        $scope.loadChart()
-                })
-                dataGet("exchange/pump/" + domain + "/multiplicator", function (val) {
-                    $scope.multiplicator = val
-                    $scope.$apply()
-                    if (val != null)
-                        $scope.loadChart()
-                })
-
-            }
-
-            $scope.savePumpVals = function () {
-                postContractWithGas("mfm-exchange", "bots/bot_pump_init.php", {
+            $scope.openSpredBalances = function () {
+                postContract("mfm-exchange", "bot/spred/init.php", {
                     domain: domain,
-                    multiplicator: $scope.multiplicator,
-                    startN: $scope.startN,
                 }, function () {
-                    showSuccess("Saved", init)
+                    openBalances([
+                        {
+                            domain: domain,
+                            address: "bot_spred"
+                        }, {
+                            domain: wallet.gas_domain,
+                            address: "bot_spred_" + domain
+                        },
+                    ])
                 })
             }
-
-            $scope.loadChart = function () {
-                /*postContract("mfm-exchange", "bots/bot_pump_chart.php", {
-                    domain: domain,
-                    startN: $scope.startN,
-                    multiplicator: $scope.multiplicator,
-                }, function (response) {
-                    for (var i = 0; i < response.chart.length; i++) {
-                        response.chart[i].time =
-                            new Date(response.chart[i].time * 1000 + (i * 60 * 60 * 24 * 1000)).toJSON().slice(0, 10)
-                    }
-                    lineSeries.setData(response.chart)
-                })*/
-            }
-
-            var lineSeries
-            function initChart() {
-                /*setTimeout(function () {
-                    if (lineSeries == null)
-                        lineSeries = createChart("priceChart").addLineSeries();
-                })*/
-            }
-
-
-            $scope.balances = {}
-
-            function getBalance(domain, address) {
-                dataGet(domain + "/mfm-wallet/" + address + "/amount", function (amount) {
-                    $scope.balances[domain + address] = {
-                        amount: amount,
-                        address: address,
-                        domain: domain,
-                    }
-                    $scope.$apply()
-                }, function () {
-                    $scope.balances[domain + address] = {
-                        amount: 0,
-                        address: address,
-                        domain: domain,
-                    }
-                    $scope.$apply()
-                })
-            }
-
-            $scope.initilize = function () {
-                postContractWithGas("mfm-exchange", "api/exchange/init.php", {}, function () {
-                    showSuccess("Initilized", init)
-                })
-            }
-
-            function init() {
-                getBalance("usdt", "exchange_" + domain + "_bot_spred")
-                getBalance(domain, "exchange_" + domain + "_bot_spred")
-                /*getBalance("usdt", "exchange_" + domain + "_bot_pump")
-                getBalance(domain, "exchange_" + domain + "_bot_pump")*/
-                loadPumpVals()
-                initChart()
-            }
-
-            $scope.send = function (domain, address, amount) {
-                openSendDialog(domain, address, amount, init)
-            }
-
-
-            init()
-
         }
     }).then(function () {
         if (success)
