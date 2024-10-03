@@ -1,5 +1,5 @@
 <?php
-include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-token/utils.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-exchange/utils.php";
 
 $domain = get_required(domain);
 $address = get_required(address);

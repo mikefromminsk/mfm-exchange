@@ -1,0 +1,128 @@
+<md-dialog class="col fill white-back black-text">
+    <div class="row header align-start-center">
+        <img class="ripple" src="/mfm-wallet/img/back.svg" ng-click="openTokenProfile()">
+        <div class="flex row">
+            {{formatTicker(token.domain)}}
+        </div>
+        <div class="col align-start-end">
+            <p>{{formatPrice(token.price)}}</p>
+            <!--<p class="size14" ng-class="percentColor(change24)">{{formatPercent(change24)}}</p>-->
+        </div>
+
+        <img class="img32 img-black ripple"
+             src="/mfm-wallet/img/settings.svg"
+             ng-show="token.owner == wallet.address()"
+             ng-click="openExchangeSettings()">
+    </div>
+    <div class="col content align-start-center scroll">
+        <div class="col block">
+            <!--<ng-include src="'/mfm-wallet/dialogs/chart/chart.html'"></ng-include>-->
+            <div class="row mt16 mh8">
+                <div class="col" style="min-width: 200px;">
+                    <div class="row r3" style="height: 32px">
+                        <div class="flex row align-center-center r3"
+                             ng-class="{'green-back static-white-text': !is_sell, 'green-text': is_sell}"
+                             ng-click="is_sell = false">
+                            Buy
+                        </div>
+                        <div class="flex row align-center-center r3"
+                             ng-class="{'red-back static-white-text': is_sell, 'red-text': !is_sell}"
+                             ng-click="is_sell = true">
+                            Sell
+                        </div>
+                    </div>
+
+                    <div class="row input-wrapper mt16">
+                        <div class="input-label">Price</div>
+                        <input type="number" ng-model="price" ng-change="changePrice()">
+                    </div>
+
+                    <div class="row input-wrapper mt16">
+                        <div class="input-label">Amount</div>
+                        <input type="number" ng-model="amount" ng-change="changeAmount()">
+                    </div>
+                    <div class="row" style="height: 22px">
+                        <div ng-repeat="item in [25, 50, 75, 100]"
+                             class="flex row align-center-center size12 ripple"
+                             style="border: 1px solid var(--gray200);"
+                             ng-click="setPortion(item)">
+                            {{item}}%
+                        </div>
+                    </div>
+                    <div class="row input-wrapper mt16">
+                        <div class="input-label">Total</div>
+                        <input type="number" ng-model="total" ng-change="changeTotal()">
+                    </div>
+
+                    <div class="row size10 mt8 nowrap">
+                        <div class="flex gray400-text">Available</div>
+                        <div>{{formatAmount(is_sell ? token.balance : quote.balance, is_sell ? domain : "USDT")}}</div>
+                    </div>
+
+                    <div class="row mt16 primary-button uppercase align-center-center"
+                         style="height: 40px;"
+                         ng-class="{'red-back': is_sell, ' green-back': !is_sell}"
+                         ng-click="place()">
+                        {{is_sell ? 'Sell' : 'Buy'}} {{formatDomain(domain)}}
+                    </div>
+                </div>
+
+
+                <div class="flex col" style="margin-left: 10px">
+                    <!--<div class="row ripple r3 align-center-center" style="height: 32px"
+                         ng-class="{'gray400-back': showChart}" ng-click="showChartToggle()">
+                        Chart
+                    </div>-->
+                    <div class="row size10 gray300-text mt16 nowrap">
+                        <div class="flex">Price (USDT)</div>
+                        <div>Amt ({{formatDomain(domain)}})</div>
+                    </div>
+
+
+                    <!--orderbook-->
+                    <div class="col align-end" style="height: calc(20px * 6)">
+                        <div class="row align-start-center ripple ph8"
+                             ng-repeat="item in sell"
+                             style="height: 20px; position: relative"
+                             ng-click="changePrice(item.price)">
+                            <div class="red-back" style="position: absolute; height: 100%; opacity: 0.09;"
+                                 ng-style="{'min-width': item.percent + '%'}"></div>
+                            <div class="flex red-text">{{formatPrice(item.price)}}</div>
+                            <div class="red-text">{{formatAmount(item.amount)}}</div>
+                        </div>
+                    </div>
+                    <md-divider></md-divider>
+                    <div class="col align-start" style="height: calc(20px * 6)">
+                        <div class="row align-start-center ripple ph8"
+                             ng-repeat="item in buy" style="height: 20px; position: relative"
+                             ng-click="changePrice(item.price)">
+                            <div class="green-back" style="position: absolute; height: 100%; opacity: 0.09;"
+                                 ng-style="{'min-width': item.percent + '%'}"></div>
+                            <div class="flex green-text">{{formatPrice(item.price)}}</div>
+                            <div>{{formatAmount(item.amount)}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col ph8">
+                <p class="mt16">Orders</p>
+                <div class="row mt16 nowrap size12 align-start-center" ng-repeat="item in orders">
+                    <div ng-style="getLogo(domain)"></div>
+                    <div class="flex col ml8">
+                        <p>{{formatDomain(domain)}}/USDT</p>
+                        <p class="mt4 size8 gray300-text">{{formatTime(item.timestamp)}}</p>
+                    </div>
+                    <div class="flex col align-start-end">
+                        <p>{{formatAmount(item.amount, domain)}}</p>
+                        <p class="mt4 size8 gray300-text">Filled {{round(item.filled / item.amount, 2) * 100}}%</p>
+                    </div>
+                    <div class="flex-30 col align-start-end">
+                        <p>{{formatPrice(item.price)}}</p>
+                        <p class="mt4 size8 gray300-text">
+                            {{item.status == 0 ? "Active" : (item.filled == item.amount ? "Finished" : "Canceled")}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</md-dialog>

@@ -3,6 +3,6 @@
     "version": "1.0.7",
     "author": "x29a100@gmail.com",
     "dependencies": {
-        "mfm-token": "^1.0.0"
+        "mfm-wallet": "^1.0.0"
     }
 }

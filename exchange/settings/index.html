@@ -1,0 +1,46 @@
+<md-dialog class="col fill">
+    <div class="row header align-center">
+        <img class="ripple" src="/mfm-wallet/img/back.svg" ng-click="close()">
+        <div class="row block align-start-center">
+            <p>Balances</p>
+        </div>
+    </div>
+    <div class="flex col content scroll">
+
+        <div id="priceChart" style="width: 100%; min-height: 300px"></div>
+        <div class="flex col block input-content">
+            <div class="row">
+                <div class="flex input-wrapper">
+                    <div class="input-label">StartN</div>
+                    <input type="number"
+                           ng-model="startN"
+                           ng-change="loadChart()">
+                </div>
+                <div class="button" ng-click="generateStartN()">Generate</div>
+            </div>
+            <div class="row">
+                <div class="flex input-wrapper">
+                    <div class="input-label">Multiplicator</div>
+                    <input type="number"
+                           ng-model="multiplicator"
+                           ng-change="loadChart()">
+                </div>
+                <div class="button" ng-click="generateMultiplicator()">Generate</div>
+            </div>
+            <div class="button" ng-click="savePumpVals()">Save</div>
+
+            <div class="button"
+                 ng-click="initilize()">
+                Init
+            </div>
+            <div class="row gap16 align-start-center" ng-repeat="(key, item) in balances">
+                <p class="flex">{{item.domain}} {{item.address}}</p>
+                <p>{{item.amount}}</p>
+                <div class="button"
+                     ng-click="send(item.domain, item.address, 10000)">
+                    +
+                </div>
+            </div>
+        </div>
+    </div>
+</md-dialog>
