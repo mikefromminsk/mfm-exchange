@@ -19,12 +19,12 @@ query("CREATE TABLE IF NOT EXISTS `orders` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;");
 
 
-$address = get_required(address);
-$password = get_required(password);
+$address = get_required(wallet_admin_address);
+$password = get_required(wallet_admin_password);
 
 requestEquals("/mfm-wallet/api/init.php", [
-    address => $address,
-    password => $password
+    wallet_admin_address => $address,
+    wallet_admin_password => $password
 ]);
 
 foreach (getDomains() as $domain) {
