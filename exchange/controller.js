@@ -130,10 +130,6 @@ function openExchange(domain, is_sell) {
                 }
             });
 
-            $scope.openTokenProfile = function () {
-                openTokenProfile(domain)
-            }
-
             init()
         }
     })
