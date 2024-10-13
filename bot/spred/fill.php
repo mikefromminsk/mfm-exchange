@@ -7,17 +7,25 @@ $domains = getDomains(bot_spred);
 foreach ($domains as $domain) {
     if ($domain != $gas_domain) {
 
-        $orderbook = getOrderbook($domain, 20);
+        $sell_price_levels = getPriceLevels($domain, 1, 20);
+        $buy_price_levels = getPriceLevels($domain, 0, 20);
         $quote_need = 10;
 
         $address_base = bot_spred;
         $address_usdt = bot_spred_ . $domain;
-        $token_price = tokenPrice($domain) ?: 1;
+        $best_sell_price = sizeof($sell_price_levels) > 0 ? $sell_price_levels[0][price] : 0;
+        $best_buy_price = sizeof($buy_price_levels) > 0 ? $buy_price_levels[0][price] : 0;
+        if ($best_sell_price == 0 || $best_buy_price == 0) {
+            $token_price = max($best_sell_price, $best_buy_price);
+        } else {
+            $token_price = ($best_sell_price + $best_buy_price) / 2;
+        }
+        $token_price = $token_price == 0 ? 1 : $token_price;
 
         $order_usdt_buy = 0;
-        foreach ($orderbook[buy] as $order) {
-            if ($order[price] >= $token_price * 0.97) {
-                $order_usdt_buy += $order[amount] * $order[price];
+        foreach ($buy_price_levels as $level) {
+            if ($level[price] >= $token_price * 0.97) {
+                $order_usdt_buy += $level[amount] * $level[price];
             }
         }
         $amount_buy = round($quote_need - $order_usdt_buy, 2);
@@ -29,9 +37,9 @@ foreach ($domains as $domain) {
         }
 
         $order_usdt_sell = 0;
-        foreach (array_reverse($orderbook[sell]) as $order) {
-            if ($order[price] <= $token_price * 1.03) {
-                $order_usdt_sell += $order[amount] * $order[price];
+        foreach ($sell_price_levels as $level) {
+            if ($level[price] <= $token_price * 1.03) {
+                $order_usdt_sell += $level[amount] * $level[price];
             }
         }
         $amount_sell = round($quote_need - $order_usdt_sell, 2);

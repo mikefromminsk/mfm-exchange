@@ -85,7 +85,7 @@
                              ng-repeat="item in sell"
                              style="height: 20px; position: relative"
                              ng-click="changePrice(item.price)">
-                            <div class="red-back" style="position: absolute; height: 100%; opacity: 0.09;"
+                            <div class="red-back" style="position: absolute; height: 100%; opacity: 0.19;"
                                  ng-style="{'min-width': item.percent + '%'}"></div>
                             <div class="flex red-text">{{formatPrice(item.price)}}</div>
                             <div class="red-text">{{formatAmount(item.amount)}}</div>
@@ -96,7 +96,7 @@
                         <div class="row align-start-center ripple ph8"
                              ng-repeat="item in buy" style="height: 20px; position: relative"
                              ng-click="changePrice(item.price)">
-                            <div class="green-back" style="position: absolute; height: 100%; opacity: 0.09;"
+                            <div class="green-back" style="position: absolute; height: 100%; opacity: 0.19;"
                                  ng-style="{'min-width': item.percent + '%'}"></div>
                             <div class="flex green-text">{{formatPrice(item.price)}}</div>
                             <div>{{formatAmount(item.amount)}}</div>

@@ -18,14 +18,9 @@ query("CREATE TABLE IF NOT EXISTS `orders` (
    PRIMARY KEY (`order_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;");
 
-
 $address = get_required(wallet_admin_address);
 $password = get_required(wallet_admin_password);
-
-requestEquals("/mfm-wallet/api/init.php", [
-    wallet_admin_address => $address,
-    wallet_admin_password => $password
-]);
+$gas_domain = get_required(gas_domain);
 
 foreach (getDomains() as $domain) {
     requestEquals("/mfm-exchange/bot/spred/init.php", [
@@ -34,7 +29,6 @@ foreach (getDomains() as $domain) {
     tokenSendAndCommit($domain, $address, bot_spred, $password, 1000);
     tokenSendAndCommit($gas_domain, $address, bot_spred_ . $domain, $password, 1000);
 }
-
 
 requestEquals("/mfm-exchange/bot/spred/fill.php");
 

@@ -27,47 +27,58 @@ function place($domain, $address, int $is_sell, $price, $amount, $pass = ":")
     $timestamp = time();
 
     if ($is_sell == 1) {
-        $not_filled = $amount;
+        $coin_not_filled = $amount;
+        $usdt_to_get = 0;
         tokenSend($domain, $address, exchange_ . $domain, $amount, $pass);
         foreach (select("select * from orders where `domain` = '$domain' and is_sell = 0 and price >= $price and status = 0 order by price DESC,timestamp") as $order) {
-            $order_not_filled = round($order[amount] - $order[filled], 2);
-            $coin_to_fill = min($not_filled, $order_not_filled);
-            $order_filled = $order_not_filled == $coin_to_fill ? 1 : 0;
+            $order_coin_not_filled = round($order[amount] - $order[filled], 2);
+            $coin_to_fill = min($coin_not_filled, $order_coin_not_filled);
+            $order_filled = $order_coin_not_filled == $coin_to_fill ? 1 : 0;
             updateWhere(orders, [filled => $order[filled] + $coin_to_fill, status => $order_filled], [order_id => $order[order_id]]);
             if ($order_filled == 1) {
                 tokenSend($domain, exchange_ . $domain, $order[address], $order[amount]);
             }
             $last_trade_price = $order[price];
             $trade_volume += round($coin_to_fill * $order[price], 4);
-            $not_filled = round($not_filled - $coin_to_fill, 2);
-            if ($not_filled == 0)
+            $coin_not_filled = round($coin_not_filled - $coin_to_fill, 2);
+            $usdt_to_get += round($coin_to_fill * $order[price], 2);
+            if ($coin_not_filled == 0)
                 break;
         }
-        if ($not_filled == 0) {
-            tokenSend(usdt, exchange_ . $domain, $address, $total);
+        if ($coin_not_filled == 0) {
+            tokenSend(usdt, exchange_ . $domain, $address, $usdt_to_get);
         }
-        $order_id = insertRowAndGetId(orders, [address => $address, domain => $domain, is_sell => $is_sell, price => $price, amount => $amount, filled => $amount - $not_filled, status => $not_filled == 0 ? 1 : 0, timestamp => $timestamp]);
+        $order_id = insertRowAndGetId(orders, [address => $address, domain => $domain, is_sell => $is_sell,
+            price => $price, amount => $amount, filled => $amount - $coin_not_filled,
+            status => $coin_not_filled == 0 ? 1 : 0, timestamp => $timestamp]);
     } else {
-        $not_filled = $amount;
+        // 50 usdt
+        $usdt_not_filled = $total;
+        $coin_to_get = 0;
         tokenSend(usdt, $address, exchange_ . $domain, $total, $pass);
         foreach (select("select * from orders where `domain` = '$domain' and is_sell = 1 and price <= $price and status = 0 order by price,timestamp") as $order) {
-            $order_not_filled = round($order[amount] - $order[filled], 2);
-            $coin_to_fill = min($not_filled, $order_not_filled);
-            $order_filled = $order_not_filled == $coin_to_fill ? 1 : 0;
+            $coin_not_filled = $usdt_not_filled / $order[price];
+            $order_coin_not_filled = round($order[amount] - $order[filled], 2);
+            $coin_to_fill = min($coin_not_filled, $order_coin_not_filled);
+            $order_filled = $order_coin_not_filled == $coin_to_fill ? 1 : 0;
             updateWhere(orders, [filled => $order[filled] + $coin_to_fill, status => $order_filled], [order_id => $order[order_id]]);
             if ($order_filled == 1) {
                 tokenSend(usdt, exchange_ . $domain, $order[address], round($order[amount] * $order[price], 2));
             }
             $last_trade_price = $order[price];
             $trade_volume += round($coin_to_fill * $order[price], 4);
-            $not_filled = round($not_filled - $coin_to_fill, 2);
-            if ($not_filled == 0)
+            $coin_not_filled = round($coin_not_filled - $coin_to_fill, 2);
+            $usdt_not_filled = round($coin_not_filled * $order[price], 2);
+            $coin_to_get += $coin_to_fill;
+            if ($usdt_not_filled == 0)
                 break;
         }
-        if ($not_filled == 0) {
-            tokenSend($domain, exchange_ . $domain, $address, $amount);
+        if ($usdt_not_filled == 0) {
+            tokenSend($domain, exchange_ . $domain, $address, $coin_to_get);
         }
-        $order_id = insertRowAndGetId(orders, [address => $address, domain => $domain, is_sell => $is_sell, price => $price, amount => $amount, filled => $amount - $not_filled, status => $not_filled == 0 ? 1 : 0, timestamp => $timestamp]);
+        $order_id = insertRowAndGetId(orders, [address => $address, domain => $domain, is_sell => $is_sell,
+            price => $price, amount => $amount, filled => round(($total - $usdt_not_filled) / $price, 2),
+            status => $usdt_not_filled == 0 ? 1 : 0, timestamp => $timestamp]);
     }
 
     if ($last_trade_price != null) {
@@ -133,22 +144,7 @@ function getPriceLevels($domain, $is_sell, $count)
         . " where `domain` = '$domain' and is_sell = $is_sell and status = 0"
         . " group by price order by price " . ($is_sell == 1 ? ASC : DESC) . " limit $count");
     if ($levels == null) return [];
-    $sum = array_sum(array_column($levels, amount));
-    if ($is_sell == 1)
-        $levels = array_reverse($levels);
-    $accumulate_amount = 0;
-    foreach ($levels as &$level) {
-        $accumulate_amount += $level[amount];
-        $level[percent] = $accumulate_amount / $sum * 100;
-    }
     return $levels;
-}
-
-function getOrderbook($domain, $count = 6)
-{
-    $response[sell] = getPriceLevels($domain, 1, $count);
-    $response[buy] = getPriceLevels($domain, 0, $count);
-    return $response;
 }
 
 function tokenSetPrice($domain, $price)

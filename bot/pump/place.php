@@ -34,7 +34,8 @@ $price_need = round($price_need * $multiplicator, 2);
 
 $token_price = getCandleLastValue($domain, price);
 
-$orderbook = getOrderbook($domain, 20);
+//$orderbook = getOrderbook($domain, 20);
+// orderbook sell reversed
 
 $usdt_max = 2;
 

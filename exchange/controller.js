@@ -106,7 +106,7 @@ function openExchange(domain, is_sell) {
                 postContract("mfm-exchange", "orderbook.php", {
                     domain: domain,
                 }, function (response) {
-                    $scope.sell = response.sell
+                    $scope.sell = (response.sell || []).reverse()
                     $scope.buy = response.buy
                     $scope.orderbook = response
                     $scope.$apply()
