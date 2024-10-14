@@ -8,15 +8,11 @@ $domains = [
 
 foreach ($domains as $domain) {
     foreach (glob("strategy/*") as $file) {
-        /*if ($file == "strategy/1p.php") {
+        if ($file == "strategy/random.php") {
             requestEquals("/mfm-exchange/bot/$file", [
                 domain => $domain,
             ]);
-        } elseif ($file == "strategy/1d.php") {
-            requestEquals("/mfm-exchange/bot/$file", [
-                domain => $domain,
-            ]);
-        } else*/ {
+        }  else {
             http_post("/mfm-exchange/bot/$file", [
                 domain => $domain,
             ]);

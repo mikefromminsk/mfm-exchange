@@ -17,6 +17,10 @@ if ($action == place) {
 } else if ($action == cancel) {
     $order_id = get_int_required(order_id);
     cancel($order_id);
+} else if ($action == cancelAll) {
+    $domain = get_required(domain);
+    $address = get_required(address);
+    cancelAll($domain, $address);
 } else {
     error("unknown action");
 }

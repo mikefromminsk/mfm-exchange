@@ -105,6 +105,35 @@ function cancel($order_id)
     updateWhere(orders, [status => 1], [order_id => $order_id]);
 }
 
+function cancelAllAndCommit($domain, $address)
+{
+    requestEquals("/mfm-exchange/exchange.php", [
+        action => cancelAll,
+        domain => $domain,
+        address => $address,
+    ]);
+}
+
+function cancelAll($domain, $address)
+{
+    $orders = ordersActive($domain, $address);
+    foreach ($orders as $order) {
+        cancel($order[order_id]);
+    }
+}
+
+function ordersActive($domain, $address)
+{
+    $orders = select("select * from orders where `domain` = '$domain' and address = '$address' and status = 0 order by timestamp DESC");
+    return array_reverse($orders);
+}
+
+function ordersHistory($domain, $address)
+{
+    $orders = select("select * from orders where `domain` = '$domain' and address = '$address' and status <> 0 order by timestamp DESC limit 0, 20");
+    return array_reverse($orders);
+}
+
 
 function placeRange($domain, $min_price, $max_price, $count, $amount_usdt, $is_sell, $address, $pass = ":")
 {
@@ -173,7 +202,7 @@ function tokenSetPrice($domain, $price)
 
 function tokenPrice($domain)
 {
-    return getCandleLastValue($domain . _price);
+    return getCandleLastValue($domain . _price) ?: 1;
 }
 
 
