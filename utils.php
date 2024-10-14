@@ -52,7 +52,6 @@ function place($domain, $address, int $is_sell, $price, $amount, $pass = ":")
             price => $price, amount => $amount, filled => $amount - $coin_not_filled,
             status => $coin_not_filled == 0 ? 1 : 0, timestamp => $timestamp]);
     } else {
-        // 50 usdt
         $usdt_not_filled = $total;
         $coin_to_get = 0;
         tokenSend(usdt, $address, exchange_ . $domain, $total, $pass);
@@ -173,4 +172,11 @@ function tokenSetVolume($domain, $volume)
 function tokenVolume24($domain)
 {
     return getCandleChange24($domain . _volume);
+}
+
+function botScriptReg($domain, $bot_address)
+{
+    $place_script = "mfm-exchange/place.php";
+    tokenScriptReg($domain, $bot_address, $place_script);
+    return tokenScriptReg(get_required(gas_domain), $bot_address, $place_script);
 }

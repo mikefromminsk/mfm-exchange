@@ -1,7 +1,9 @@
 
 
 
-
+strategy
+random
+x^3 per week from last transaction
 
 price fill progress неправильный
 не видно активных ордеров

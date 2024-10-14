@@ -18,18 +18,23 @@ query("CREATE TABLE IF NOT EXISTS `orders` (
    PRIMARY KEY (`order_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;");
 
+requestEquals("/mfm-exchange/bot/job.php");
+
 $address = get_required(wallet_admin_address);
 $password = get_required(wallet_admin_password);
 $gas_domain = get_required(gas_domain);
 
 foreach (getDomains() as $domain) {
-    requestEquals("/mfm-exchange/bot/spred/init.php", [
-        domain => $domain
-    ]);
-    tokenSendAndCommit($domain, $address, bot_spred, $password, 1000);
-    tokenSendAndCommit($gas_domain, $address, bot_spred_ . $domain, $password, 1000);
+    if ($domain == rock) {
+        foreach (glob("bot/strategy/*") as $file) {
+            $strategy = basename($file, ".php");
+            $bot_address = "bot_" . $strategy . "_" . $domain;
+            tokenSendAndCommit($domain, $address, $bot_address, $password, 100);
+            tokenSendAndCommit($gas_domain, $address, $bot_address, $password, 100);
+        }
+    }
 }
 
-requestEquals("/mfm-exchange/bot/spred/fill.php");
+requestEquals("/mfm-exchange/bot/job.php");
 
 commit();

@@ -11,7 +11,7 @@ function openExchangeSettings(domain, success) {
                     openBalances([
                         {
                             domain: domain,
-                            address: "bot_spred"
+                            address: "bot_spred_" + domain
                         }, {
                             domain: wallet.gas_domain,
                             address: "bot_spred_" + domain

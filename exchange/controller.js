@@ -50,11 +50,13 @@ function openExchange(domain, is_sell) {
                 getPin(function (pin) {
                     calcPass($scope.is_sell ? domain : "usdt", pin, function (pass) {
                         postContract("mfm-exchange", "place.php", {
+                            order_type: 'limit',
                             domain: domain,
                             is_sell: $scope.is_sell ? 1 : 0,
                             address: wallet.address(),
                             price: $scope.price,
                             amount: $scope.amount,
+                            total: $scope.total,
                             pass: pass
                         }, function () {
                             loadOrders()

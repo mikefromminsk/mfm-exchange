@@ -2,18 +2,27 @@
 include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-token/utils.php";
 
 
-
-/*$tokens = [
-    [domain => "rock",]
+$domains = [
+    "rock",
 ];
-foreach ($tokens as $token) {
 
-        requestEquals("/" . $token[domain] . "/api/exchange/bot_pump.php", [
-            domain => $token[domain],
-            address => $token[address],
-            password => $token[password],
-        ]);
-}*/
-requestEquals("/mfm-exchange/bot/spred/fill.php");
+foreach ($domains as $domain) {
+    foreach (glob("strategy/*") as $file) {
+        /*if ($file == "strategy/1p.php") {
+            requestEquals("/mfm-exchange/bot/$file", [
+                domain => $domain,
+            ]);
+        } elseif ($file == "strategy/1d.php") {
+            requestEquals("/mfm-exchange/bot/$file", [
+                domain => $domain,
+            ]);
+        } else*/ {
+            http_post("/mfm-exchange/bot/$file", [
+                domain => $domain,
+            ]);
+        }
+    }
+}
+
 
 commit();
