@@ -1,6 +1,6 @@
 
 
-
+cancel без проверок проходит
 strategy
 random
 x^3 per week from last transaction

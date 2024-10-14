@@ -49,7 +49,8 @@ function openExchange(domain, is_sell) {
             $scope.place = function () {
                 getPin(function (pin) {
                     calcPass($scope.is_sell ? domain : "usdt", pin, function (pass) {
-                        postContract("mfm-exchange", "place.php", {
+                        postContract("mfm-exchange", "exchange.php", {
+                            action: 'place',
                             order_type: 'limit',
                             domain: domain,
                             is_sell: $scope.is_sell ? 1 : 0,
@@ -63,6 +64,16 @@ function openExchange(domain, is_sell) {
                             showSuccess("Order placed", loadOrderbook)
                         })
                     })
+                })
+            }
+
+            $scope.cancel = function (order_id) {
+                postContract("mfm-exchange", "exchange.php", {
+                    action: 'cancel',
+                    order_id: order_id,
+                }, function () {
+                    loadOrders()
+                    showSuccess("Order canceled", loadOrderbook)
                 })
             }
 

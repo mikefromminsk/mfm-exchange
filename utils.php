@@ -4,7 +4,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-token/utils.php";
 
 function placeAndCommit($domain, $address, int $is_sell, $price, $amount, $pass = ":")
 {
-    requestEquals("/mfm-exchange/place.php", [
+    requestEquals("/mfm-exchange/exchange.php", [
+        action => place,
         domain => $domain,
         address => $address,
         is_sell => "$is_sell",
@@ -16,8 +17,8 @@ function placeAndCommit($domain, $address, int $is_sell, $price, $amount, $pass 
 
 function place($domain, $address, int $is_sell, $price, $amount, $pass = ":")
 {
-    tokenScriptReg($domain, exchange_ . $domain, "mfm-exchange/place.php");
-    tokenScriptReg(usdt, exchange_ . $domain, "mfm-exchange/place.php");
+    tokenScriptReg($domain, exchange_ . $domain, "mfm-exchange/exchange.php");
+    tokenScriptReg(usdt, exchange_ . $domain, "mfm-exchange/exchange.php");
 
     if ($price !== round($price, 2)) error("price tick is 0.01");
     if ($amount !== round($amount, 2)) error("amount tick is 0.01");
@@ -90,6 +91,18 @@ function place($domain, $address, int $is_sell, $price, $amount, $pass = ":")
     ]);
 
     return $order_id;
+}
+
+function cancel($order_id)
+{
+    $order = selectRowWhere(orders, [order_id => $order_id]);
+    if ($order[status] != 0) error("order already finished");
+    if ($order[is_sell] == 1) {
+        tokenSend($order[domain], exchange_ . $order[domain], $order[address], $order[amount]);
+    } else {
+        tokenSend(usdt, exchange_ . $order[domain], $order[address], round($order[price] * $order[amount], 2));
+    }
+    updateWhere(orders, [status => 1], [order_id => $order_id]);
 }
 
 
@@ -176,7 +189,7 @@ function tokenVolume24($domain)
 
 function botScriptReg($domain, $bot_address)
 {
-    $place_script = "mfm-exchange/place.php";
+    $place_script = "mfm-exchange/exchange.php";
     tokenScriptReg($domain, $bot_address, $place_script);
     return tokenScriptReg(get_required(gas_domain), $bot_address, $place_script);
 }

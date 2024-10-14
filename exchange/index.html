@@ -109,17 +109,27 @@
                 <div class="row mt16 nowrap size12 align-start-center" ng-repeat="item in orders">
                     <div ng-style="getLogo(domain)"></div>
                     <div class="flex col ml8">
-                        <p>{{formatDomain(domain)}}/USDT</p>
-                        <p class="mt4 size8 gray300-text">{{formatTime(item.timestamp)}}</p>
+                        <p>{{formatTicker(domain)}}</p>
+                        <p class="mt4 size10 gray300-text">{{formatTime(item.timestamp)}}</p>
                     </div>
                     <div class="flex col align-start-end">
                         <p>{{formatAmount(item.amount, domain)}}</p>
-                        <p class="mt4 size8 gray300-text">Filled {{round(item.filled / item.amount, 2) * 100}}%</p>
+                        <p class="mt4 size10">Filled {{round(item.filled / item.amount, 2) * 100}}%</p>
                     </div>
-                    <div class="flex-30 col align-start-end">
-                        <p>{{formatPrice(item.price)}}</p>
-                        <p class="mt4 size8 gray300-text">
-                            {{item.status == 0 ? "Active" : (item.filled == item.amount ? "Finished" : "Canceled")}}</p>
+                    <div class="flex-30 row align-end-end">
+                        <p class="mr4">{{formatPrice(item.price)}}</p>
+                        <img class="img16 img-green" src="/mfm-wallet/img/success.svg" ng-show="item.status != 0">
+                        <img class="img16 img-red ripple"
+                             src="/mfm-wallet/img/close.svg"
+                             ng-show="item.status == 0"
+                             ng-click="cancel(item.order_id)">
+                    </div>
+                </div>
+
+                <div class="col" ng-hide="orders.length">
+                    <div class="row align-center-center size20 gray400-text"
+                         style="height: 200px">
+                        Nothing found
                     </div>
                 </div>
             </div>
