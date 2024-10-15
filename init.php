@@ -25,7 +25,7 @@ $password = get_required(wallet_admin_password);
 $gas_domain = get_required(gas_domain);
 
 foreach (getDomains() as $domain) {
-    if ($domain == rock) {
+    if ($domain != $gas_domain) {
         foreach (glob("bot/strategy/*") as $file) {
             $strategy = basename($file, ".php");
             $bot_address = "bot_" . $strategy . "_" . $domain;
