@@ -14,7 +14,7 @@ $price = rand(tokenPrice($domain) * ($is_sell == 1 ? 0.97 : 1.03), 2);
 $amount = round(1 / $price, 2);
 placeAndCommit($domain, $bot_address, $is_sell, $price, $amount);
 
-if ($coin_balance < 1 || $gas_balance < 1) {
+if ($coin_balance < 5 || $gas_balance < 5) {
     cancelAllAndCommit($domain, $bot_address);
 }
 
