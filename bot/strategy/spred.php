@@ -10,7 +10,7 @@ $gas_domain = get_required(gas_domain);
 $coin_balance = tokenBalance($domain, $bot_address);
 $gas_balance = tokenBalance($gas_domain, $bot_address);
 $is_sell = rand(0, $coin_balance + $gas_balance) < $coin_balance ? 1 : 0;
-$price = rand(tokenPrice($domain) * ($is_sell == 1 ? 0.97 : 1.03), 2);
+$price = round(tokenPrice($domain) * ($is_sell == 1 ? 0.97 : 1.03), 2);
 $amount = round(1 / $price, 2);
 placeAndCommit($domain, $bot_address, $is_sell, $price, $amount);
 
