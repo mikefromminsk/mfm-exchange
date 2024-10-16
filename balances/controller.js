@@ -1,7 +1,5 @@
 function openBalances(accounts, success) {
-    window.$mdDialog.show({
-        templateUrl: '/mfm-exchange/balances/index.html',
-        controller: function ($scope) {
+    showDialog('/mfm-exchange/balances/index.html', success, function ($scope) {
             addFormats($scope)
             $scope.balances = {}
 
@@ -30,9 +28,5 @@ function openBalances(accounts, success) {
             }
 
             init()
-        }
-    }).then(function () {
-        if (success)
-            success()
     })
 }

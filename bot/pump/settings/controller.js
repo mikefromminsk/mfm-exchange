@@ -1,7 +1,5 @@
 function openPumpSettings(domain, success) {
-    window.$mdDialog.show({
-        templateUrl: '/mfm-exchange/bot/pump/settings/index.html',
-        controller: function ($scope) {
+    showDialog('/mfm-exchange/bot/pump/settings/index.html', success, function ($scope) {
             addFormats($scope)
 
             $scope.domain = domain
@@ -108,9 +106,5 @@ function openPumpSettings(domain, success) {
 
             init()
 
-        }
-    }).then(function () {
-        if (success)
-            success()
     })
 }

@@ -1,7 +1,5 @@
 function openExchangeSettings(domain, success) {
-    window.$mdDialog.show({
-        templateUrl: '/mfm-exchange/exchange/settings/index.html',
-        controller: function ($scope) {
+    showDialog('/mfm-exchange/exchange/settings/index.html', success, function ($scope) {
             addFormats($scope)
 
             $scope.openSpredBalances = function () {
@@ -19,9 +17,5 @@ function openExchangeSettings(domain, success) {
                     ])
                 })
             }
-        }
-    }).then(function () {
-        if (success)
-            success()
     })
 }
