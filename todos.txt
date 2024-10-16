@@ -1,9 +1,12 @@
 
 
 cancel без проверок проходит
+
+
 strategy
-random
-x^3 per week from last transaction
+    random
+    x^3 per week from last transaction
+    place on 00 levels
 
 commitOrders
 
