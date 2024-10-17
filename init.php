@@ -35,6 +35,6 @@ foreach (getDomains() as $domain) {
     }
 }
 
-requestEquals("/mfm-exchange/bot/job.php");
+//requestEquals("/mfm-exchange/bot/job.php");
 
 commit();

@@ -3,20 +3,23 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-exchange/utils.php";
 
 $domain = get_required(domain);
 $bot_address = "bot_" . scriptName() . "_" . $domain;
-if (botScriptReg($domain, $bot_address)) commit();
+if (botScriptReg($domain, $bot_address)) {
+    commit();
+}
 
 $gas_domain = get_required(gas_domain);
 
 $coin_balance = tokenBalance($domain, $bot_address);
 $gas_balance = tokenBalance($gas_domain, $bot_address);
-$is_sell = rand(0, $coin_balance + $gas_balance) < $coin_balance ? 1 : 0;
+if ($coin_balance < 5 || $gas_balance < 5) {
+    cancelAllAndCommit($domain, $bot_address);
+    error("cancel all");  // leak of order amount
+}
+
+$is_sell = rand(0, $coin_balance * 100 + $gas_balance * 100) <= $coin_balance * 100 ? 1 : 0;
 $price = round(tokenPrice($domain) * ($is_sell == 1 ? 0.97 : 1.03), 2);
 $amount = round(1 / $price, 2);
 placeAndCommit($domain, $bot_address, $is_sell, $price, $amount);
-
-if ($coin_balance < 5 || $gas_balance < 5) {
-    cancelAllAndCommit($domain, $bot_address);
-}
 
 $sell_price_levels = getPriceLevels($domain, 1, 20);
 $buy_price_levels = getPriceLevels($domain, 0, 20);
@@ -42,7 +45,7 @@ foreach ($buy_price_levels as $level) {
 }
 $amount_buy = round($quote_need - $order_usdt_buy, 2);
 if ($amount_buy > 0) {
-    $order_max_price = $token_price - 0.01;
+    $order_max_price = round($token_price - 0.01, 2);
     $order_min_price = round($order_max_price * 0.98, 2);
     //echo $order_min_price . " " . $order_max_price . " " . $amount_buy . "\n";
     placeRange($domain, $order_min_price, $order_max_price, 3, $amount_buy, 0, $address_usdt);
@@ -56,7 +59,7 @@ foreach ($sell_price_levels as $level) {
 }
 $amount_sell = round($quote_need - $order_usdt_sell, 2);
 if ($amount_sell > 0) {
-    $order_min_price = $token_price + 0.01;
+    $order_min_price = round($token_price + 0.01, 2);
     $order_max_price = round($order_min_price * 1.02, 2);
     //echo $order_min_price . " " . $order_max_price . " " . $amount_sell . "\n";
     placeRange($domain, $order_min_price, $order_max_price, 3, $amount_sell, 1, $address_base);

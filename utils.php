@@ -15,29 +15,44 @@ function placeAndCommit($domain, $address, int $is_sell, $price, $amount, $pass 
     ]);
 }
 
+function createOrder($address, $domain, $is_sell, $price, $amount)
+{
+    return insertRowAndGetId(orders, [address => $address, domain => $domain, is_sell => $is_sell,
+        price => $price, amount => $amount, filled => 0, status => 2, timestamp => time()]);
+}
+
+function activateOrder($order_id)
+{
+    updateWhere(orders, [status => 0], [order_id => $order_id, status => 2]);
+}
+
+function orderFill($from_order_id, $to_order_id, $coin_to_fill)
+{
+
+}
+
 function place($domain, $address, int $is_sell, $price, $amount, $pass = ":")
 {
-    tokenScriptReg($domain, exchange_ . $domain, "mfm-exchange/exchange.php");
-    tokenScriptReg(usdt, exchange_ . $domain, "mfm-exchange/exchange.php");
+    $exchange_address = exchange_ . $domain;
+    if (botScriptReg($domain, $exchange_address)) commit();
 
     if ($price !== round($price, 2)) error("price tick is 0.01");
-    if ($amount !== round($amount, 2)) error("amount tick is 0.01");
     if ($price <= 0) error("price less than 0");
+    if ($amount !== round($amount, 2)) error("amount tick is 0.01");
     if ($amount <= 0) error("amount less than 0");
-    $total = round($price * $amount, 4);
-    $timestamp = time();
+    $total = round($price * $amount, 2);
 
     if ($is_sell == 1) {
         $coin_not_filled = $amount;
         $usdt_to_get = 0;
-        tokenSend($domain, $address, exchange_ . $domain, $amount, $pass);
+        tokenSend($domain, $address, $exchange_address, $amount, $pass);
         foreach (select("select * from orders where `domain` = '$domain' and is_sell = 0 and price >= $price and status = 0 order by price DESC,timestamp") as $order) {
             $order_coin_not_filled = round($order[amount] - $order[filled], 2);
             $coin_to_fill = min($coin_not_filled, $order_coin_not_filled);
             $order_filled = $order_coin_not_filled == $coin_to_fill ? 1 : 0;
             updateWhere(orders, [filled => $order[filled] + $coin_to_fill, status => $order_filled], [order_id => $order[order_id]]);
             if ($order_filled == 1) {
-                tokenSend($domain, exchange_ . $domain, $order[address], $order[amount]);
+                tokenSend($domain, $exchange_address, $order[address], $order[amount]);
             }
             $last_trade_price = $order[price];
             $trade_volume += round($coin_to_fill * $order[price], 4);
@@ -47,23 +62,24 @@ function place($domain, $address, int $is_sell, $price, $amount, $pass = ":")
                 break;
         }
         if ($coin_not_filled == 0) {
-            tokenSend(usdt, exchange_ . $domain, $address, $usdt_to_get);
+            tokenSend(usdt, $exchange_address, $address, round($usdt_to_get, 2));
         }
         $order_id = insertRowAndGetId(orders, [address => $address, domain => $domain, is_sell => $is_sell,
             price => $price, amount => $amount, filled => $amount - $coin_not_filled,
-            status => $coin_not_filled == 0 ? 1 : 0, timestamp => $timestamp]);
+            status => $coin_not_filled == 0 ? 1 : 0, timestamp => time()]);
     } else {
         $usdt_not_filled = $total;
         $coin_to_get = 0;
-        tokenSend(usdt, $address, exchange_ . $domain, $total, $pass);
+        tokenSend(usdt, $address, $exchange_address, $total, $pass);
+        //error(getAccount(usdt, $exchange_domain));
         foreach (select("select * from orders where `domain` = '$domain' and is_sell = 1 and price <= $price and status = 0 order by price,timestamp") as $order) {
-            $coin_not_filled = $usdt_not_filled / $order[price];
+            $coin_not_filled = round($usdt_not_filled / $order[price], 2);
             $order_coin_not_filled = round($order[amount] - $order[filled], 2);
             $coin_to_fill = min($coin_not_filled, $order_coin_not_filled);
             $order_filled = $order_coin_not_filled == $coin_to_fill ? 1 : 0;
             updateWhere(orders, [filled => $order[filled] + $coin_to_fill, status => $order_filled], [order_id => $order[order_id]]);
             if ($order_filled == 1) {
-                tokenSend(usdt, exchange_ . $domain, $order[address], round($order[amount] * $order[price], 2));
+                tokenSend(usdt, $exchange_address, $order[address], round($order[amount] * $order[price], 2));
             }
             $last_trade_price = $order[price];
             $trade_volume += round($coin_to_fill * $order[price], 4);
@@ -74,11 +90,11 @@ function place($domain, $address, int $is_sell, $price, $amount, $pass = ":")
                 break;
         }
         if ($usdt_not_filled == 0) {
-            tokenSend($domain, exchange_ . $domain, $address, $coin_to_get);
+            tokenSend($domain, $exchange_address, $address, $coin_to_get);
         }
         $order_id = insertRowAndGetId(orders, [address => $address, domain => $domain, is_sell => $is_sell,
             price => $price, amount => $amount, filled => round(($total - $usdt_not_filled) / $price, 2),
-            status => $usdt_not_filled == 0 ? 1 : 0, timestamp => $timestamp]);
+            status => $usdt_not_filled == 0 ? 1 : 0, timestamp => time()]);
     }
 
     if ($last_trade_price != null) {
@@ -147,7 +163,7 @@ function placeRange($domain, $min_price, $max_price, $count, $amount_usdt, $is_s
         $price = ($is_sell == 1) ? $min_price : $max_price;
         $amount_base = round($amount_usdt / $price, 2);
         if ($amount_base > 0) {
-            placeAndCommit($domain, $address, $is_sell, $price, $amount_base, $pass);
+            placeAndCommit($domain, $address, $is_sell, round($price, 2), round($amount_base, 2), $pass);
         }
     } else {
         $price = $min_price;
@@ -171,7 +187,7 @@ function placeRange($domain, $min_price, $max_price, $count, $amount_usdt, $is_s
             }
             if ($amount_base > 0) {
                 //echo $sum_amount . " $price $amount_base\n";
-                placeAndCommit($domain, $address, $is_sell, $price, $amount_base, $pass);
+                placeAndCommit($domain, $address, $is_sell, round($price, 2), round($amount_base, 2), $pass);
             }
 
             $price += $price_step;
