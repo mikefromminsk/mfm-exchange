@@ -11,13 +11,15 @@ query("CREATE TABLE IF NOT EXISTS `orders` (
   `address` varchar(256) COLLATE utf8_bin NOT NULL,
   `is_sell` int(1) NOT NULL,
   `status` int(1) DEFAULT 0,
-  `price` float NOT NULL,
-  `amount` float NOT NULL,
-  `filled` float DEFAULT 0,
+  `price` double NOT NULL,
+  `amount` double NOT NULL,
+  `amount_filled` double DEFAULT 0,
+  `total` double NOT NULL,
+  `total_filled` double DEFAULT 0,
   `timestamp` int(11) NOT NULL,
    PRIMARY KEY (`order_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;");
-
+//
 requestEquals("/mfm-exchange/bot/job.php");
 
 $address = get_required(wallet_admin_address);
