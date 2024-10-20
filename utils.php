@@ -289,6 +289,6 @@ function tokenVolume24($domain)
 function botScriptReg($domain, $bot_address)
 {
     $place_script = "mfm-exchange/exchange.php";
-    tokenScriptReg($domain, $bot_address, $place_script);
-    return tokenScriptReg(get_required(gas_domain), $bot_address, $place_script);
+    tokenRegScript($domain, $bot_address, $place_script);
+    return tokenRegScript(get_required(gas_domain), $bot_address, $place_script);
 }

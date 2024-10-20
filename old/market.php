@@ -2,8 +2,8 @@
 
 function placeMarket($order_type, $domain, $address, int $is_sell, $price, $amount, $total, $pass = ":")
 {
-    tokenScriptReg($domain, exchange_ . $domain, "mfm-exchange/exchange.php");
-    tokenScriptReg(usdt, exchange_ . $domain, "mfm-exchange/exchange.php");
+    tokenRegScript($domain, exchange_ . $domain, "mfm-exchange/exchange.php");
+    tokenRegScript(usdt, exchange_ . $domain, "mfm-exchange/exchange.php");
 
     function getOrders($domain, $is_sell, $count)
     {

@@ -1,6 +1,6 @@
 <?php
 
-include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-data/utils.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-db/utils.php";
 
 onlyInDebug();
 
@@ -19,24 +19,7 @@ query("CREATE TABLE IF NOT EXISTS `orders` (
   `timestamp` int(11) NOT NULL,
    PRIMARY KEY (`order_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;");
-//
-requestEquals("/mfm-exchange/bot/job.php");
 
-$address = get_required(wallet_admin_address);
-$password = get_required(wallet_admin_password);
-$gas_domain = get_required(gas_domain);
+$response[success] = true;
 
-foreach (getDomains() as $domain) {
-    if ($domain != $gas_domain) {
-        foreach (glob("bot/strategy/*") as $file) {
-            $strategy = basename($file, ".php");
-            $bot_address = "bot_" . $strategy . "_" . $domain;
-            tokenSendAndCommit($domain, $address, $bot_address, $password, 100);
-            tokenSendAndCommit($gas_domain, $address, $bot_address, $password, 100);
-        }
-    }
-}
-
-//requestEquals("/mfm-exchange/bot/job.php");
-
-commit();
+echo json_encode($response, JSON_PRETTY_PRINT);
