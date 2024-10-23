@@ -3,11 +3,6 @@ function openExchange(domain, is_sell) {
         $scope.domain = domain
         $scope.is_sell = is_sell == 1
 
-        $scope.openExchangeSettings = function () {
-            $scope.back();
-            openExchangeSettings(domain);
-        }
-
         if (DEBUG) {
             $scope.price = 5
             $scope.amount = 1
