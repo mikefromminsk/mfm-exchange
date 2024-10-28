@@ -41,8 +41,8 @@ function openExchange(domain, is_sell) {
         $scope.place = function () {
             getPin(function (pin) {
                 calcPass($scope.is_sell ? domain : "usdt", pin, function (pass) {
-                    postContract("mfm-exchange", "exchange.php", {
-                        action: 'place',
+                    postContract("mfm-exchange", "owner.php", {
+                        redirect: 'mfm-exchange/place.php',
                         order_type: 'limit',
                         domain: domain,
                         is_sell: $scope.is_sell ? 1 : 0,

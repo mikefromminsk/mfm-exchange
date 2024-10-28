@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER[DOCUMENT_ROOT] . "/mfm-exchange/utils.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-exchange/utils.php";
 
 $domain = get_required(domain);
 $is_sell = get_int_required(is_sell);
