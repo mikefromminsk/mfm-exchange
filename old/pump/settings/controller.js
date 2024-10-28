@@ -91,9 +91,9 @@ function openPumpSettings(domain, success) {
             }
 
             function init() {
-                getBalance("usdt", "exchange_" + domain + "_bot_spred")
+                getBalance("mfm-usdt", "exchange_" + domain + "_bot_spred")
                 getBalance(domain, "exchange_" + domain + "_bot_spred")
-                /*getBalance("usdt", "exchange_" + domain + "_bot_pump")
+                /*getBalance("mfm-usdt", "exchange_" + domain + "_bot_pump")
                 getBalance(domain, "exchange_" + domain + "_bot_pump")*/
                 loadPumpVals()
                 initChart()
