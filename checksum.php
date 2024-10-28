@@ -1,5 +1,5 @@
 <?php
-include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-wallet/api/utils.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-token/utils.php";
 
 $domain = get_string("domain", rock);
 

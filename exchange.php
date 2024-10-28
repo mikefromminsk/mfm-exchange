@@ -1,5 +1,5 @@
 <?php
-include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-exchange/utils.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-exchange/utils.php";
 
 $action = get_required(action);
 
@@ -11,9 +11,7 @@ if ($action == place) {
     $amount = get_int_required(amount);
     $total = get_int_required(total);
     $pass = get_required(pass);
-
     $order_id = place($domain, $address, $is_sell, $price, $amount, $total, $pass);
-
     if ($order_id == null) error("place error");
 } else if ($action == cancel) {
     $order_id = get_int_required(order_id);
