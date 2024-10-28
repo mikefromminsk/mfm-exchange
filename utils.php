@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-data/utils.php";
+require_once $_SERVER[DOCUMENT_ROOT] . "/mfm-data/utils.php";
 
 
 function placeAndCommit($domain, $address, int $is_sell, $price, $amount, $total, $pass = ":")
