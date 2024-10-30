@@ -40,7 +40,7 @@ function openExchange(domain, is_sell) {
 
         $scope.place = function () {
             getPin(function (pin) {
-                calcPass($scope.is_sell ? domain : "mfm-usdt", pin, function (pass) {
+                calcPass($scope.is_sell ? domain : "usdt", pin, function (pass) {
                     postContract("mfm-exchange", "owner.php", {
                         redirect: 'mfm-exchange/place.php',
                         order_type: 'limit',
@@ -99,7 +99,7 @@ function openExchange(domain, is_sell) {
 
         function loadQuoteBalance() {
             postContract("mfm-token", "account.php", {
-                domain: wallet.quote_domain,
+                domain: wallet.gas_domain,
                 address: wallet.address(),
             }, function (response) {
                 $scope.quote = response
