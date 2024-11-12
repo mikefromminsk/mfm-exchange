@@ -55,7 +55,13 @@ function openExchange(domain, is_sell) {
                         pass: pass
                     }, function () {
                         loadOrders()
-                        showSuccess("Order placed", loadOrderbook)
+                        showSuccess("Order placed", function () {
+                            loadOrderbook()
+                            if (storage.getString("first_review") == ""){
+                                storage.setString("first_review", "1")
+                                openReview(domain, loadOrderbook)
+                            }
+                        })
                     })
                 })
             })
