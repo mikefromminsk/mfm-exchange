@@ -1,4 +1,5 @@
 function openExchange(domain, is_sell) {
+    trackCall(arguments)
     showDialog('/mfm-exchange/exchange/index.html', null, function ($scope) {
         $scope.domain = domain
         $scope.is_sell = is_sell == 1
@@ -38,7 +39,8 @@ function openExchange(domain, is_sell) {
             }
         }
 
-        $scope.place = function () {
+        $scope.place = function place() {
+            trackCall(arguments)
             getPin(function (pin) {
                 calcPass($scope.is_sell ? domain : "usdt", pin, function (pass) {
                     postContract("mfm-exchange", "owner.php", {
