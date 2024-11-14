@@ -57,8 +57,16 @@
                 <div class="row mt16 primary-button uppercase align-center-center"
                      style="height: 40px;"
                      ng-class="{'red-back': is_sell, ' green-back': !is_sell}"
-                     ng-click="place()">
+                     ng-click="place()"
+                     ng-hide="!is_sell && quote.balance == 0">
                     {{is_sell ? 'Sell' : 'Buy'}} {{formatDomain(domain)}}
+                </div>
+
+                <div class="row mt16 primary-button uppercase align-center-center accent-back"
+                     style="height: 40px;"
+                     ng-click="getCredit()"
+                     ng-show="!is_sell && quote.balance == 0">
+                    Get credits
                 </div>
             </div>
 

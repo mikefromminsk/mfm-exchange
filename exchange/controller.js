@@ -42,7 +42,7 @@ function openExchange(domain, is_sell) {
         $scope.place = function place() {
             trackCall(arguments)
             getPin(function (pin) {
-                calcPass($scope.is_sell ? domain : "usdt", pin, function (pass) {
+                calcPassList([domain, wallet.gas_domain], pin, function (passes) {
                     postContract("mfm-exchange", "owner.php", {
                         redirect: 'mfm-exchange/place.php',
                         order_type: 'limit',
@@ -52,7 +52,7 @@ function openExchange(domain, is_sell) {
                         price: $scope.price,
                         amount: $scope.amount,
                         total: $scope.total,
-                        pass: pass
+                        pass: passes[$scope.is_sell ? domain : wallet.gas_domain]
                     }, function () {
                         loadOrders()
                         showSuccess("Order placed", function () {
@@ -65,6 +65,11 @@ function openExchange(domain, is_sell) {
                     })
                 })
             })
+        }
+
+        $scope.getCredit = function getCredit() {
+            trackCall(arguments)
+            openCredit(init)
         }
 
         $scope.cancel = function (order_id) {
@@ -142,6 +147,12 @@ function openExchange(domain, is_sell) {
                 $scope.$apply()
             }
         });
+
+        $scope.subscribe("transactions", function (data) {
+            if (data.to == wallet.address()) {
+                init()
+            }
+        })
 
         init()
     })
