@@ -12,66 +12,62 @@
     </div>
     <div class="col content scroll">
         <!--<ng-include src="'/mfm-analytics/chart/chart.html'"></ng-include>-->
-        <div class="row mt16 mh8">
-            <div class="col" style="min-width: 200px;">
-                <div class="row r3" style="height: 32px">
-                    <div class="flex row align-center-center r3"
+        <div class="row">
+            <div class="col input-content" style="min-width: 200px;">
+                <div class="row r3">
+                    <div class="flex p4 row align-center-center r3"
                          ng-class="{'green-back static-white-text': !is_sell, 'green-text': is_sell}"
                          ng-click="is_sell = false">
                         Buy
                     </div>
-                    <div class="flex row align-center-center r3"
+                    <div class="flex p4 row align-center-center r3"
                          ng-class="{'red-back static-white-text': is_sell, 'red-text': !is_sell}"
                          ng-click="is_sell = true">
                         Sell
                     </div>
                 </div>
 
-                <div class="row input-wrapper mt16">
+                <div class="row input-wrapper">
                     <div class="input-label">Price</div>
                     <input type="number" ng-model="price" ng-change="changePrice()">
                 </div>
 
-                <div class="row input-wrapper mt16">
+                <div class="row input-wrapper">
                     <div class="input-label">Amount</div>
                     <input type="number" ng-model="amount" ng-change="changeAmount()">
                 </div>
-                <div class="row" style="height: 22px">
-                    <div ng-repeat="item in [25, 50, 75, 100]"
-                         class="flex row align-center-center size12 ripple"
-                         style="border: 1px solid var(--gray200);"
-                         ng-click="setPortion(item)">
-                        {{item}}%
-                    </div>
-                </div>
-                <div class="row input-wrapper mt16">
+                <div class="row input-wrapper">
                     <div class="input-label">Total</div>
                     <input type="number" ng-model="total" ng-change="changeTotal()">
                 </div>
 
-                <div class="row size10 mt8 nowrap">
+                <div class="row nowrap" style="padding-bottom: 0">
                     <div class="flex gray400-text">Available</div>
                     <div>{{formatAmount(is_sell ? token.balance : quote.balance, is_sell ? domain : "mfm-bank")}}</div>
                 </div>
 
-                <div class="row mt16 primary-button uppercase align-center-center"
-                     style="height: 40px;"
+                <div class="primary-button uppercase accent-back"
+                     ng-click="openLogin()"
+                     ng-show="!wallet.address()">
+                    Login
+                </div>
+
+                <div class="primary-button uppercase"
                      ng-class="{'red-back': is_sell, ' green-back': !is_sell}"
                      ng-click="place()"
-                     ng-hide="!is_sell && quote.balance == 0">
+                     ng-show="wallet.address() && (quote.prev_key || quote.balance != 0)">
                     {{is_sell ? 'Sell' : 'Buy'}} {{formatDomain(domain)}}
                 </div>
 
-                <div class="row mt16 primary-button uppercase align-center-center accent-back"
-                     style="height: 40px;"
+                <div class="primary-button uppercase accent-back"
                      ng-click="getCredit()"
-                     ng-show="!is_sell && quote.balance == 0">
+                     ng-show="wallet.address() && !quote.prev_key && quote.balance == 0">
                     Get credits
                 </div>
             </div>
 
 
-            <div class="flex col" style="margin-left: 10px">
+            <div class="flex col mr16">
                 <!--<div class="row ripple r3 align-center-center" style="height: 32px"
                      ng-class="{'gray400-back': showChart}" ng-click="showChartToggle()">
                     Chart
@@ -81,10 +77,9 @@
                     <div>Amt ({{formatDomain(domain)}})</div>
                 </div>
 
-
                 <!--orderbook-->
                 <div class="col align-end" style="height: calc(20px * 6)">
-                    <div class="row align-start-center ripple ph8"
+                    <div class="row align-start-center ripple"
                          ng-repeat="item in sell"
                          style="height: 20px; position: relative"
                          ng-click="changePrice(item.price)">
@@ -94,9 +89,13 @@
                         <div class="red-text">{{formatAmount(item.amount)}}</div>
                     </div>
                 </div>
-                <md-divider></md-divider>
+
+                <div class="col align-center-center p8 bold">
+                    <p>{{formatPrice(token.price)}}</p>
+                </div>
+
                 <div class="col align-start" style="height: calc(20px * 6)">
-                    <div class="row align-start-center ripple ph8"
+                    <div class="row align-start-center ripple"
                          ng-repeat="item in buy" style="height: 20px; position: relative"
                          ng-click="changePrice(item.price)">
                         <div class="green-back" style="position: absolute; height: 100%; opacity: 0.19;"
@@ -107,7 +106,7 @@
                 </div>
             </div>
         </div>
-        <div class="col ph8">
+        <div class="col mh16">
             <p class="mt16">Orders</p>
             <div class="row mt16 nowrap size12 align-start-center" ng-repeat="item in orders">
                 <div ng-style="getLogo(domain)"></div>

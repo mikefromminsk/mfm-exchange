@@ -3,6 +3,7 @@ function openExchange(domain, is_sell) {
     showDialog('/mfm-exchange/exchange/index.html', null, function ($scope) {
         $scope.domain = domain
         $scope.is_sell = is_sell == 1
+        $scope.wallet = wallet
 
         if (DEBUG) {
             $scope.price = 5
@@ -10,6 +11,10 @@ function openExchange(domain, is_sell) {
         }
 
         var round = $scope.round
+
+        $scope.openLogin = function () {
+            openLogin(init)
+        }
 
         $scope.changePrice = function (price) {
             if (price != null)
@@ -30,15 +35,6 @@ function openExchange(domain, is_sell) {
                 $scope.amount = round($scope.total / $scope.price, 2)
         }
 
-        $scope.setPortion = function (portion) {
-            if (is_sell) {
-                $scope.changeAmount(round($scope.token.balance * portion / 100, 2))
-            } else {
-                $scope.total = round($scope.quote.balance * portion / 100, 4)
-                $scope.changeTotal()
-            }
-        }
-
         $scope.place = function place() {
             trackCall(arguments)
             getPin(function (pin) {
@@ -57,7 +53,7 @@ function openExchange(domain, is_sell) {
                         loadOrders()
                         showSuccess("Order placed", function () {
                             loadOrderbook()
-                            if (storage.getString("first_review") == ""){
+                            if (storage.getString("first_review") == "") {
                                 storage.setString("first_review", "1")
                                 openReview(domain, loadOrderbook)
                             }
@@ -85,15 +81,16 @@ function openExchange(domain, is_sell) {
         $scope.orders = []
 
         function loadOrders() {
-            postContract("mfm-exchange", "orders.php", {
-                domain: domain,
-                address: wallet.address(),
-            }, function (response) {
-                $scope.orders = []
-                $scope.orders.push.apply($scope.orders, response.active)
-                $scope.orders.push.apply($scope.orders, response.history)
-                $scope.$apply()
-            })
+            if (wallet.address() != "")
+                postContract("mfm-exchange", "orders.php", {
+                    domain: domain,
+                    address: wallet.address(),
+                }, function (response) {
+                    $scope.orders = []
+                    $scope.orders.push.apply($scope.orders, response.active)
+                    $scope.orders.push.apply($scope.orders, response.history)
+                    $scope.$apply()
+                })
         }
 
         function init() {
@@ -111,13 +108,15 @@ function openExchange(domain, is_sell) {
         }
 
         function loadQuoteBalance() {
-            postContract("mfm-token", "account.php", {
-                domain: wallet.gas_domain,
-                address: wallet.address(),
-            }, function (response) {
-                $scope.quote = response
-                $scope.$apply()
-            })
+            if (wallet.address() != "") {
+                postContract("mfm-token", "account.php", {
+                    domain: wallet.gas_domain,
+                    address: wallet.address(),
+                }, function (response) {
+                    $scope.quote = response
+                    $scope.$apply()
+                })
+            }
         }
 
         function loadOrderbook() {

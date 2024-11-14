@@ -1,6 +1,5 @@
 function openBalances(accounts, success) {
     showDialog('/mfm-exchange/balances/index.html', success, function ($scope) {
-            addFormats($scope)
             $scope.balances = {}
 
             function getBalance(domain, address) {
