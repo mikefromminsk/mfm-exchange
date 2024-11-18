@@ -1,9 +1,11 @@
-<md-dialog class="fill col back-white text-black block">
+<md-dialog class="fill col block">
     <div class="row header align-start-center">
-        <img class="ripple" src="/mfm-wallet/img/back.svg" ng-click="close()">
+        <div class="row img32 radius-default back-gray align-center-center ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/back.svg">
+        </div>
         <div class="flex row align-start-center">
-            <div ng-style="getLogo(token.domain)">
-            <p class="ml4">{{formatTicker(token.domain)}}</p>
+            <div ng-style="getLogo(token.domain)"></div>
+            <p class="ml16">{{formatTicker(token.domain)}}</p>
         </div>
         <div class="col align-start-end">
             <p>{{formatPrice(token.price)}}</p>
@@ -72,9 +74,9 @@
                      ng-class="{'back-gray': showChart}" ng-click="showChartToggle()">
                     Chart
                 </div>-->
-                <div class="row size10 text-gray mt16 nowrap">
-                    <div class="flex">Price (USDT)</div>
-                    <div>Amt ({{formatDomain(domain)}})</div>
+                <div class="row text2 mv16 nowrap">
+                    <div class="flex">Price USDT</div>
+                    <div>Amt {{formatDomain(domain)}}</div>
                 </div>
 
                 <!--orderbook-->
