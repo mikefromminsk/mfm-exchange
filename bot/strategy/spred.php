@@ -16,17 +16,15 @@ if ($coin_balance < 5 || $gas_balance < 5) {
     error("cancel all");  // leak of order amount
 }
 
-$is_sell = rand(0, $coin_balance * 100 + $gas_balance * 100) <= $coin_balance * 100 ? 1 : 0;
-$price = round(tokenPrice($domain) * ($is_sell == 1 ? 0.97 : 1.03), 2);
-$amount = round(1 / $price, 2);
-placeAndCommit($domain, $bot_address, $is_sell, $price, $amount, $amount * $price);
-
 $sell_price_levels = getPriceLevels($domain, 1, 20);
 $buy_price_levels = getPriceLevels($domain, 0, 20);
-$quote_need = 10;
 
-$address_base = bot_spred_ . $domain;
-$address_usdt = bot_spred_ . $domain;
+if (sizeof($sell_price_levels) > 0 && sizeof($buy_price_levels) > 0) {
+    $is_sell = rand(0, $coin_balance * 100 + $gas_balance * 100) <= $coin_balance * 100 ? 1 : 0;
+    $price = round(tokenPrice($domain) * ($is_sell == 1 ? 0.97 : 1.03), 2);
+    $amount = round(1 / $price, 2);
+    placeAndCommit($domain, $bot_address, $is_sell, $price, $amount, $amount * $price);
+}
 
 $best_sell_price = sizeof($sell_price_levels) > 0 ? $sell_price_levels[0][price] : 0;
 $best_buy_price = sizeof($buy_price_levels) > 0 ? $buy_price_levels[0][price] : 0;
@@ -43,12 +41,13 @@ foreach ($buy_price_levels as $level) {
         $order_usdt_buy += $level[amount] * $level[price];
     }
 }
+$quote_need = 10;
 $amount_buy = round($quote_need - $order_usdt_buy, 2);
 if ($amount_buy > 0) {
     $order_max_price = round($token_price - 0.01, 2);
     $order_min_price = round($order_max_price * 0.98, 2);
     //echo $order_min_price . " " . $order_max_price . " " . $amount_buy . "\n";
-    placeRange($domain, $order_min_price, $order_max_price, 3, $amount_buy, 0, $address_usdt);
+    placeRange($domain, $order_min_price, $order_max_price, 6, $amount_buy, 0, $bot_address);
 }
 
 $order_usdt_sell = 0;
@@ -62,7 +61,7 @@ if ($amount_sell > 0) {
     $order_min_price = round($token_price + 0.01, 2);
     $order_max_price = round($order_min_price * 1.02, 2);
     //echo $order_min_price . " " . $order_max_price . " " . $amount_sell . "\n";
-    placeRange($domain, $order_min_price, $order_max_price, 3, $amount_sell, 1, $address_base);
+    placeRange($domain, $order_min_price, $order_max_price, 6, $amount_sell, 1, $bot_address);
 }
 
 commit();

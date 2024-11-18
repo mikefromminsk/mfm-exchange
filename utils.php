@@ -4,8 +4,8 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-data/utils.php";
 
 function placeAndCommit($domain, $address, int $is_sell, $price, $amount, $total, $pass = ":")
 {
-    http_post("/mfm-exchange/owner.php", [
-        redirect => "mfm-exchange/place.php",
+    requestEquals("/mfm-exchange/owner.php", [
+        redirect => "/mfm-exchange/place.php",
         domain => $domain,
         address => $address,
         is_sell => "$is_sell",
@@ -177,7 +177,7 @@ function cancel($order_id)
 function cancelAllAndCommit($domain, $address)
 {
     requestEquals("/mfm-exchange/owner.php", [
-        redirect => "mfm-exchange/cancel_all.php",
+        redirect => "/mfm-exchange/cancelAll.php",
         domain => $domain,
         address => $address,
     ]);
