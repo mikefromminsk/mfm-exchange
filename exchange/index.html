@@ -1,4 +1,4 @@
-<md-dialog class="fill col white-back black-text block">
+<md-dialog class="fill col back-white text-black block">
     <div class="row header align-start-center">
         <img class="ripple" src="/mfm-wallet/img/back.svg" ng-click="close()">
         <div class="flex row align-start-center">
@@ -14,14 +14,14 @@
         <!--<ng-include src="'/mfm-analytics/chart/chart.html'"></ng-include>-->
         <div class="row">
             <div class="col input-content" style="min-width: 200px;">
-                <div class="row r3">
-                    <div class="flex p4 row align-center-center r3"
-                         ng-class="{'green-back static-white-text': !is_sell, 'green-text': is_sell}"
+                <div class="row radius3">
+                    <div class="flex p4 row align-center-center radius3"
+                         ng-class="{'back-green static-text-white': !is_sell, 'text-green': is_sell}"
                          ng-click="is_sell = false">
                         Buy
                     </div>
-                    <div class="flex p4 row align-center-center r3"
-                         ng-class="{'red-back static-white-text': is_sell, 'red-text': !is_sell}"
+                    <div class="flex p4 row align-center-center radius3"
+                         ng-class="{'back-red static-text-white': is_sell, 'text-red': !is_sell}"
                          ng-click="is_sell = true">
                         Sell
                     </div>
@@ -42,24 +42,24 @@
                 </div>
 
                 <div class="row nowrap" style="padding-bottom: 0">
-                    <div class="flex gray400-text">Available</div>
+                    <div class="flex text-gray">Available</div>
                     <div>{{formatAmount(is_sell ? token.balance : quote.balance, is_sell ? domain : "mfm-bank")}}</div>
                 </div>
 
-                <div class="primary-button uppercase accent-back"
+                <div class="primary-button uppercase back-accent"
                      ng-click="openLogin()"
                      ng-show="!wallet.address()">
                     Login
                 </div>
 
                 <div class="primary-button uppercase"
-                     ng-class="{'red-back': is_sell, ' green-back': !is_sell}"
+                     ng-class="{'back-red': is_sell, ' back-green': !is_sell}"
                      ng-click="place()"
                      ng-show="wallet.address() && (quote.prev_key || quote.balance != 0)">
                     {{is_sell ? 'Sell' : 'Buy'}} {{formatDomain(domain)}}
                 </div>
 
-                <div class="primary-button uppercase accent-back"
+                <div class="primary-button uppercase back-accent"
                      ng-click="getCredit()"
                      ng-show="wallet.address() && !quote.prev_key && quote.balance == 0">
                     Get credits
@@ -68,11 +68,11 @@
 
 
             <div class="flex col mr16">
-                <!--<div class="row ripple r3 align-center-center" style="height: 32px"
-                     ng-class="{'gray400-back': showChart}" ng-click="showChartToggle()">
+                <!--<div class="row ripple radius3 align-center-center" style="height: 32px"
+                     ng-class="{'back-gray': showChart}" ng-click="showChartToggle()">
                     Chart
                 </div>-->
-                <div class="row size10 gray300-text mt16 nowrap">
+                <div class="row size10 text-gray mt16 nowrap">
                     <div class="flex">Price (USDT)</div>
                     <div>Amt ({{formatDomain(domain)}})</div>
                 </div>
@@ -83,10 +83,10 @@
                          ng-repeat="item in sell"
                          style="height: 20px; position: relative"
                          ng-click="changePrice(item.price)">
-                        <div class="red-back" style="position: absolute; height: 100%; opacity: 0.19;"
+                        <div class="back-red" style="position: absolute; height: 100%; opacity: 0.19;"
                              ng-style="{'min-width': item.percent + '%'}"></div>
-                        <div class="flex red-text">{{formatPrice(item.price)}}</div>
-                        <div class="red-text">{{formatAmount(item.amount)}}</div>
+                        <div class="flex text-red">{{formatPrice(item.price)}}</div>
+                        <div class="text-red">{{formatAmount(item.amount)}}</div>
                     </div>
                 </div>
 
@@ -98,9 +98,9 @@
                     <div class="row align-start-center ripple"
                          ng-repeat="item in buy" style="height: 20px; position: relative"
                          ng-click="changePrice(item.price)">
-                        <div class="green-back" style="position: absolute; height: 100%; opacity: 0.19;"
+                        <div class="back-green" style="position: absolute; height: 100%; opacity: 0.19;"
                              ng-style="{'min-width': item.percent + '%'}"></div>
-                        <div class="flex green-text">{{formatPrice(item.price)}}</div>
+                        <div class="flex text-green">{{formatPrice(item.price)}}</div>
                         <div>{{formatAmount(item.amount)}}</div>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
                 <div ng-style="getLogo(domain)"></div>
                 <div class="flex col ml8">
                     <p>{{formatTicker(domain)}}</p>
-                    <p class="mt4 size10 gray300-text">{{formatTime(item.timestamp)}}</p>
+                    <p class="mt4 size10 text-gray">{{formatTime(item.timestamp)}}</p>
                 </div>
                 <div class="flex col align-start-end">
                     <p>{{formatAmount(item.amount, domain)}}</p>
@@ -129,7 +129,7 @@
             </div>
 
             <div class="col" ng-hide="orders.length">
-                <div class="row align-center-center size20 gray400-text"
+                <div class="row align-center-center size20 text-gray"
                      style="height: 200px">
                     Nothing found
                 </div>

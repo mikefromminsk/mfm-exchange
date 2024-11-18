@@ -23,7 +23,7 @@ function openBalances(accounts, success) {
             }
 
             $scope.send = function (domain, address, amount) {
-                openSendDialog(domain, address, amount, init)
+                openSend(domain, address, amount, init)
             }
 
             init()
