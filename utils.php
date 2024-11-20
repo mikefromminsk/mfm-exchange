@@ -114,11 +114,23 @@ function orderFillBuy($address, $domain, $price, $amount, $total, $pass)
     return $order_id;
 }
 
-function trackFill($domain, $last_trade_price, $trade_volume)
+function trackFill($domain, $price, $volume)
 {
-    if ($last_trade_price != null) {
-        tokenSetVolume($domain, $trade_volume);
-        tokenSetPrice($domain, $last_trade_price);
+    if ($price != null) {
+        trackAccumulate($domain . _volume, $volume);
+        $last_price = getCandleLastValue($domain . _price);
+        if ($price != $last_price) {
+            trackLinear($domain . _price, $price);
+            broadcast(price, [
+                domain => $domain,
+                price => $price,
+            ]);
+        }
+        updateWhere(tokens, [
+            price => $price,
+            change24 => getCandleChange24($domain . _price),
+            volume24 => getCandleChange24($domain . _volume),
+        ], [domain => $domain]);
     }
 
     broadcast(orderbook, [
@@ -258,27 +270,9 @@ function getPriceLevels($domain, $is_sell, $count)
     return $levels;
 }
 
-function tokenSetPrice($domain, $price)
-{
-    $last_trade_price = getCandleLastValue($domain . _price);
-    if ($price != $last_trade_price) {
-        trackLinear($domain . _price, $price);
-        broadcast(price, [
-            domain => $domain,
-            price => $price,
-        ]);
-    }
-}
-
 function tokenPrice($domain)
 {
     return getCandleLastValue($domain . _price) ?: 1;
-}
-
-
-function tokenSetVolume($domain, $volume)
-{
-    trackAccumulate($domain . _volume, $volume);
 }
 
 function tokenVolume24($domain)

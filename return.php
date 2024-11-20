@@ -16,6 +16,13 @@ $usd_back = round($amount * ($credit_percent / 100), 2);
 
 tokenSend($gas_domain, $address, $bank_address, $usd_back);
 
+function tokenUndelegateAll($address)
+{
+    foreach (getAccounts($address) as $account) {
+        tokenUndelegate($account[domain], $address);
+    }
+}
+
 tokenUndelegateAll($address);
 
 commit();

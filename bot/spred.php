@@ -1,7 +1,7 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-exchange/utils.php";
 
-$domain = get_required(domain);
+$domain = get_required(domain, oak_log);
 $bot_address = "bot_" . getScriptName() . "_" . $domain;
 if (botScriptReg($domain, $bot_address)) {
     commit();
