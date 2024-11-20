@@ -1,15 +1,11 @@
 <md-dialog class="fill col block">
     <div class="row header align-start-center">
-        <div class="row img32 radius-default back-gray align-center-center ripple" ng-click="close()">
-            <img class="img16 img-gray400" src="/mfm-wallet/img/back.svg">
-        </div>
         <div class="flex row align-start-center">
             <div ng-style="getLogo(token.domain)"></div>
             <p class="ml16">{{formatTicker(token.domain)}}</p>
         </div>
-        <div class="col align-start-end">
-            <p>{{formatPrice(token.price)}}</p>
-            <!--<p class="size14" ng-class="percentColor(change24)">{{formatChange(change24)}}</p>-->
+        <div class="row img32 radius-default back-gray align-center-center ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
     </div>
     <div class="col content scroll">
@@ -130,11 +126,10 @@
                 </div>
             </div>
 
-            <div class="col" ng-hide="orders.length">
-                <div class="row align-center-center size20 text-gray"
-                     style="height: 200px">
-                    Nothing found
-                </div>
+            <div class="col align-center-center text1 text-gray"
+                 ng-hide="orders.length > 0"
+                 style="height: 200px">
+                There is no orders yet
             </div>
         </div>
     </div>
