@@ -43,11 +43,12 @@ foreach ($buy_price_levels as $level) {
 }
 $quote_need = 10;
 $amount_buy = round($quote_need - $order_usdt_buy, 2);
+$order_count = 6;
 if ($amount_buy > 0) {
     $order_max_price = round($token_price - 0.01, 2);
-    $order_min_price = round($order_max_price * 0.98, 2);
+    $order_min_price = round($order_max_price * (1 - 0.01 * $order_count), 2);
     //echo $order_min_price . " " . $order_max_price . " " . $amount_buy . "\n";
-    placeRange($domain, $order_min_price, $order_max_price, 6, $amount_buy, 0, $bot_address);
+    placeRange($domain, $order_min_price, $order_max_price, $order_count, $amount_buy, 0, $bot_address);
 }
 
 $order_usdt_sell = 0;
@@ -59,9 +60,9 @@ foreach ($sell_price_levels as $level) {
 $amount_sell = round($quote_need - $order_usdt_sell, 2);
 if ($amount_sell > 0) {
     $order_min_price = round($token_price + 0.01, 2);
-    $order_max_price = round($order_min_price * 1.02, 2);
+    $order_max_price = round($order_min_price * (1 + 0.01 * $order_count), 2);
     //echo $order_min_price . " " . $order_max_price . " " . $amount_sell . "\n";
-    placeRange($domain, $order_min_price, $order_max_price, 6, $amount_sell, 1, $bot_address);
+    placeRange($domain, $order_min_price, $order_max_price, $order_count, $amount_sell, 1, $bot_address);
 }
 
 commit();
