@@ -61,7 +61,7 @@
                     {{is_sell ? 'Sell' : 'Buy'}} {{formatDomain(domain)}}
                 </div>
 
-                <div class="primary-button uppercase back-accent"
+                <div class="primary-button uppercase back-pay"
                      ng-click="getCredit()"
                      ng-show="wallet.address() && !quote.prev_key && quote.balance == 0">
                     Get credits
