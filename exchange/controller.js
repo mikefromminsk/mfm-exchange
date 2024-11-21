@@ -3,7 +3,6 @@ function openExchange(domain, is_sell) {
     showDialog('/mfm-exchange/exchange/index.html', null, function ($scope) {
         $scope.domain = domain
         $scope.is_sell = is_sell == 1
-        $scope.wallet = wallet
 
         if (DEBUG) {
             $scope.price = 5
@@ -40,7 +39,7 @@ function openExchange(domain, is_sell) {
             getPin(function (pin) {
                 calcPassList([domain, wallet.gas_domain], pin, function (passes) {
                     postContract("mfm-exchange", "owner.php", {
-                        redirect: 'mfm-exchange/place.php',
+                        redirect: '/mfm-exchange/place.php',
                         order_type: 'limit',
                         domain: domain,
                         is_sell: $scope.is_sell ? 1 : 0,

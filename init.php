@@ -30,6 +30,4 @@ query("CREATE TABLE IF NOT EXISTS `tokens` (
    PRIMARY KEY (`domain`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;");
 
-$response[success] = true;
-
-echo json_encode($response, JSON_PRETTY_PRINT);
+echo json_encode([success => true]);
