@@ -105,7 +105,7 @@
             </div>
         </div>
         <div class="col mh16">
-            <p class="mt16">Orders</p>
+            <p class="mt16">{{str.orders}}</p>
             <div class="row mt16 nowrap size12 align-start-center" ng-repeat="item in orders">
                 <div ng-style="getLogo(domain)"></div>
                 <div class="flex col ml8">
@@ -114,7 +114,7 @@
                 </div>
                 <div class="flex col align-start-end">
                     <p>{{formatAmount(item.amount, domain)}}</p>
-                    <p class="mt4 size10">Filled {{round(item.filled / item.amount, 2) * 100}}%</p>
+                    <p class="mt4 size10">{{str.filled}} {{round(item.filled / item.amount, 2) * 100}}%</p>
                 </div>
                 <div class="flex-30 row align-end-end">
                     <p class="mr4">{{formatPrice(item.price)}}</p>
@@ -129,7 +129,7 @@
             <div class="col align-center-center text1 text-gray"
                  ng-hide="orders.length > 0"
                  style="height: 200px">
-                There is no orders yet
+                {{str.there_is_no_orders_yet}}
             </div>
         </div>
     </div>
