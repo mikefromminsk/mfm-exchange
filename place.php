@@ -13,4 +13,11 @@ $order_id = place($domain, $address, $is_sell, $price, $amount, $total, $pass);
 
 if ($order_id == null) error("place error");
 
+if (strpos($address, "bot_") === FALSE) {
+    $topic = orderbook . ":" . $domain;
+    broadcast($topic, [
+        topic => $topic,
+    ]);
+}
+
 commit();

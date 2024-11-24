@@ -27,6 +27,7 @@ query("CREATE TABLE IF NOT EXISTS `tokens` (
   `price` double DEFAULT 0,
   `change24` double DEFAULT 0,
   `volume24` double DEFAULT 0,
+  `created` int(11) NOT NULL,
    PRIMARY KEY (`domain`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;");
 

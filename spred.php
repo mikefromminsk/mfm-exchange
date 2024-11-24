@@ -1,9 +1,12 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-exchange/utils.php";
 
-onlyInProd();
+//onlyInProd();
 
-$domain = get_required(domain, oak_log);
+$domain = get_required(domain);
+
+//callLimitPassSec(1, "_" . $domain);
+
 $bot_address = "bot_" . getScriptName() . "_" . $domain;
 if (botScriptReg($domain, $bot_address)) {
     commit();
@@ -43,7 +46,7 @@ foreach ($buy_price_levels as $level) {
         $order_usdt_buy += $level[amount] * $level[price];
     }
 }
-$quote_need = 10;
+$quote_need = 3;
 $amount_buy = round($quote_need - $order_usdt_buy, 2);
 $order_count = 6;
 if ($amount_buy > 0) {
@@ -66,5 +69,10 @@ if ($amount_sell > 0) {
     //echo $order_min_price . " " . $order_max_price . " " . $amount_sell . "\n";
     placeRange($domain, $order_min_price, $order_max_price, $order_count, $amount_sell, 1, $bot_address);
 }
+
+$topic = orderbook . ":" . $domain;
+broadcast($topic, [
+    topic => $topic,
+]);
 
 commit();

@@ -132,10 +132,6 @@ function trackFill($domain, $price, $volume)
             volume24 => getCandleChange24($domain . _volume),
         ], [domain => $domain]);
     }
-
-    broadcast(orderbook, [
-        domain => $domain,
-    ]);
 }
 
 function place($domain, $address, int $is_sell, $price, $amount, $total, $pass = ":")
@@ -180,10 +176,6 @@ function cancel($order_id)
             tokenSend($order[domain], $exchange_address, $order[address], round($order[amount_filled], 2));
     }
     updateWhere(orders, [status => -1], [order_id => $order_id]);
-
-    broadcast(orderbook, [
-        domain => $order[domain],
-    ]);
 }
 
 function cancelAllAndCommit($domain, $address)
@@ -197,10 +189,8 @@ function cancelAllAndCommit($domain, $address)
 
 function cancelAll($domain, $address)
 {
-    $orders = ordersActive($domain, $address);
-    for ($i = 0; $i < sizeof($orders); $i++) {
-        echo "cancel $i/" . sizeof($orders) . "\n";
-        cancel($orders[$i][order_id]);
+    foreach (ordersActive($domain, $address) as $order) {
+        cancel($order[order_id]);
     }
 }
 
