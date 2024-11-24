@@ -140,9 +140,7 @@ function openExchange(domain, is_sell) {
         });
 
         $scope.subscribe("orderbook:" + domain, function (data) {
-            console.log(data)
             loadOrderbook() // get orderbook from data
-            $scope.$apply()
         });
 
         $scope.subscribe("transactions", function (data) {

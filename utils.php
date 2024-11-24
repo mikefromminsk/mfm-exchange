@@ -128,7 +128,7 @@ function trackFill($domain, $price, $volume)
         }
         updateWhere(tokens, [
             price => $price,
-            change24 => getCandleChange24($domain . _price),
+            price24 => getCandleChange24($domain . _price),
             volume24 => getCandleChange24($domain . _volume),
         ], [domain => $domain]);
     }

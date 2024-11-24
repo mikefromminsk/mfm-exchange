@@ -88,8 +88,9 @@
                     </div>
                 </div>
 
-                <div class="col align-center-center p16 bold">
-                    <p>{{formatPrice(token.price)}}</p>
+                <div class="row pv16">
+                    <p class="flex bold">{{formatPrice(token.price)}}</p>
+                    <p class="text2 lowercase nowrap">{{str.volume}} ${{formatAmount(token.volume24, '', 0)}}</p>
                 </div>
 
                 <div class="col align-start" style="height: calc(20px * 6)">

@@ -25,7 +25,7 @@ query("CREATE TABLE IF NOT EXISTS `tokens` (
   `owner` varchar(256) COLLATE utf8_bin NOT NULL,
   `amount` double DEFAULT 0,
   `price` double DEFAULT 0,
-  `change24` double DEFAULT 0,
+  `price24` double DEFAULT 0,
   `volume24` double DEFAULT 0,
   `created` int(11) NOT NULL,
    PRIMARY KEY (`domain`)
