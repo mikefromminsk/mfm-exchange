@@ -1,9 +1,18 @@
 <md-dialog class="fill col block">
     <div class="row header align-start-center">
-        <div class="flex row align-start-center">
+        <div class="row gap16 align-start-center"  ng-click="openTokenProfile(token.domain)">
             <div ng-style="getLogo(token.domain)"></div>
-            <p class="ml16">{{formatTicker(token.domain)}}</p>
+            <div class="col">
+                <p class="uppercase text1">{{token.domain}}</p>
+                <div class="row mt4 text2">
+                    <p class="">{{formatPrice(token.price)}}</p>
+                    <p class="ml4" ng-class="percentColor(token.price24)">
+                        {{formatChange(token.price24)}}
+                    </p>
+                </div>
+            </div>
         </div>
+        <div class="flex"></div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
