@@ -124,7 +124,8 @@
                 </div>
                 <div class="flex col align-start-end">
                     <p>{{formatAmount(item.amount, domain)}}</p>
-                    <p class="mt4 size10">{{str.filled}} {{round(item.filled / item.amount, 2) * 100}}%</p>
+                    <p class="mt4 size10" ng-show="is_sell == 1">{{str.filled}} {{round(item.amount_filled / item.amount, 2) * 100}}%</p>
+                    <p class="mt4 size10" ng-show="is_sell == 0">{{str.filled}} {{round(item.total_filled / item.total, 2) * 100}}%</p>
                 </div>
                 <div class="flex-30 row align-end-end">
                     <p class="mr4">{{formatPrice(item.price)}}</p>

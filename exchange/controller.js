@@ -9,8 +9,6 @@ function openExchange(domain, is_sell) {
             $scope.amount = 1
         }
 
-        var round = $scope.round
-
         $scope.openLogin = function () {
             openLogin(init)
         }
@@ -19,20 +17,30 @@ function openExchange(domain, is_sell) {
             if (price != null)
                 $scope.price = price
             if ($scope.price != null && $scope.amount != null)
-                $scope.total = round($scope.price * $scope.amount, 4)
+                $scope.total = $scope.round($scope.price * $scope.amount, 4)
         }
 
         $scope.changeAmount = function (amount) {
             if (amount != null)
                 $scope.amount = amount
             if ($scope.price != null && $scope.amount != null)
-                $scope.total = round($scope.price * $scope.amount, 4)
+                $scope.total = $scope.round($scope.price * $scope.amount, 4)
         }
 
         $scope.changeTotal = function () {
             if ($scope.price != null && $scope.total != null)
-                $scope.amount = round($scope.total / $scope.price, 2)
+                $scope.amount = $scope.round($scope.total / $scope.price, 2)
         }
+
+        $scope.$watch('price', function () {
+            $scope.price = $scope.round($scope.price, 2)
+        })
+        $scope.$watch('amount', function () {
+            $scope.amount = $scope.round($scope.amount, 2)
+        })
+        $scope.$watch('total', function () {
+            $scope.total = $scope.round($scope.total, 2)
+        })
 
         $scope.place = function place() {
             trackCall(arguments)
@@ -68,12 +76,14 @@ function openExchange(domain, is_sell) {
         }
 
         $scope.cancel = function (order_id) {
-            postContract("mfm-exchange", "exchange.php", {
-                action: 'cancel',
-                order_id: order_id,
-            }, function () {
-                loadOrders()
-                showSuccess("Order canceled", loadOrderbook)
+            openAskSure(function () {
+                postContract("mfm-exchange", "owner.php", {
+                    redirect: '/mfm-exchange/cancel.php',
+                    order_id: order_id,
+                }, function () {
+                    loadOrders()
+                    showSuccess("Order canceled", loadOrderbook)
+                })
             })
         }
 
