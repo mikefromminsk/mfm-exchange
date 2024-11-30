@@ -154,7 +154,7 @@ function openExchange(domain, is_sell) {
         });
 
         $scope.subscribe("transactions", function (data) {
-            if (data.to == wallet.address()) {
+            if (data.to == wallet.address() || data.from == wallet.address()) {
                 init()
             }
         })

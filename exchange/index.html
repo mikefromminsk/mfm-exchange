@@ -48,9 +48,16 @@
                     <input type="number" ng-model="total" ng-change="changeTotal()">
                 </div>
 
-                <div class="row nowrap" style="padding-bottom: 0">
+                <div class="row nowrap pb0">
                     <div class="flex text-gray">{{str.available}}</div>
-                    <div>{{formatAmount(is_sell ? token.balance : quote.balance, is_sell ? domain : "mfm-bank")}}</div>
+                    <div ng-show="is_sell"
+                         ng-class="{'text-red': token.balance < getTotal()}">
+                        {{formatAmount(token.balance, domain)}}
+                    </div>
+                    <div ng-hide="is_sell"
+                         ng-class="{'text-red': quote.balance < getTotal()}">
+                        {{formatAmount(quote.balance, wallet.gas_domain)}}
+                    </div>
                 </div>
 
                 <div class="primary-button uppercase back-accent"
@@ -63,7 +70,7 @@
                      ng-class="{'back-red': is_sell, ' back-green': !is_sell}"
                      ng-click="place()"
                      ng-show="wallet.address() && (quote.prev_key || quote.balance != 0)">
-                    {{is_sell ? 'Sell' : 'Buy'}} {{formatDomain(domain)}}
+                    {{is_sell ? 'Sell' : 'Buy'}} {{formatTickerShort(domain)}}
                 </div>
 
                 <div class="primary-button uppercase back-pay"
@@ -81,7 +88,7 @@
                 </div>-->
                 <div class="row text2 mv16 nowrap">
                     <div class="flex">{{str.price}} {{wallet.gas_domain}}</div>
-                    <div>{{str.amount}} {{formatDomain(domain)}}</div>
+                    <div>{{str.amount}} {{formatTickerShort(domain)}}</div>
                 </div>
 
                 <!--orderbook-->
