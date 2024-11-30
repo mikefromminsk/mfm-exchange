@@ -69,6 +69,7 @@
                 <div class="primary-button uppercase"
                      ng-class="{'back-red': is_sell, ' back-green': !is_sell}"
                      ng-click="place()"
+                     ng-disabled="in_progress"
                      ng-show="wallet.address() && (quote.prev_key || quote.balance != 0)">
                     {{is_sell ? 'Sell' : 'Buy'}} {{formatTickerShort(domain)}}
                 </div>

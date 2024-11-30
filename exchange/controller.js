@@ -44,6 +44,7 @@ function openExchange(domain, is_sell) {
 
         $scope.place = function place() {
             trackCall(arguments)
+            $scope.in_progress = true
             getPin(function (pin) {
                 calcPassList([domain, wallet.gas_domain], pin, function (passes) {
                     postContract("mfm-exchange", "owner.php", {
@@ -57,6 +58,7 @@ function openExchange(domain, is_sell) {
                         total: $scope.total,
                         pass: passes[$scope.is_sell ? domain : wallet.gas_domain]
                     }, function () {
+                        $scope.in_progress = false
                         loadOrders()
                         showSuccess("Order placed", function () {
                             loadOrderbook()
@@ -65,8 +67,13 @@ function openExchange(domain, is_sell) {
                                 openReview(domain, loadOrderbook)
                             }
                         })
+                    }, function (message) {
+                        $scope.in_progress = false
+                        showError(message)
                     })
                 })
+            }, function () {
+                $scope.in_progress = false
             })
         }
 
