@@ -1,6 +1,6 @@
 <md-dialog class="fill col block">
     <div class="row header align-start-center">
-        <div class="row gap16 align-start-center"  ng-click="openTokenProfile(token.domain)">
+        <div class="row gap16 align-start-center" ng-click="openTokenProfile(token.domain)">
             <div ng-style="getLogo(token.domain)"></div>
             <div class="col">
                 <p class="uppercase text1">{{token.domain}}</p>
@@ -43,6 +43,19 @@
                     <div class="input-label">{{str.amount}}</div>
                     <input type="number" ng-model="amount" ng-change="changeAmount()">
                 </div>
+                <div class="row">
+                    <div class="flex row range-container">
+                        <input type="range"
+                               class="flex"
+                               ng-style="{'background-size': portion + '% 100%'}"
+                               ng-model="portion" min="0" max="100">
+                        <div class="romb back-gray"
+                             ng-repeat="i in [4, 25, 50, 75, 97]"
+                             ng-class="{'back-gray': i >= portion, 'back-white': i < portion}"
+                             ng-style="{'left': 'calc(' + i + '% - 4px)'}"></div>
+                    </div>
+                </div>
+
                 <div class="row input-wrapper">
                     <div class="input-label">{{str.total}}</div>
                     <input type="number" ng-model="total" ng-change="changeTotal()">
@@ -51,22 +64,22 @@
                 <div class="row nowrap pb0">
                     <div class="flex text-gray">{{str.available}}</div>
                     <div ng-show="is_sell"
-                         ng-class="{'text-red': token.balance < getTotal()}">
+                         ng-class="{'text-red': amount > token.balance}">
                         {{formatAmount(token.balance, domain)}}
                     </div>
                     <div ng-hide="is_sell"
-                         ng-class="{'text-red': quote.balance < getTotal()}">
+                         ng-class="{'text-red': total > quote.balance}">
                         {{formatAmount(quote.balance, wallet.gas_domain)}}
                     </div>
                 </div>
 
-                <div class="primary-button uppercase back-accent"
+                <div class="primary-button uppercase back-accent p8 text1"
                      ng-click="openLogin()"
                      ng-show="!wallet.address()">
                     {{str.login}}
                 </div>
 
-                <div class="primary-button uppercase"
+                <div class="primary-button uppercase p8 text1"
                      ng-class="{'back-red': is_sell, ' back-green': !is_sell}"
                      ng-click="place()"
                      ng-disabled="in_progress"
@@ -74,7 +87,7 @@
                     {{is_sell ? 'Sell' : 'Buy'}} {{formatTickerShort(domain)}}
                 </div>
 
-                <div class="primary-button uppercase back-pay"
+                <div class="primary-button uppercase back-pay p8 text1"
                      ng-click="getCredit()"
                      ng-show="wallet.address() && !quote.prev_key && quote.balance == 0">
                     {{str.get_credit}}
@@ -88,8 +101,8 @@
                     Chart
                 </div>-->
                 <div class="row text2 mv16 nowrap">
-                    <div class="flex">{{str.price}} {{wallet.gas_domain}}</div>
-                    <div>{{str.amount}} {{formatTickerShort(domain)}}</div>
+                    <div class="flex">{{str.price}}</div>
+                    <div>{{formatTickerShort(domain)}}</div>
                 </div>
 
                 <!--orderbook-->
@@ -132,8 +145,10 @@
                 </div>
                 <div class="flex col align-start-end">
                     <p>{{formatAmount(item.amount, domain)}}</p>
-                    <p class="mt4 size10" ng-show="is_sell == 1">{{str.filled}} {{round(item.amount_filled / item.amount, 2) * 100}}%</p>
-                    <p class="mt4 size10" ng-show="is_sell == 0">{{str.filled}} {{round(item.total_filled / item.total, 2) * 100}}%</p>
+                    <p class="mt4 size10" ng-show="is_sell == 1">{{str.filled}}
+                        {{round(item.amount_filled / item.amount, 2) * 100}}%</p>
+                    <p class="mt4 size10" ng-show="is_sell == 0">{{str.filled}}
+                        {{round(item.total_filled / item.total, 2) * 100}}%</p>
                 </div>
                 <div class="flex-30 row align-end-end">
                     <p class="mr4">{{formatPrice(item.price)}}</p>

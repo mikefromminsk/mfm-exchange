@@ -41,6 +41,14 @@ function openExchange(domain, is_sell) {
         $scope.$watch('total', function () {
             $scope.total = $scope.round($scope.total, 2)
         })
+        $scope.portion = 0
+        $scope.$watch('portion', function (new_value) {
+            if ($scope.is_sell) {
+                $scope.changeAmount($scope.token.balance * (new_value / 100))
+            } else {
+                $scope.changeAmount($scope.quote.balance / $scope.price)
+            }
+        })
 
         $scope.place = function place() {
             trackCall(arguments)
