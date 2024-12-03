@@ -133,6 +133,11 @@
                             <div>{{formatAmount(item.amount)}}</div>
                         </div>
                     </div>
+                    <div class="button"
+                         ng-show="token.owner == wallet.address()"
+                         ng-click="openSpredBot(token.domain)">
+                        Bot console
+                    </div>
                 </div>
             </div>
             <div class="col mh16">

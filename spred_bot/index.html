@@ -1,0 +1,23 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <p class="flex">Spred bot Console</p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll">
+        <div class="flex col block input-content">
+            <div id="spred_bot_readme"></div>
+        </div>
+    </div>
+    <div class="primary-button"
+         ng-show="token.balance > 0"
+         ng-click="send()">
+        {{str.send}}
+    </div>
+    <div class="primary-button back-pay"
+         ng-show="token.balance == 0"
+         ng-click="openGetCredit(send)">
+        {{str.get_credit}}
+    </div>
+</md-dialog>
