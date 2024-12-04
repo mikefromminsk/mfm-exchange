@@ -4,11 +4,6 @@ function openExchange(domain, is_sell) {
         $scope.domain = domain
         $scope.is_sell = is_sell == 1
 
-        if (DEBUG) {
-            $scope.price = 5
-            $scope.amount = 1
-        }
-
         $scope.openLogin = function () {
             openLogin(init)
         }
@@ -42,11 +37,12 @@ function openExchange(domain, is_sell) {
             $scope.total = $scope.round($scope.total, 2)
         })
         $scope.portion = 0
-        $scope.$watch('portion', function (new_value) {
+        $scope.$watch('portion', function (new_value, old_value) {
+            if (new_value == old_value) return;
             if ($scope.is_sell) {
                 $scope.changeAmount($scope.token.balance * (new_value / 100))
             } else {
-                $scope.changeAmount($scope.quote.balance / $scope.price)
+                $scope.changeAmount($scope.quote.balance / $scope.price * (new_value / 100))
             }
         })
 
@@ -68,10 +64,10 @@ function openExchange(domain, is_sell) {
                     }, function () {
                         $scope.in_progress = false
                         loadOrders()
-                        showSuccess("Order placed", function () {
+                        showSuccess(str.order_placed, function () {
                             loadOrderbook()
-                            if (storage.getString("first_review") == "") {
-                                storage.setString("first_review", "1")
+                            if (storage.getString(storageKeys.first_review) == "") {
+                                storage.setString(storageKeys.first_review, "1")
                                 openReview(domain, loadOrderbook)
                             }
                         })
@@ -97,7 +93,7 @@ function openExchange(domain, is_sell) {
                     order_id: order_id,
                 }, function () {
                     loadOrders()
-                    showSuccess("Order canceled", loadOrderbook)
+                    showSuccess(str.order_canceled, loadOrderbook)
                 })
             })
         }
