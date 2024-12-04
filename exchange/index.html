@@ -61,7 +61,7 @@
                         <input type="number" ng-model="total" ng-change="changeTotal()">
                     </div>
 
-                    <div class="row nowrap pb0">
+                    <div class="row pb0">
                         <div class="flex text-gray">{{str.available}}</div>
                         <div ng-show="is_sell"
                              ng-class="{'text-red': amount > token.balance}">
@@ -100,7 +100,7 @@
                          ng-class="{'back-gray': showChart}" ng-click="showChartToggle()">
                         Chart
                     </div>-->
-                    <div class="row text2 mv16 nowrap">
+                    <div class="row text2 mv16">
                         <div class="flex">{{str.price}}</div>
                         <div>{{formatTickerShort(domain)}}</div>
                     </div>
@@ -120,7 +120,7 @@
 
                     <div class="row pv16">
                         <p class="flex bold">{{formatPrice(token.price)}}</p>
-                        <p class="text2 lowercase nowrap">{{str.volume}} ${{formatAmount(token.volume24, '', 0)}}</p>
+                        <p class="text2 lowercase">{{str.volume}} ${{formatAmount(token.volume24, '', 0)}}</p>
                     </div>
 
                     <div class="col align-start" style="height: calc(20px * 6)">
@@ -142,7 +142,7 @@
             </div>
             <div class="col mh16">
                 <p class="mt16">{{str.orders}}</p>
-                <div class="row mt16 nowrap size12 align-start-center" ng-repeat="item in orders">
+                <div class="row mt16 size12 align-start-center" ng-repeat="item in orders">
                     <div ng-style="getLogo(domain)"></div>
                     <div class="flex col ml8">
                         <p>{{formatTicker(domain)}}</p>
