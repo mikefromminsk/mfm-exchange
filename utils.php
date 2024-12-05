@@ -137,7 +137,7 @@ function trackFill($domain, $price, $volume)
 function place($domain, $address, int $is_sell, $price, $amount, $total, $pass = ":")
 {
     $exchange_address = exchange_ . $domain;
-    if (botScriptReg($domain, $exchange_address)) commit();
+    if (botScriptReg($domain, $exchange_address)) commitTokens();
 
     if ($price !== round($price, 2)) error("price tick is 0.01");
     if ($price <= 0) error("price less than 0");
