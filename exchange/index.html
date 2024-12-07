@@ -50,7 +50,7 @@
                                    ng-style="{'background-size': portion + '% 100%'}"
                                    ng-model="portion" min="0" max="100">
                             <div class="romb back-gray"
-                                 ng-repeat="i in [4, 25, 50, 75, 97]"
+                                 ng-repeat="i in [3, 25, 50, 75, 98]"
                                  ng-class="{'back-gray': i >= portion, 'back-white': i < portion}"
                                  ng-style="{'left': 'calc(' + i + '% - 4px)'}"></div>
                         </div>
