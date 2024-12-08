@@ -12,10 +12,9 @@ if (botScriptReg($domain, $bot_address)) {
     commit();
 }
 
-$gas_domain = get_required(gas_domain);
 
 $coin_balance = tokenBalance($domain, $bot_address);
-$gas_balance = tokenBalance($gas_domain, $bot_address);
+$gas_balance = tokenBalance(gas_domain, $bot_address);
 if ($coin_balance < 5 || $gas_balance < 5) {
     cancelAllAndCommit($domain, $bot_address);
     error("cancel all");  // leak of order amount

@@ -274,5 +274,5 @@ function botScriptReg($domain, $bot_address)
 {
     $place_script = "mfm-exchange/owner.php";
     tokenRegScript($domain, $bot_address, $place_script);
-    return tokenRegScript(get_required(gas_domain), $bot_address, $place_script);
+    return tokenRegScript(gas_domain, $bot_address, $place_script);
 }
