@@ -23,7 +23,7 @@ query("DROP TABLE IF EXISTS `tokens`;");
 query("CREATE TABLE IF NOT EXISTS `tokens` (
     `domain` varchar(16) COLLATE utf8_bin NOT NULL,
     `owner` varchar(256) COLLATE utf8_bin NOT NULL,
-    `amount` double DEFAULT 0,
+    `total` double NOT NULL,
     `price` double DEFAULT 0,
     `price24` double DEFAULT 0,
     `volume24` double DEFAULT 0,
