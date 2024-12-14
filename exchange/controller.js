@@ -66,10 +66,10 @@ function openExchange(domain, is_sell) {
                         loadOrders()
                         showSuccess(str.order_placed, function () {
                             loadOrderbook()
-                            if (storage.getString(storageKeys.first_review) == "") {
+                            /*if (storage.getString(storageKeys.first_review) == "") {
                                 storage.setString(storageKeys.first_review, "1")
                                 openReview(domain, loadOrderbook)
-                            }
+                            }*/
                         })
                     }, function (message) {
                         $scope.in_progress = false
