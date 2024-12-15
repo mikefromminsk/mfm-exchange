@@ -35,13 +35,19 @@
                     </div>
 
                     <div class="row input-wrapper">
-                        <div class="input-label">{{str.price}}</div>
-                        <input type="number" ng-model="price" ng-change="changePrice()">
+                        <img class="img-white" src="/mfm-wallet/img/dollar.svg">
+                        <input type="number"
+                               ng-model="price"
+                               ng-change="changePrice()"
+                               placeholder="{{str.price}}">
                     </div>
 
                     <div class="row input-wrapper">
-                        <div class="input-label">{{str.amount}}</div>
-                        <input type="number" ng-model="amount" ng-change="changeAmount()">
+                        <div ng-style="getLogo(domain)"></div>
+                        <input type="number"
+                               ng-model="amount"
+                               ng-change="changeAmount()"
+                               placeholder="{{str.amount}}">
                     </div>
                     <div class="row">
                         <div class="flex row range-container">
@@ -57,8 +63,11 @@
                     </div>
 
                     <div class="row input-wrapper">
-                        <div class="input-label">{{str.total}}</div>
-                        <input type="number" ng-model="total" ng-change="changeTotal()">
+                        <div ng-style="getLogo(wallet.gas_domain)"></div>
+                        <input type="number"
+                               ng-model="total"
+                               ng-change="changeTotal()"
+                               placeholder="{{str.total}}">
                     </div>
 
                     <div class="row pb0">
