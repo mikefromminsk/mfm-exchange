@@ -4,8 +4,8 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-data/utils.php";
 
 function placeAndCommit($domain, $address, int $is_sell, $price, $amount, $total, $pass = ":")
 {
-    requestEquals("/mfm-exchange/owner.php", [
-        redirect => "/mfm-exchange/place.php",
+    requestEquals("/mfm-exchange/owner", [
+        redirect => "/mfm-exchange/place",
         domain => $domain,
         address => $address,
         is_sell => "$is_sell",
@@ -180,8 +180,8 @@ function cancel($order_id)
 
 function cancelAllAndCommit($domain, $address)
 {
-    requestEquals("/mfm-exchange/owner.php", [
-        redirect => "/mfm-exchange/cancelAll.php",
+    requestEquals("/mfm-exchange/owner", [
+        redirect => "/mfm-exchange/cancelAll",
         domain => $domain,
         address => $address,
     ]);
@@ -272,7 +272,7 @@ function tokenVolume24($domain)
 
 function botScriptReg($domain, $bot_address)
 {
-    $place_script = "mfm-exchange/owner.php";
+    $place_script = "mfm-exchange/owner";
     tokenRegScript($domain, $bot_address, $place_script);
     return tokenRegScript(gas_domain, $bot_address, $place_script);
 }
