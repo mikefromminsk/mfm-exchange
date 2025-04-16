@@ -1,6 +1,6 @@
 function openP2PChat(order_id, success) {
     trackCall(arguments)
-    showDialog("products/p2p/chat", success, function ($scope) {
+    showDialog("p2p/chat", success, function ($scope) {
         $scope.order_id = order_id
 
         $scope.loadChat = function () {

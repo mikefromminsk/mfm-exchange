@@ -1,6 +1,6 @@
 function openOfferPlace(domain, success) {
     trackCall(arguments)
-    showDialog("products/p2p/offer_place", success, function ($scope) {
+    showDialog("p2p/offer_place", success, function ($scope) {
         addPriceAmountTotal($scope, domain, 0)
         $scope.domain = domain
 

@@ -6,7 +6,7 @@ window.payment_types = {
 
 function openPaymentAdd(success) {
     trackCall(arguments)
-    showDialog("products/p2p/payment", success, function ($scope) {
+    showDialog("p2p/payment", success, function ($scope) {
         $scope.payments = window.payment_types
 
         $scope.tabIndex = 0

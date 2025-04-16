@@ -1,6 +1,6 @@
 function openOrderPlace(offer_id, success) {
     trackCall(arguments)
-    showDialog("products/p2p/order_place", success, function ($scope) {
+    showDialog("p2p/order_place", success, function ($scope) {
         addPriceAmountTotal($scope)
 
         $scope.payment = storage.getString(storageKeys.default_payment_type)

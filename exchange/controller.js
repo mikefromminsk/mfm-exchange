@@ -1,6 +1,6 @@
 function openExchange(domain, is_sell) {
     trackCall(arguments)
-    showDialog("products/exchange", null, function ($scope) {
+    showDialog("exchange", null, function ($scope) {
         addPriceAmountTotal($scope)
         $scope.domain = domain
         $scope.is_sell = is_sell == 1

@@ -24,17 +24,7 @@ function start($scope) {
     $scope.selectTab($scope.selectedIndex)
 
     if (window.location.search != "") {
-        window.history.pushState({}, document.title, "/mfm-wallet")
-    }
-
-    if (window.Telegram != null) {
-        setTimeout(function () {
-            let userData = window.Telegram.WebApp.initDataUnsafe
-            if (userData.user != null) {
-                window.telegram_username = userData.user.username
-                trackEvent("tg_referer", null, window.telegram_username)
-            }
-        })
+        window.history.pushState({}, document.title, "/mfm-exchange")
     }
 
     window.addEventListener('popstate', () => {
@@ -42,22 +32,4 @@ function start($scope) {
     })
 
     connectWs()
-}
-
-window.finishAutoOpening = false
-
-function loaded() {
-    if (!finishAutoOpening) {
-        const hash = window.location.hash.substring(1);
-        const params = new URLSearchParams(hash);
-        for (const [key, value] of params) {
-            if (key.startsWith('open')) {
-                const functionName = key;
-                if (typeof window[functionName] === 'function') {
-                    window[functionName](value);
-                    window.finishAutoOpening = true;
-                }
-            }
-        }
-    }
 }

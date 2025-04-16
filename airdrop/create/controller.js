@@ -1,6 +1,6 @@
 function openAirdropCreate(domain, success) {
     trackCall(arguments)
-    showDialog("products/airdrop/create", success, function ($scope) {
+    showDialog("airdrop/create", success, function ($scope) {
         domain = domain || wallet.gas_domain
         $scope.domain = domain
         $scope.receivers = 1

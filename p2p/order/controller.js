@@ -1,6 +1,6 @@
 function openOrder(order_id, success) {
     trackCall(arguments)
-    showDialog("products/p2p/order", success, function ($scope) {
+    showDialog("p2p/order", success, function ($scope) {
         $scope.payments = window.payment_types
 
         $scope.sentMoney = function () {

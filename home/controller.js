@@ -2,7 +2,6 @@ function openHome($scope) {
 
     $scope.refresh = function () {
         postApi("home", {
-            //filter: $scope.selectedTop,
         }, function (response) {
             $scope.tokens = response.tokens
             $scope.showBody = true

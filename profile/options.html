@@ -1,14 +1,13 @@
 <div class="row align-start-end">
     <div class="flex p16 col align-start-center ripple"
-         ng-click="openPool(domain, refresh)">
+         ng-click="openDeposit(domain, refresh)">
         <img class="img16 img-gray" src="/mfm-wallet/img/exchange.svg">
-        <p class="mt8 text2">{{str.swap}}</p>
+        <p class="mt8 text2">{{str.deposit}}</p>
     </div>
     <div class="flex p16 col align-start-center ripple"
-         ng-click="openMining(domain, refresh)" style="position: relative">
-        <div class="focus" ng-show="isNotChecked('earn')" ng-click="check('earn')"></div>
+         ng-click="openWithdrawal(domain, refresh)">
         <img class="img16 img-gray" src="/mfm-wallet/img/mining.svg">
-        <p class="mt8 text2">{{str.earn}}</p>
+        <p class="mt8 text2">{{str.withdrawal}}</p>
     </div>
     <div class="flex p16 col align-start-center ripple"
          ng-click="openSend(domain)">
@@ -16,17 +15,3 @@
         <p class="mt8 text2">{{str.send}}</p>
     </div>
 </div>
-
-<!--<div class="row align-start-end"
-     ng-show="domain == wallet.gas_domain">
-    <div class="flex p16 col align-start-center ripple"
-         ng-click="openDeposit()">
-        <img class="img16 img-gray" src="/mfm-wallet/img/plus.svg">
-        <p class="mt8 text2">{{str.deposit}}</p>
-    </div>
-    <div class="flex p16 col align-start-center ripple"
-         ng-click="openWithdrawal()">
-        <img class="img16 img-gray" src="/mfm-wallet/img/arrow-up.svg">
-        <p class="mt8 text2">{{str.withdrawal}}</p>
-    </div>
-</div>-->

@@ -1,6 +1,6 @@
 function openP2P(success) {
     trackCall(arguments)
-    showDialog("products/p2p", success, function ($scope) {
+    showDialog("p2p", success, function ($scope) {
         $scope.domain = storage.getString(storageKeys.defaultOfferDomain, wallet.gas_domain)
 
         $scope.menu = ["history", "offers", "profile"]
@@ -96,7 +96,7 @@ function openOrders($scope) {
 
 function openP2PProfile(address, success) {
     trackCall(arguments)
-    showDialog("products/p2p/profile", success, function ($scope) {
+    showDialog("p2p/profile", success, function ($scope) {
         addP2PProfile($scope, address)
     })
 }

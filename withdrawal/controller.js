@@ -1,6 +1,6 @@
-function openWithdrawal(success) {
+function openWithdrawal(domain, success) {
     trackCall(arguments)
-    showBottomSheet("products/withdrawal", success, function ($scope) {
+    showBottomSheet("withdrawal", success, function ($scope) {
 
             $scope.withdrawal_address = ""
             $scope.amount = ""

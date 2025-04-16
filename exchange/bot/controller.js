@@ -1,6 +1,6 @@
 function openExchangeBot(domain, success) {
     trackCall(arguments)
-    showDialog("products/exchange/bot", success, function ($scope) {
+    showDialog("exchange/bot", success, function ($scope) {
         $scope.domain = domain
         $scope.bot_address = wallet.getBotAddress(domain)
 

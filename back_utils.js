@@ -11,7 +11,7 @@ window.user = {
 }
 
 function postApi(path, params, success, error) {
-    path = path || {}
-    path.token = storage.getString(EXCHANGE_TOKEN)
+    params = params || {}
+    params.token = storage.getString(EXCHANGE_TOKEN)
     postContract("mfm-exchange", path, params, success, error)
 }

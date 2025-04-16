@@ -28,9 +28,9 @@ function openWallet($scope) {
     $scope.domain = "usdt"
 
     function loadTokens() {
-        postApi("accounts", {
+        postApi("balances", {
         }, function (response) {
-            $scope.accounts = response.accounts
+            $scope.balances = response.balances
             setTimeout(function () {
                 createOdometer(document.getElementById("total"), $scope.getTotalBalance())
             }, 100)
