@@ -1,0 +1,54 @@
+<div class="flex col scroll">
+    <div class="flex col block input-content">
+        <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+        <div class="row header align-start"
+             style="min-height: 130px"
+             ng-style="getBack(profile.address)">
+            <div class="row align-center-center img32 back-gray radius-default ripple"
+                 ng-click="scrollTo('p2p_faq')">
+                <img class="img16 img-gray400" src="/mfm-wallet/img/info.svg">
+            </div>
+            <p class="flex"></p>
+            <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="backToMain()">
+                <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+            </div>
+        </div>
+        <div class="row">
+            <div class="radius-default back-white"
+                 style="position: relative; top: -20px"
+                 ng-style="getIdenticon(profile.address, 40)"></div>
+            <p class="ml8 mt4">{{formatAddress(profile.address)}}</p>
+            <p class="flex">{{address}}</p>
+        </div>
+        <div class="text1">{{str.info}}</div>
+        <div class="row align-start-end mt8">
+            <p class="flex text2">{{str.orders}}</p>
+            <p>{{formatAmount(profile.finishedOrders)}}</p>
+        </div>
+        <div class="row align-start-end mt8">
+            <p class="flex text2">{{str.success}}</p>
+            <p>{{formatAmount(profile.successOrders)}}</p>
+        </div>
+        <div class="row align-start-end mt8">
+            <p class="flex text2">{{str.canceled}}</p>
+            <p>{{formatPercent((profile.finishedOrders - profile.successOrders) /  profile.finishedOrders)}}</p>
+        </div>
+        <div class="row align-start-end mt8">
+            <p class="flex text2">{{str.registred}}</p>
+            <p>{{formatDate(profile.created)}}</p>
+        </div>
+        <div class="row align-start-end mt8">
+            <p class="flex text2">{{str.first_order}}</p>
+            <p>{{formatDate(profile.firstOrder)}}</p>
+        </div>
+        <div class="row align-start-end mt8">
+            <p class="flex text2">{{str.sell_orders}}</p>
+            <p>{{formatAmount(profile.sellOrders)}}</p>
+        </div>
+        <div class="row align-start-end mt8">
+            <p class="flex text2">{{str.buy_orders}}</p>
+            <p>{{formatAmount(profile.successOrders - profile.sellOrders)}}</p>
+        </div>
+        <div></div>
+    </div>
+</div>

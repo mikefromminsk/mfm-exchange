@@ -1,0 +1,45 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/support.svg" ng-click="openSupport()">
+        <div class="flex row align-center">{{str.login}}</div>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col">
+        <div class="col input-content">
+            <div class="row input-wrapper">
+                <div class="input-label">{{str.username}}</div>
+                <input id="login_address"
+                       type="text"
+                       autocapitalize="off"
+                       autocomplete="off"
+                       maxlength="16"
+                       oninput="this.value = this.value.replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();"
+                       ng-model="username">
+            </div>
+            <div class="row input-wrapper">
+                <div class="input-label">{{str.password}}</div>
+                <input id="login_password"
+                       type="password"
+                       autocapitalize="off"
+                       autocomplete="off"
+                       ng-model="password">
+            </div>
+            <div class="row align-start-center gap8">
+                <p>{{str.agree_to}}</p>
+                <p class="text-accent" ng-click="openDoc('/mfm-wallet/docs/terms_and_conditions.md')">
+                    {{str.terms_and_conditions}}
+                </p>
+            </div>
+            <div class="primary-button"
+                 ng-click="login()"
+                 ng-disabled="in_progress || !username || !password || in_progress">
+                {{str.accept_and_login}}
+            </div>
+        </div>
+    </div>
+</md-dialog>
+
+<!--
+ng-disabled="username == '' || password == '' || in_progress"-->

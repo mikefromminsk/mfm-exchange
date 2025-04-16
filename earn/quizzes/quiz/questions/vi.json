@@ -1,0 +1,352 @@
+[
+  {
+    "level": "Hài hước",
+    "questions": [
+      {
+        "question": "Tên của loại tiền điện tử được đặt theo tên của một chú chó meme nổi tiếng là gì?",
+        "answers": [
+          "Dogecoin",
+          "Catcoin",
+          "Birbcoin"
+        ],
+        "correct": "Dogecoin"
+      },
+      {
+        "question": "Bạn cần gì để khai thác tiền điện tử?",
+        "answers": [
+          "Cuốc và xẻng",
+          "Một máy tính với card đồ họa mạnh mẽ",
+          "Một cây đũa phép"
+        ],
+        "correct": "Một máy tính với card đồ họa mạnh mẽ"
+      },
+      {
+        "question": "Bạn có thể mua gì bằng bitcoin trong thế giới thực?",
+        "answers": [
+          "Pizza",
+          "Đất trên sao Hỏa",
+          "Cửa hàng kẹo"
+        ],
+        "correct": "Pizza"
+      },
+      {
+        "question": "Con vật nào là biểu tượng của bitcoin?",
+        "answers": [
+          "Gấu",
+          "Bò",
+          "Không có"
+        ],
+        "correct": "Không có"
+      },
+      {
+        "question": "Nơi lưu trữ tiền điện tử được gọi là gì?",
+        "answers": [
+          "ATM",
+          "Tủ lạnh",
+          "Ví"
+        ],
+        "correct": "Ví"
+      }
+    ]
+  },
+  {
+    "level": "Người mới bắt đầu",
+    "questions": [
+      {
+        "question": "Tiền điện tử là gì?",
+        "answers": [
+          "Tiền điện tử",
+          "Đồng xu gỗ",
+          "Thỏi vàng"
+        ],
+        "correct": "Tiền điện tử"
+      },
+      {
+        "question": "Tên của loại tiền điện tử phổ biến nhất là gì?",
+        "answers": [
+          "Ethereum",
+          "Bitcoin",
+          "Dogecoin"
+        ],
+        "correct": "Bitcoin"
+      },
+      {
+        "question": "Cái gì có thể được sử dụng để lưu trữ tiền điện tử?",
+        "answers": [
+          "Ví",
+          "Thẻ ngân hàng",
+          "Tiền mặt"
+        ],
+        "correct": "Ví"
+      },
+      {
+        "question": "Công nghệ nền tảng của tiền điện tử được gọi là gì?",
+        "answers": [
+          "Blockchain",
+          "Internet",
+          "Cơ sở dữ liệu"
+        ],
+        "correct": "Blockchain"
+      },
+      {
+        "question": "Quá trình tạo ra các đơn vị tiền điện tử mới được gọi là gì?",
+        "answers": [
+          "Khai thác",
+          "Mã hóa",
+          "Tải"
+        ],
+        "correct": "Khai thác"
+      }
+    ]
+  },
+  {
+    "level": "Cơ bản",
+    "questions": [
+      {
+        "question": "Blockchain là gì?",
+        "answers": [
+          "Cơ sở dữ liệu truyền thống",
+          "Chuỗi các khối chứa dữ liệu",
+          "Mạng truyền tải SMS"
+        ],
+        "correct": "Chuỗi các khối chứa dữ liệu"
+      },
+      {
+        "question": "Lợi thế chính của blockchain so với các cơ sở dữ liệu truyền thống là gì?",
+        "answers": [
+          "Quản lý tập trung",
+          "Tính bất biến của dữ liệu",
+          "Giảm bảo mật"
+        ],
+        "correct": "Tính bất biến của dữ liệu"
+      },
+      {
+        "question": "Phi tập trung trong bối cảnh blockchain là gì?",
+        "answers": [
+          "Quản lý tập trung",
+          "Quản lý phân tán",
+          "Độc quyền"
+        ],
+        "correct": "Quản lý phân tán"
+      },
+      {
+        "question": "Loại tiền điện tử nào là loại đầu tiên dựa trên blockchain?",
+        "answers": [
+          "Ethereum",
+          "Bitcoin",
+          "Litecoin"
+        ],
+        "correct": "Bitcoin"
+      },
+      {
+        "question": "Quá trình xác minh và thêm giao dịch vào blockchain được gọi là gì?",
+        "answers": [
+          "Khai thác",
+          "Băm",
+          "Mã hóa"
+        ],
+        "correct": "Khai thác"
+      }
+    ]
+  },
+  {
+    "level": "Trung cấp",
+    "questions": [
+      {
+        "question": "Hợp đồng thông minh là gì?",
+        "answers": [
+          "Hợp đồng pháp lý truyền thống",
+          "Hợp đồng tự động trong blockchain",
+          "Loại tiền điện tử"
+        ],
+        "correct": "Hợp đồng tự động trong blockchain"
+      },
+      {
+        "question": "Thuật toán đồng thuận nào được sử dụng trong Bitcoin?",
+        "answers": [
+          "Bằng chứng công việc",
+          "Bằng chứng cổ phần",
+          "Bằng chứng đốt"
+        ],
+        "correct": "Bằng chứng công việc"
+      },
+      {
+        "question": "Thuật toán băm nào được sử dụng trong blockchain của Bitcoin?",
+        "answers": [
+          "SHA-256",
+          "MD5",
+          "Blowfish"
+        ],
+        "correct": "SHA-256"
+      },
+      {
+        "question": "Nút trong blockchain là gì?",
+        "answers": [
+          "Máy chủ trung tâm",
+          "Nút mạng blockchain",
+          "Loại tiền điện tử"
+        ],
+        "correct": "Nút mạng blockchain"
+      },
+      {
+        "question": "Blockchain đảm bảo tính bất biến của dữ liệu như thế nào?",
+        "answers": [
+          "Cập nhật dữ liệu thường xuyên",
+          "Băm mỗi khối và liên kết nó với khối trước đó",
+          "Sử dụng máy chủ tập trung"
+        ],
+        "correct": "Băm mỗi khối và liên kết nó với khối trước đó"
+      }
+    ]
+  },
+  {
+    "level": "Nâng cao",
+    "questions": [
+      {
+        "question": "Fork trong blockchain là gì?",
+        "answers": [
+          "Chia mạng thành hai chuỗi",
+          "Loại giao dịch",
+          "Thuật toán băm"
+        ],
+        "correct": "Chia mạng thành hai chuỗi"
+      },
+      {
+        "question": "Sự khác biệt giữa blockchain công khai và riêng tư là gì?",
+        "answers": [
+          "Trong blockchain công khai, dữ liệu có thể truy cập cho mọi người, trong blockchain riêng tư - chỉ cho một số người tham gia",
+          "Blockchain công khai hoạt động ở cấp quốc gia, blockchain riêng tư - ở cấp địa phương",
+          "Blockchain riêng tư sử dụng nhiều năng lượng hơn"
+        ],
+        "correct": "Trong blockchain công khai, dữ liệu có thể truy cập cho mọi người, trong blockchain riêng tư - chỉ cho một số người tham gia"
+      },
+      {
+        "question": "Gas trong blockchain Ethereum là gì?",
+        "answers": [
+          "Nhiên liệu cho các giao dịch và hợp đồng thông minh",
+          "Loại tiền điện tử",
+          "Biện pháp bảo mật"
+        ],
+        "correct": "Nhiên liệu cho các giao dịch và hợp đồng thông minh"
+      },
+      {
+        "question": "Giao thức Bằng chứng cổ phần thực hiện chức năng gì?",
+        "answers": [
+          "Khai thác khối dựa trên sức mạnh tính toán",
+          "Chọn người xác thực dựa trên quyền sở hữu đồng tiền",
+          "Chia chuỗi thành hai phần"
+        ],
+        "correct": "Chọn người xác thực dựa trên quyền sở hữu đồng tiền"
+      },
+      {
+        "question": "Giải thích khái niệm cây Merkle và vai trò của nó trong blockchain",
+        "answers": [
+          "Loại tiền điện tử",
+          "Cấu trúc dạng cây cung cấp lưu trữ dữ liệu hiệu quả và an toàn",
+          "Thuật toán đồng thuận"
+        ],
+        "correct": "Cấu trúc dạng cây cung cấp lưu trữ dữ liệu hiệu quả và an toàn"
+      }
+    ]
+  },
+  {
+    "level": "Chuyên gia",
+    "questions": [
+      {
+        "question": "Sharding trong bối cảnh công nghệ blockchain là gì?",
+        "answers": [
+          "Chia dữ liệu thành các phần nhỏ hơn để tăng hiệu suất",
+          "Giao thức bảo mật để bảo vệ dữ liệu",
+          "Cơ chế quản lý hợp đồng thông minh"
+        ],
+        "correct": "Chia dữ liệu thành các phần nhỏ hơn để tăng hiệu suất"
+      },
+      {
+        "question": "Các pool khai thác hoạt động như thế nào?",
+        "answers": [
+          "Một nhóm thợ mỏ chia sẻ sức mạnh tính toán của họ và nhận phần thưởng tỷ lệ với đóng góp của họ",
+          "Một nhóm nhà phát triển tạo hợp đồng thông minh để tăng cường bảo mật",
+          "Người dùng trao đổi tiền điện tử với nhau"
+        ],
+        "correct": "Một nhóm thợ mỏ chia sẻ sức mạnh tính toán của họ và nhận phần thưởng tỷ lệ với đóng góp của họ"
+      },
+      {
+        "question": "Giải thích khái niệm khối mồ côi",
+        "answers": [
+          "Các khối không được bao gồm trong chuỗi chính",
+          "Các khối chứa lỗi mã",
+          "Các khối dành cho việc thử nghiệm các tính năng mới"
+        ],
+        "correct": "Các khối không được bao gồm trong chuỗi chính"
+      },
+      {
+        "question": "Những mối đe dọa bảo mật nào tồn tại đối với blockchain?",
+        "answers": [
+          "Tấn công 51%, lừa đảo, kỹ thuật xã hội",
+          "Bảo vệ mật khẩu yếu, từ chối dịch vụ (DDoS)",
+          "Hiệu suất nút chậm, giao thức bảo mật lỗi thời"
+        ],
+        "correct": "Tấn công 51%, lừa đảo, kỹ thuật xã hội"
+      },
+      {
+        "question": "Làm thế nào để đạt được khả năng mở rộng trong các mạng blockchain?",
+        "answers": [
+          "Sử dụng sharding, tăng kích thước khối, tối ưu hóa thuật toán đồng thuận",
+          "Tăng số lượng thợ mỏ, giảm độ phức tạp của nhiệm vụ, sử dụng máy chủ tập trung",
+          "Tối ưu hóa hợp đồng thông minh, giảm thời gian giao dịch, sử dụng trí tuệ nhân tạo"
+        ],
+        "correct": "Sử dụng sharding, tăng kích thước khối, tối ưu hóa thuật toán đồng thuận"
+      }
+    ]
+  },
+  {
+    "level": "Bậc thầy",
+    "questions": [
+      {
+        "question": "DeFi là gì và nó liên quan đến blockchain như thế nào?",
+        "answers": [
+          "Tài chính phi tập trung sử dụng hợp đồng thông minh trên blockchain",
+          "Giao thức bảo mật để bảo vệ dữ liệu tài chính",
+          "Hệ thống trao đổi tiền tệ tập trung"
+        ],
+        "correct": "Tài chính phi tập trung sử dụng hợp đồng thông minh trên blockchain"
+      },
+      {
+        "question": "Blockchain được sử dụng như thế nào trong quản lý chuỗi cung ứng?",
+        "answers": [
+          "Để theo dõi sự di chuyển của hàng hóa và đảm bảo tính minh bạch của giao dịch",
+          "Để lưu trữ dữ liệu về nhân viên và hiệu suất của họ",
+          "Để lưu trữ dữ liệu khách hàng bí mật"
+        ],
+        "correct": "Để theo dõi sự di chuyển của hàng hóa và đảm bảo tính minh bạch của giao dịch"
+      },
+      {
+        "question": "Giải thích hoạt động của Mạng Lightning trong bối cảnh Bitcoin",
+        "answers": [
+          "Một mạng cho phép các giao dịch nhanh chóng và rẻ ngoài chuỗi chính",
+          "Giao thức bảo mật để bảo vệ chống lại các cuộc tấn công của hacker",
+          "Hệ thống quản lý hợp đồng thông minh trên blockchain"
+        ],
+        "correct": "Một mạng cho phép các giao dịch nhanh chóng và rẻ ngoài chuỗi chính"
+      },
+      {
+        "question": "Những giải pháp bảo mật nào tồn tại cho blockchain?",
+        "answers": [
+          "Bằng chứng không kiến thức, Chữ ký vòng, Giao dịch bí mật",
+          "Mã hóa dữ liệu đơn giản bằng cách sử dụng khóa đối xứng",
+          "Truy cập công khai vào dữ liệu với các hạn chế về thời gian"
+        ],
+        "correct": "Bằng chứng không kiến thức, Chữ ký vòng, Giao dịch bí mật"
+      },
+      {
+        "question": "Tính tương tác giữa các chuỗi hoạt động như thế nào?",
+        "answers": [
+          "Cho phép các mạng blockchain khác nhau tương tác và trao đổi dữ liệu",
+          "Sử dụng máy chủ tập trung để quản lý giao dịch",
+          "Lưu trữ dữ liệu giao dịch trong các cơ sở dữ liệu riêng biệt"
+        ],
+        "correct": "Cho phép các mạng blockchain khác nhau tương tác và trao đổi dữ liệu"
+      }
+    ]
+  }
+]

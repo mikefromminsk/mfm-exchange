@@ -1,0 +1,352 @@
+[
+  {
+    "level": "Komik",
+    "questions": [
+      {
+        "question": "Ünlü bir meme köpeğinden sonra adlandırılan kripto para biriminin adı nedir?",
+        "answers": [
+          "Dogecoin",
+          "Catcoin",
+          "Birbcoin"
+        ],
+        "correct": "Dogecoin"
+      },
+      {
+        "question": "Kripto para madenciliği yapmak için neye ihtiyacınız var?",
+        "answers": [
+          "Kazma ve kürek",
+          "Güçlü bir grafik kartına sahip bir bilgisayar",
+          "Sihirli bir değnek"
+        ],
+        "correct": "Güçlü bir grafik kartına sahip bir bilgisayar"
+      },
+      {
+        "question": "Gerçek dünyada bitcoin ile ne satın alabilirsiniz?",
+        "answers": [
+          "Pizza",
+          "Mars'ta arazi",
+          "Şeker dükkanı"
+        ],
+        "correct": "Pizza"
+      },
+      {
+        "question": "Bitcoin'in sembolü olan hayvan nedir?",
+        "answers": [
+          "Ayı",
+          "Boğa",
+          "Hiçbiri"
+        ],
+        "correct": "Hiçbiri"
+      },
+      {
+        "question": "Kripto paranın saklandığı yerin adı nedir?",
+        "answers": [
+          "ATM",
+          "Buzdolabı",
+          "Cüzdan"
+        ],
+        "correct": "Cüzdan"
+      }
+    ]
+  },
+  {
+    "level": "Başlangıç",
+    "questions": [
+      {
+        "question": "Kripto para nedir?",
+        "answers": [
+          "Elektronik para",
+          "Ahşap madeni paralar",
+          "Altın külçeler"
+        ],
+        "correct": "Elektronik para"
+      },
+      {
+        "question": "En popüler kripto paranın adı nedir?",
+        "answers": [
+          "Ethereum",
+          "Bitcoin",
+          "Dogecoin"
+        ],
+        "correct": "Bitcoin"
+      },
+      {
+        "question": "Kripto para saklamak için ne kullanılabilir?",
+        "answers": [
+          "Cüzdan",
+          "Banka kartı",
+          "Nakit"
+        ],
+        "correct": "Cüzdan"
+      },
+      {
+        "question": "Kripto paraların temelini oluşturan teknoloji nedir?",
+        "answers": [
+          "Blok zinciri",
+          "İnternet",
+          "Veritabanı"
+        ],
+        "correct": "Blok zinciri"
+      },
+      {
+        "question": "Yeni kripto para birimlerinin oluşturulma sürecine ne denir?",
+        "answers": [
+          "Madencilik",
+          "Şifreleme",
+          "Yükleme"
+        ],
+        "correct": "Madencilik"
+      }
+    ]
+  },
+  {
+    "level": "Temel",
+    "questions": [
+      {
+        "question": "Blok zinciri nedir?",
+        "answers": [
+          "Geleneksel veritabanı",
+          "Veri içeren blok zinciri",
+          "SMS iletim ağı"
+        ],
+        "correct": "Veri içeren blok zinciri"
+      },
+      {
+        "question": "Blok zincirinin geleneksel veritabanlarına göre en büyük avantajı nedir?",
+        "answers": [
+          "Merkezi yönetim",
+          "Veri değişmezliği",
+          "Azaltılmış güvenlik"
+        ],
+        "correct": "Veri değişmezliği"
+      },
+      {
+        "question": "Blok zinciri bağlamında merkeziyetsizlik nedir?",
+        "answers": [
+          "Merkezi yönetim",
+          "Dağıtılmış yönetim",
+          "Tekelleşme"
+        ],
+        "correct": "Dağıtılmış yönetim"
+      },
+      {
+        "question": "Blok zincirine dayalı ilk kripto para birimi hangisidir?",
+        "answers": [
+          "Ethereum",
+          "Bitcoin",
+          "Litecoin"
+        ],
+        "correct": "Bitcoin"
+      },
+      {
+        "question": "İşlemleri doğrulama ve blok zincirine ekleme sürecine ne denir?",
+        "answers": [
+          "Madencilik",
+          "Hashing",
+          "Şifreleme"
+        ],
+        "correct": "Madencilik"
+      }
+    ]
+  },
+  {
+    "level": "Orta",
+    "questions": [
+      {
+        "question": "Akıllı sözleşme nedir?",
+        "answers": [
+          "Geleneksel yasal sözleşme",
+          "Blok zincirinde otomatik sözleşme",
+          "Kripto para türü"
+        ],
+        "correct": "Blok zincirinde otomatik sözleşme"
+      },
+      {
+        "question": "Bitcoin'de hangi konsensüs algoritması kullanılır?",
+        "answers": [
+          "İş Kanıtı",
+          "Hisse Kanıtı",
+          "Yakma Kanıtı"
+        ],
+        "correct": "İş Kanıtı"
+      },
+      {
+        "question": "Bitcoin blok zincirinde hangi hashing algoritması kullanılır?",
+        "answers": [
+          "SHA-256",
+          "MD5",
+          "Blowfish"
+        ],
+        "correct": "SHA-256"
+      },
+      {
+        "question": "Blok zincirinde bir düğüm nedir?",
+        "answers": [
+          "Merkezi sunucu",
+          "Blok zinciri ağ düğümü",
+          "Kripto para türü"
+        ],
+        "correct": "Blok zinciri ağ düğümü"
+      },
+      {
+        "question": "Blok zinciri veri değişmezliğini nasıl sağlar?",
+        "answers": [
+          "Düzenli veri güncellemeleri",
+          "Her bloğun hashlenmesi ve önceki bloğa bağlanması",
+          "Merkezi bir sunucu kullanma"
+        ],
+        "correct": "Her bloğun hashlenmesi ve önceki bloğa bağlanması"
+      }
+    ]
+  },
+  {
+    "level": "İleri",
+    "questions": [
+      {
+        "question": "Blok zincirinde \"fork\" nedir?",
+        "answers": [
+          "Ağın iki zincire bölünmesi",
+          "İşlem türü",
+          "Hashing algoritması"
+        ],
+        "correct": "Ağın iki zincire bölünmesi"
+      },
+      {
+        "question": "Genel ve özel blok zinciri arasındaki fark nedir?",
+        "answers": [
+          "Genel bir blok zincirinde veriler herkese açıktır, özel bir blok zincirinde - yalnızca belirli katılımcılara",
+          "Genel blok zinciri ulusal düzeyde, özel - yerel düzeyde çalışır",
+          "Özel blok zincirleri daha fazla enerji kullanır"
+        ],
+        "correct": "Genel bir blok zincirinde veriler herkese açıktır, özel bir blok zincirinde - yalnızca belirli katılımcılara"
+      },
+      {
+        "question": "Ethereum blok zincirinde \"gas\" nedir?",
+        "answers": [
+          "İşlemler ve akıllı sözleşmeler için yakıt",
+          "Kripto para türü",
+          "Güvenlik önlemi"
+        ],
+        "correct": "İşlemler ve akıllı sözleşmeler için yakıt"
+      },
+      {
+        "question": "\"Hisse Kanıtı\" protokolü hangi işlevi yerine getirir?",
+        "answers": [
+          "Bilgisayar gücüne dayalı blok madenciliği",
+          "Coin sahipliğine dayalı doğrulayıcı seçimi",
+          "Zincirin iki parçaya bölünmesi"
+        ],
+        "correct": "Coin sahipliğine dayalı doğrulayıcı seçimi"
+      },
+      {
+        "question": "\"Merkle ağacı\" kavramını ve blok zincirindeki rolünü açıklayın",
+        "answers": [
+          "Kripto para türü",
+          "Verimli ve güvenli veri depolama sağlayan ağaç benzeri yapı",
+          "Konsensüs algoritması"
+        ],
+        "correct": "Verimli ve güvenli veri depolama sağlayan ağaç benzeri yapı"
+      }
+    ]
+  },
+  {
+    "level": "Uzman",
+    "questions": [
+      {
+        "question": "Blok zinciri teknolojileri bağlamında \"sharding\" nedir?",
+        "answers": [
+          "Performansı artırmak için verilerin daha küçük parçalara bölünmesi",
+          "Veri koruma için güvenlik protokolü",
+          "Akıllı sözleşme yönetim mekanizması"
+        ],
+        "correct": "Performansı artırmak için verilerin daha küçük parçalara bölünmesi"
+      },
+      {
+        "question": "Madencilik havuzları nasıl çalışır?",
+        "answers": [
+          "Bir grup madenci, hesaplama güçlerini paylaşır ve katkılarına orantılı olarak ödüller alır",
+          "Bir grup geliştirici, güvenliği artırmak için akıllı sözleşmeler oluşturur",
+          "Kullanıcılar birbirleriyle kripto para değiş tokuşu yapar"
+        ],
+        "correct": "Bir grup madenci, hesaplama güçlerini paylaşır ve katkılarına orantılı olarak ödüller alır"
+      },
+      {
+        "question": "\"Yetim bloklar\" kavramını açıklayın",
+        "answers": [
+          "Ana zincire dahil edilmeyen bloklar",
+          "Kod hataları içeren bloklar",
+          "Yeni özellikleri test etmek için tasarlanmış bloklar"
+        ],
+        "correct": "Ana zincire dahil edilmeyen bloklar"
+      },
+      {
+        "question": "Blok zinciri için hangi güvenlik tehditleri vardır?",
+        "answers": [
+          "51% saldırısı, kimlik avı, sosyal mühendislik",
+          "Zayıf şifre koruması, hizmet reddi (DDoS) saldırısı",
+          "Yavaş düğüm performansı, güncel olmayan güvenlik protokolleri"
+        ],
+        "correct": "51% saldırısı, kimlik avı, sosyal mühendislik"
+      },
+      {
+        "question": "Blok zinciri ağlarında ölçeklendirme nasıl sağlanır?",
+        "answers": [
+          "Sharding kullanarak, blok boyutunu artırarak, konsensüs algoritmalarını optimize ederek",
+          "Madenci sayısını artırarak, görev karmaşıklığını azaltarak, merkezi sunucular kullanarak",
+          "Akıllı sözleşmeleri optimize ederek, işlem süresini azaltarak, yapay zeka kullanarak"
+        ],
+        "correct": "Sharding kullanarak, blok boyutunu artırarak, konsensüs algoritmalarını optimize ederek"
+      }
+    ]
+  },
+  {
+    "level": "Usta",
+    "questions": [
+      {
+        "question": "\"DeFi\" nedir ve blok zinciri ile nasıl ilişkilidir?",
+        "answers": [
+          "Blok zincirlerinde akıllı sözleşmeler kullanarak merkeziyetsiz finans",
+          "Finansal verilerin korunması için güvenlik protokolü",
+          "Merkezi para değişim sistemi"
+        ],
+        "correct": "Blok zincirlerinde akıllı sözleşmeler kullanarak merkeziyetsiz finans"
+      },
+      {
+        "question": "Blok zinciri tedarik zinciri yönetiminde nasıl kullanılır?",
+        "answers": [
+          "Mal hareketini izlemek ve işlem şeffaflığını sağlamak için",
+          "Çalışanlar ve performansları hakkında veri depolamak için",
+          "Müşterilerin gizli verilerini depolamak için"
+        ],
+        "correct": "Mal hareketini izlemek ve işlem şeffaflığını sağlamak için"
+      },
+      {
+        "question": "Bitcoin bağlamında Lightning Network'ün işleyişini açıklayın",
+        "answers": [
+          "Ana blok zincirinin dışında hızlı ve ucuz işlemler yapılmasını sağlayan bir ağ",
+          "Hacker saldırılarına karşı koruma için güvenlik protokolü",
+          "Blok zincirinde akıllı sözleşme yönetim sistemi"
+        ],
+        "correct": "Ana blok zincirinin dışında hızlı ve ucuz işlemler yapılmasını sağlayan bir ağ"
+      },
+      {
+        "question": "Blok zinciri için hangi gizlilik çözümleri vardır?",
+        "answers": [
+          "Sıfır Bilgi Kanıtları, Halka İmzaları, Gizli İşlemler",
+          "Simetrik anahtarlar kullanarak basit veri şifreleme",
+          "Zaman kısıtlamaları ile kamuya açık veri erişimi"
+        ],
+        "correct": "Sıfır Bilgi Kanıtları, Halka İmzaları, Gizli İşlemler"
+      },
+      {
+        "question": "Zincirler arası birlikte çalışabilirlik nasıl sağlanır?",
+        "answers": [
+          "Farklı blok zinciri ağlarının iletişim kurmasını ve veri alışverişi yapmasını sağlar",
+          "İşlemleri yönetmek için merkezi sunucular kullanır",
+          "İşlem verilerini ayrı veritabanlarında depolar"
+        ],
+        "correct": "Farklı blok zinciri ağlarının iletişim kurmasını ve veri alışverişi yapmasını sağlar"
+      }
+    ]
+  }
+]

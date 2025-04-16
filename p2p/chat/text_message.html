@@ -1,0 +1,19 @@
+<div class="row" ng-show="item.address != user.login()">
+  <div class="row mt16 p16 radius-default back-gray ripple">
+    <div ng-style="getIdenticon(item.to)"></div>
+    <div class="col ml8">
+      <p>{{item.text}}</p>
+      <p class="mt4 text2">{{formatSec(item.time)}}</p>
+    </div>
+  </div>
+</div>
+<div class="row" ng-show="item.address == user.login()">
+  <div class="flex"></div>
+  <div class="row mt16 p16 radius-default back-gray ripple">
+    <div class="col align-start-end">
+      <p>{{item.text}}</p>
+      <p class="mt4 text2">{{formatSec(item.time)}}</p>
+    </div>
+    <div class="ml8" ng-style="getIdenticon(item.to)"></div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="flex col">
+    <div class="row header align-start-center">
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openSettings(refresh)">
+        <div class="flex row align-center text1">{{str.wallet}}</div>
+        <!--<img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch(refresh)">-->
+    </div>
+    <div class="flex col align-center-start" ng-hide="user.login()">
+        <div class="row">
+            <div class="flex primary-button"
+                 ng-click="openLogin()">
+                {{str.login_or_create_account}}
+            </div>
+        </div>
+    </div>
+    <div class="flex col scroll align-start-center" ng-show="user.login()">
+        <div class="flex col block input-content">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/reload.svg">
+            <div class="col align-center-center">
+                <div class="row align-center text0" style="margin-top: 40px;">
+                    $<div id="total">0</div>
+                </div>
+            </div>
+            <ng-include src="'/mfm-wallet/wallet/profile/options.html?nocache'"></ng-include>
+            <div class="col gap16" ng-hide="!user.login()">
+                <ng-include src="'/mfm-wallet/wallet/accounts.html?nocache'"></ng-include>
+                <p class="text1" ng-show="staked.length > 0">{{str.staking}}</p>
+                <div class="col back-gray radius-default"
+                     ng-show="staked.length > 0">
+                    <div class="row p16 align-start-center ripple"
+                         ng-repeat="item in staked"
+                         ng-click="openStaking(item.domain, refresh)">
+                        <div ng-style="getLogo(item.domain)"></div>
+                        <div class="flex col ml16">
+                            <p>{{formatDomain(item.domain)}}</p>
+                            <p class="mt4 text2">{{formatPrice(item.price)}}</p>
+                        </div>
+                        <div class="col align-end-end">
+                            <p>{{formatAmount(item.amount, item.domain)}}</p>
+                            <p class="mt4 text2">{{formatPrice(getPrice(item.domain) * item.amount)}}</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="text1" ng-show="orders.length > 0">{{str.active_orders}}</p>
+                <ng-include src="'/mfm-wallet/products/exchange/orders.html'"></ng-include>
+            </div>
+        </div>
+    </div>
+</div>

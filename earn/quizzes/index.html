@@ -1,0 +1,35 @@
+<div class="flex col">
+    <div class="row header align-center-center">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
+        </div>
+        <div class="flex row align-center">
+            {{str.quiz}}
+        </div>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="backToMain()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll align-start-center">
+        <div class="flex col block ph16">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <div class="col back-gray radius-default p16">
+                <div class="row">
+                    <p class="flex text1">Basic quiz</p>
+                    <p class="text1">up to 30$</p>
+                </div>
+                <div class="row align-start-center">
+                    <div class="flex col gap8">
+                        <p class="text2">7 quiestion</p>
+                        <p class="text2">Level: HARD</p>
+                    </div>
+                    <div class="primary-button m0 mt16 nowrap relative" ng-click="openQuiz(); check('open_quiz')">
+                        <div class="focus" ng-show="isNotChecked('open_quiz')"></div>
+                        Open quiz
+                    </div>
+                </div>
+            </div>
+            <div></div>
+        </div>
+    </div>
+</div>

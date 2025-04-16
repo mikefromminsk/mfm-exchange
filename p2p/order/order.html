@@ -1,0 +1,37 @@
+<div class="row gap4">
+    <p ng-show="(order.offer.is_sell == 1 && order.offer.address == user.login()) ||
+                (order.offer.is_sell == 0 && order.offer.address != user.login())"
+       class="text-red">{{str.sell}} {{formatDomain(wallet.gas_domain)}}</p>
+    <p ng-hide="(order.offer.is_sell == 1 && order.offer.address == user.login()) ||
+                (order.offer.is_sell == 0 && order.offer.address != user.login())"
+       class="text-green">{{str.buy}} {{formatDomain(wallet.gas_domain)}}</p>
+    <p class="flex uppercase">{{order.domain}}</p>
+    <p ng-show="order.status == 'active'" class="text-green">{{str.active}}</p>
+    <p ng-show="order.status == 'cancel'" class="text-red">{{str.canceled}}</p>
+    <p ng-show="order.status == 'filled'" class="text-green">{{str.filled}}</p>
+    <p ng-show="order.status == 'appeal'" class="text-white">{{str.appeal}}</p>
+    <p ng-show="order.status == 'sent'" class="text-white">{{str.sent}}</p>
+</div>
+<div class="row mt16 align-start-end">
+    <p class="flex text2">{{str.total}}</p>
+    <p>{{formatAmount(order.amount * order.offer.price, wallet.gas_domain, 2)}}</p>
+</div>
+<div class="row mt8 align-start-end">
+    <p class="flex text2">{{str.price}}</p>
+    <div class="row gap8 align-start-end">
+        <p class="size32">{{formatPrice(order.offer.price)}}</p>
+    </div>
+</div>
+<div class="row mt8 align-start-end">
+    <p class="flex text2">{{str.amount}}</p>
+    <p>{{formatAmount(order.amount, order.offer.domain, 2)}}</p>
+</div>
+<div class="row mv8 align-start-end">
+    <p class="flex text2">{{str.id}}</p>
+    <div class="row gap8">
+        <p>{{order.id}}</p>
+        <img class="img14 img-white"
+             src="/mfm-wallet/img/copy.svg"
+             ng-click="copy(order.id)">
+    </div>
+</div>

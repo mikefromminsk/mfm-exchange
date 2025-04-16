@@ -1,0 +1,105 @@
+<div class="fill col">
+    <div class="row header align-start-center">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
+        </div>
+        <div class="flex row align-center">
+            {{str.staking}}</p>
+        </div>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="backToMain()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll align-start-center">
+        <div class="flex col block input-content">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <div class="row align-center-center">
+                <img class="img100" src="/mfm-wallet/img/deposit.png">
+            </div>
+            <div class="row gap8 align-start-center">
+                <img class="img40 p8 img-gray" src="/mfm-wallet/img/staking.svg">
+                <p class="text2">{{str.percent}}:</p>
+                <p class="text1">{{formatPercent(percent)}}</p>
+            </div>
+            <div class="row gap8 align-start-center">
+                <img class="img40 p8 img-gray" src="/mfm-wallet/img/history.svg">
+                <p class="text2">{{str.pay_off}}:</p>
+                <p class="text1">{{formatAmount(period_days)}}</p>
+                <p class="text2">{{str.days}}</p>
+            </div>
+            <div class="row gap8 align-start-center">
+                <img class="img40 p8 img-gray" src="/mfm-wallet/img/star.svg">
+                <p class="text2">{{str.min_reward}}:</p>
+                <p class="text1">{{formatAmount(.0001, domain)}}</p>
+            </div>
+            <div class="row gap8 align-start-center"
+                 ng-show="stake.to == staking_address">
+                <img class="img40 p8 img-gray" src="/mfm-wallet/img/arrow-right.svg">
+                <p class="text2">{{str.start}}:</p>
+                <p class="text1">{{formatDate(stake.time)}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col input-content shadow"
+         ng-show="token.owner != user.login() && stake.to != staking_address">
+        <div class="flex row input-wrapper">
+            <div ng-style="getLogo(domain)"></div>
+            <input type="number"
+                   autocapitalize="off"
+                   autocomplete="off"
+                   maxlength="16"
+                   ng-model="amount"
+                   ng-disabled="token.owner == user.login()"
+                   placeholder="{{str.amount}}">
+            <button ng-click="setMax()"
+                    ng-hide="(account.balance || 0) == 0 || token.owner == user.login()">
+                {{str.max}}
+            </button>
+        </div>
+        <div class="row gap8">
+            <p>{{str.available}}</p>
+            <p ng-class="{'text-red': (account.balance || 0) == 0 }">
+                {{formatAmount(account.balance, domain)}}
+            </p>
+        </div>
+        <div class="primary-button"
+             ng-click="openStake()"
+             ng-disabled="account.balance == 0 || in_progress || !amount">
+            {{str.stake}}
+        </div>
+    </div>
+    <div class="col input-content shadow"
+         ng-show="token.owner != user.login() && stake.to == staking_address">
+        <div class="col align-start-center">
+            <p class="size12 uppercase">{{str.reward}}</p>
+            <p class="size32 bold mono">{{shortNumber(reward, 8).toFixed(8)}} {{formatDomain(domain)}}</p>
+        </div>
+        <div class="row text2 align-center-center">
+            <p>{{str.you_have_staked}} {{formatAmount(stake.amount, domain)}}</p>
+        </div>
+        <div class="primary-button"
+             ng-disabled="in_progress"
+             ng-click="openUnstake()">
+            {{str.unstake}}
+        </div>
+    </div>
+    <div class="col input-content shadow"
+         ng-show="token.owner == user.login()">
+        <div class="col align-start-center">
+            <p class="size12 uppercase">{{str.staking_bank}}</p>
+            <p class="size32 bold">{{formatAmount(bank.balance, domain)}}</p>
+        </div>
+        <div class="row text2 align-center-center">
+            <p class="text-red">{{str.you_cannot_stake_your_own_token}}</p>
+        </div>
+        <div class="primary-button"
+             ng-disabled="in_progress"
+             ng-click="openSend(domain, stake.to)">
+            {{str.top_up_bank}}
+        </div>
+    </div>
+    <div class="primary-button back-black" ng-click="close()">
+        {{str.close}}
+    </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="flex col scroll align-start-center">
+    <div class="flex col block">
+        <img class="refresh-icon img-gray" src="/mfm-wallet/img/reload.svg">
+        <div class="row header align-start-center">
+            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/support.svg" ng-click="openSupport()">
+            <div class="flex row align-center-center">
+                <div class="row align-start-center p8 back-gray radius-default ripple"
+                     ng-show="user.login()"
+                     ng-click="openSettings()">
+                    <div class="radius-default back-black" ng-style="getIdenticon(user.login())"></div>
+                    <p class="ml8">{{formatAddress(user.login())}}</p>
+                </div>
+                <div class="ph16 pv8 back-gray radius-default ripple"
+                     ng-hide="user.login()"
+                     ng-click="openLogin()">
+                    <p>{{str.login}}</p>
+                </div>
+            </div>
+            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch()">
+        </div>
+
+        <md-tabs md-selected="slideIndex" class="col p0 mt16 no-swipe" md-swipe-content md-dynamic-height>
+            <md-tab label="$index" ng-repeat="item in slides">
+                <div class="col" style="min-height: 200px; padding: 0 16px;">
+                    <div class="flex col p16 back-gray radius-default nowrap-disabled align-center-center"
+                         ng-style="getBack(item.text)">
+                        <div class="col gap16 align-start-center">
+                            <p class="size40 bold">{{item.title}}</p>
+                            <p class="text1">{{item.text}}</p>
+                        </div>
+                    </div>
+                </div>
+            </md-tab>
+        </md-tabs>
+        <div class="row align-center-center mt2">
+            <div ng-repeat="item in slides">
+                <img class="img4 ml4"
+                     ng-class="{'img-gray': slideIndex != $index, 'img-accent': slideIndex == $index}"
+                     src="/mfm-wallet/img/circle.svg">
+            </div>
+        </div>
+
+        <!--<div class="row mt16 ph16 scroll-horizontal" style="min-height: 40px">
+            <div class="col" ng-repeat="top in ['top_exchange', 'top_new', 'top_search', 'top_mining']"
+                 ng-click="selectTop(top)">
+                <p class="pb8 ph16"
+                   ng-class="{'text-gray': selectedTop != top}">{{str[top]}}</p>
+                <div style="height: 3px; width: 100%"
+                     ng-class="{'back-accent': selectedTop == top, 'back-gray': selectedTop != top}"></div>
+            </div>
+        </div>-->
+
+        <div class="row ph16 mt8 align-start-center">
+            <p style="min-width: 20px">#</p>
+            <p class="flex ml8">{{str.name}}</p>
+            <p class="flex-10 row align-end">{{str.price}}</p>
+            <p class="flex-20 row align-end">{{str._24h}}</p>
+        </div>
+        <div class="mt8 ph16 divider"></div>
+        <div class="col">
+            <div class="row p16 align-start-center ripple gap8"
+                 ng-repeat="token in tokens"
+                 ng-click="openExchange(token.domain)">
+                <p style="min-width: 20px">{{$index + 1}}</p>
+                <div ng-style="getLogo(token.domain)"></div>
+                <p class="flex">{{formatDomain(token.domain)}}</p>
+                <p class="flex-10 row align-end">{{formatPrice(token.price)}}</p>
+                <p class="flex-20 row align-end" ng-class="percentColor(token.price24)">
+                    {{formatChange(token.price24)}}
+                </p>
+            </div>
+        </div>
+        <div class="col align-center-center text1 text-gray"
+             ng-hide="tokens.length > 0"
+             style="height: 500px">
+            {{str.there_is_no_tokens_yet}}
+        </div>
+        <div></div>
+    </div>
+</div>
+

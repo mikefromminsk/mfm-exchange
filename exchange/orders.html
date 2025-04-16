@@ -1,0 +1,33 @@
+<div class="row mt16 size12 align-start-center ripple"
+     ng-repeat="item in orders">
+    <div class="row align-end-end" ng-style="getLogo(domain)">
+        <p class="ph4 size10 back-green text-white radius-default" ng-show="item.is_sell == 0">
+            {{str.buy}}</p>
+        <p class="ph4 size10 back-red text-white radius-default" ng-show="item.is_sell == 1">
+            {{str.sell}}</p>
+    </div>
+    <div class="flex col ml8">
+        <p>{{formatDomain(domain)}}</p>
+        <p class="mt4 size10 text-gray">{{formatTime(item.timestamp)}}</p>
+    </div>
+    <div class="flex col align-start-end">
+        <p>{{formatAmount(item.amount, domain)}}</p>
+        <p class="mt4 size10" ng-show="is_sell == 1">{{str.filled}}
+            {{formatPercent(item.amount_filled / item.amount * 100)}}</p>
+        <p class="mt4 size10 text-gray" ng-show="is_sell == 0">{{str.filled}}
+            {{formatPercent(item.total_filled / item.total * 100)}}</p>
+    </div>
+    <div class="flex-30 row align-end-center">
+        <div class="mr16 col align-end-end">
+            <p class="">{{formatPrice(item.amount * item.price)}}</p>
+            <p class="mt4 size10 text-gray">{{formatPrice(item.price)}}</p>
+        </div>
+        <img class="img16 img-green"
+             src="/mfm-wallet/img/success.svg"
+             ng-hide="item.status == 0">
+        <img class="img16 img-red ripple"
+             src="/mfm-wallet/img/close.svg"
+             ng-show="item.status == 0"
+             ng-click="cancel(item.order_id)">
+    </div>
+</div>

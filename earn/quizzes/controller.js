@@ -1,0 +1,3 @@
+function addPools($scope, domain) {
+
+}

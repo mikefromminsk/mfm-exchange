@@ -1,0 +1,40 @@
+<md-bottom-sheet class="col">
+    <div class="row header align-start-center">
+        <p class="flex">{{str.withdrawal}}</p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="back()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="col input-content">
+        <div class="row input-wrapper">
+            <div ng-style="getLogo('tron')"></div>
+            <div class="input-label">{{str.tron_address}}</div>
+            <input type="text"
+                   ng-model="withdrawal_address">
+        </div>
+        <p class="text-red" ng-show="errorAddress">{{errorAddress}}</p>
+        <div class="row input-wrapper">
+            <div ng-style="getLogo(wallet.gas_domain)"></div>
+            <input type="number"
+                   ng-model="amount"
+                   ng-change="calcTotal()"
+                   placeholder="{{str.amount}} {{formatAmount(wallet.gas_domain)}}">
+            <!--<div class="input-label-right row align-center-center ripple" ng-click="setMax()">
+                <p>MAX {{formatAmount(coin.balance)}}</p>
+            </div>-->
+        </div>
+        <p class="text-red" ng-show="errorAmount">{{errorAmount}}</p>
+        <div class="row" st>
+            <p>{{str.commission}}: {{formatAmount(provider.fee, wallet.gas_domain)}}</p>
+        </div>
+        <div class="col align-center-center">
+            <p class=""></p>
+            <p class="size32 bold">{{formatAmount(total, wallet.gas_domain)}}</p>
+        </div>
+        <button class="primary-button"
+                ng-click="withdrawal()"
+                ng-disabled="!withdrawal_address || !amount || total == 0">
+            {{str.withdrawal}}
+        </button>
+    </div>
+</md-bottom-sheet>

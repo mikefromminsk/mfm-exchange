@@ -1,0 +1,58 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <div class="row align-center-center img32 back-gray radius-default ripple"
+             ng-click="scrollTo('p2p_faq')">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/info.svg">
+        </div>
+        <p class="flex row align-center">{{payment}}</p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <md-tabs md-selected="tabIndex" class="flex col p0 mt16 no-swipe" md-swipe-content>
+        <md-tab label="0">
+            <div class="flex col scroll">
+                <div class="flex col block input-content">
+                    <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+                    <div class="row back-gray radius-default ripple p16 mt16 mh16"
+                         ng-repeat="(key, value) in payments"
+                         ng-click="paymentTypeSelect(key)">
+                        <div class="col mr8">
+                            <div class="flex row" ng-style="{'background': getColor(key)}" style="width: 2px"></div>
+                        </div>
+                        <div class="col gap8">
+                            <p>{{key}}</p>
+                            <p class="text2">{{value}}</p>
+                        </div>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+        </md-tab>
+        <md-tab label="1">
+            <div class="fill col">
+                <div class="flex col scroll input-content">
+                    <p>{{payments[payment]}}</p>
+                    <div class="row input-wrapper">
+                        <div ng-style="getLogo(payment)"></div>
+                        <input type="text"
+                               minlength="3"
+                               autocomplete="off"
+                               autocapitalize="none"
+                               ng-model="payment_id"
+                               placeholder="{{payments[payment]}}">
+                    </div>
+                    <ng-include
+                            src="'/mfm-wallet/products/p2p/payment/disclaimer/' + getLanguage() + '.html'"></ng-include>
+                </div>
+                <div class="primary-button"
+                     ng-click="paymentTypeSubmit()"
+                     ng-disabled="!payment_id">
+                    {{str.submit}}
+                </div>
+            </div>
+        </md-tab>
+    </md-tabs>
+
+
+</md-dialog>

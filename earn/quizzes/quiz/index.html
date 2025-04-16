@@ -1,0 +1,61 @@
+<md-dialog class="fill p0 col">
+    <md-tabs class="flex col" md-selected="pageIndex">
+        <md-tab label="questions.indexOf(item)" ng-repeat="item in questions">
+            <div class="fill col">
+                <div class="row header align-start-center">
+                    <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+                        <img class="img16 img-gray400" src="/mfm-wallet/img/history.svg">
+                    </div>
+                    <div class="flex row align-center">
+                        <p class="text1">{{str.question}} {{questions.indexOf(item) + 1}}/{{questions.length}}</p>
+                    </div>
+                    <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+                        <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+                    </div>
+                </div>
+                <div class="flex col p16 align-center input-content nowrap-disabled">
+                    <p class="text1">{{item.question}}</p>
+                    <div class="mt16 p16 back-gray radius-default"
+                         ng-repeat="answer in item.answers"
+                         ng-style="{'background-color': item.answer === answer ? 'var(--gray200)' : 'var(--gray100)'}"
+                         ng-click="setAnswer(item, answer)">
+                        <p>{{answer}}</p>
+                    </div>
+                </div>
+                <div class="primary-button m16 back-black" ng-click="next()">{{str.skip}}</div>
+            </div>
+        </md-tab>
+        <md-tab label="'accept_credit'">
+            <div class="fill col">
+                <div class="row header align-start-center">
+                    <p class="flex"></p>
+                    <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+                        <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+                    </div>
+                </div>
+                <div class="flex col align-center-center">
+                    <div class="img100" style="position: relative">
+                        <svg class="img100 checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                            <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                        </svg>
+                    </div>
+                    <div class="row mt16 gap8 align-start-center">
+                        <p class="text2">{{str.approved}}:</p>
+                        <p class="text1">{{formatAmount(rating, wallet.gas_domain)}}</p>
+                    </div>
+                </div>
+                <div class="primary-button back-pay relative"
+                     ng-disabled="in_progress"
+                     ng-click="getCredit(rating); check('finish_quiz')">
+                    <div class="focus" ng-show="rating > 0 && isNotChecked('finish_quiz')"></div>
+                    {{str.receive}}
+                </div>
+                <div class="primary-button back-black"
+                     ng-click="close()">
+                    {{str.close}}
+                </div>
+            </div>
+        </md-tab>
+    </md-tabs>
+</md-dialog>

@@ -1,0 +1,70 @@
+<div class="input-content" ng-show="token">
+    <p class="text1">{{str.tokenomics}}</p>
+    <div class="row">
+        <p class="flex text2">{{str.total_sypply}}</p>
+        <p>{{formatAmount(token.supply, token.domain)}}</p>
+    </div>
+    <div class="row">
+        <p class="flex text2">{{str.circulation_supply}}</p>
+        <p>{{formatPercent((1 - (owner.balance / token.supply)) * 100, 2)}}</p>
+    </div>
+    <div class="row">
+        <p class="flex text2">{{str.mining}}</p>
+        <p>{{formatPercent((mining.balance || 0) / token.supply * 100, 2)}}</p>
+    </div>
+    <div class="row">
+        <p class="flex text2">{{str.created}}</p>
+        <p>{{formatTimeDiff(token.created)}}</p>
+    </div>
+
+    <div class="row">
+        <p class="flex text1">{{str.activity}}</p>
+        <p class="text2">{{str.week}} / {{str.all}}</p>
+    </div>
+    <div class="row">
+        <p class="text2">{{str.volume24}}</p>
+        <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg"
+             ng-click="openChartWithAccumulate(token.domain + '_volume')">
+        <div class="flex"></div>
+        <p>{{formatAmount(token.volume24, token.domain, 0)}}</p>
+    </div>
+    <div class="row">
+        <p class="text2">{{str.accounts}}</p>
+        <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg"
+             ng-click="openChartWithAccumulate(token.domain + '_accounts')">
+        <div class="flex"></div>
+        <p>{{formatAmount(analytics.accounts7d)}} / {{formatAmount(analytics.accounts)}}</p>
+    </div>
+    <div class="row">
+        <p class="text2">{{str.transactions}}</p>
+        <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg"
+             ng-click="openChartWithAccumulate(token.domain + '_trans')">
+        <div class="flex"></div>
+        <p>{{formatAmount(analytics.trans7d)}} / {{formatAmount(analytics.trans)}}</p>
+    </div>
+
+    <div class="row">
+        <p class="flex text1">{{str.network}}</p>
+        <p class="text2">{{str.week}} / {{str.all}}</p>
+    </div>
+    <div class="row">
+        <p class="text2">{{str.all_tokens}}</p>
+        <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg"
+             ng-click="openChartWithAccumulate('tokens_count')">
+        <div class="flex"></div>
+        <p>{{formatAmount(analytics.tokens_count7d)}} / {{formatAmount(analytics.tokens_count)}}</p>
+    </div>
+    <div class="row">
+        <p class="text2">{{str.all_accounts}}</p>
+        <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg"
+             ng-click="openChartWithAccumulate('accounts_count')">
+        <div class="flex"></div>
+        <p>{{formatAmount(analytics.accounts_count7d)}} / {{formatAmount(analytics.accounts_count)}}</p>
+    </div>
+    <div class="row">
+        <p class="text2">{{str.all_transactions}}</p>
+        <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg" ng-click="openChartWithAccumulate('trans_count')">
+        <div class="flex"></div>
+        <p>{{formatAmount(analytics.trans_count7d)}} / {{formatAmount(analytics.trans_count)}}</p>
+    </div>
+</div>

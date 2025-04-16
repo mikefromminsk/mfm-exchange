@@ -1,0 +1,30 @@
+<md-dialog class="fill col block">
+    <md-tabs class="flex col" md-selected="selectedIndex">
+        <md-tab label="0">
+            <ng-include class="fill col" src="'/mfm-wallet/earn/staking/index.html?nocache'"></ng-include>
+        </md-tab>
+        <md-tab label="1">
+            <ng-include class="fill col" src="'/mfm-wallet/earn/mining/index.html?nocache'"></ng-include>
+        </md-tab>
+        <md-tab label="2">
+            <ng-include class="fill col" src="'/mfm-wallet/earn/quizzes/index.html?nocache'"></ng-include>
+        </md-tab>
+    </md-tabs>
+    <div class="col align-start-center fill-width p16 pt8 back-black ng-cloak"
+         style="position: absolute; bottom: 0;">
+        <div class="row block">
+            <div class="flex col pv8 align-start-center ripple relative"
+                 ng-repeat="item in menu"
+                 ng-click="selectTab($index);  (item == 'quiz' && check('quiz')); (item == 'mining' && isChecked('finish_quiz') && check('goto_mining'))">
+                <div class="focus" ng-show="item == 'quiz' && isNotChecked('quiz')"></div>
+                <div class="focus" ng-show="item == 'mining' && isChecked('finish_quiz') && isNotChecked('goto_mining')"></div>
+                <img class="img18" src="/mfm-wallet/img/{{item}}.svg"
+                     ng-class="{'img-accent': selectedIndex == $index, 'img-gray': selectedIndex != $index}">
+                <p class="mt8"
+                   ng-class="{'text-accent': selectedIndex == $index, 'text-gray': selectedIndex != $index}">
+                    {{str[item]}}
+                </p>
+            </div>
+        </div>
+    </div>
+</md-dialog>

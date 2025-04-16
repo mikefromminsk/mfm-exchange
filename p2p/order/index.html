@@ -1,0 +1,55 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <div class="text1">{{str.waiting_for_confirmation}}</div>
+        <p class="flex"></p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll">
+        <div class="flex col block input-content">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <div class="col m16 border-gray radius8"
+                 ng-click="openP2PProfile(order.offer.address)">
+                <div class="row mt8 mb16 align-start-center gap8">
+                    <div class="radius-default back-black" ng-style="getIdenticon(order.offer.address)"></div>
+                    <p class="flex">{{formatAddress(order.offer.address)}}</p>
+                    <button ng-click="openP2PChat(order.id); $event.stopPropagation()">{{str.chat}}</button>
+                </div>
+            </div>
+            <div class="col m16 border-gray radius8">
+                <ng-include src="'/mfm-wallet/products/p2p/order/order.html'"></ng-include>
+            </div>
+            <div class="row input-wrapper">
+                <div ng-style="getLogo(order.payment)"></div>
+                <input type="text"
+                       ng-model="order.payment"
+                       disabled
+                       placeholder="{{str.payment_type}}">
+                <button class="text-gray">{{payments[order.payment]}}</button>
+            </div>
+            <div></div>
+        </div>
+    </div>
+    <div class="primary-button"
+         ng-show="(order.offer.is_sell == 1 && order.offer.address != user.login()) ||
+                  (order.offer.is_sell == 0 && order.offer.address == user.login())"
+         ng-disabled="order.status != 'active'"
+         ng-click="sentMoney(order.id)">
+        {{str.i_sent_money}}
+    </div>
+    <div class="primary-button back-black"
+         ng-show="(order.offer.is_sell == 1 && order.offer.address != user.login()) ||
+                  (order.offer.is_sell == 0 && order.offer.address == user.login())"
+         ng-disabled="order.status != 'active'"
+         ng-click="cancelOrder(order.id)">
+        {{str.cancel}}
+    </div>
+    <div class="primary-button"
+         ng-hide="(order.offer.is_sell == 1 && order.offer.address != user.login()) ||
+                  (order.offer.is_sell == 0 && order.offer.address == user.login())"
+         ng-disabled="order.status != 'sent'"
+         ng-click="finishOrder(order.id)">
+        {{str.i_received_money}}
+    </div>
+</md-dialog>

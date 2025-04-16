@@ -1,0 +1,57 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
+        </div>
+        <div class="flex row align-center">
+            {{str.send}}
+        </div>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll align-start-center">
+        <div class="flex col block input-content">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <div class="row input-wrapper">
+                <img class="img-white" src="/mfm-wallet/img/user-circle.svg">
+                <input type="text"
+                       id="send_address"
+                       ng-disabled="block_to_address"
+                       autocapitalize="none"
+                       autocomplete="off"
+                       oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '')"
+                       ng-model="to_address"
+                       placeholder="{{str.address}}">
+            </div>
+            <div class="row wrap ph8 pt0">
+                <div class="text2 ml8 p8 back-gray radius-default ripple"
+                     ng-repeat="item in recent"
+                     ng-click="setToAddress(item)">
+                    {{formatAddress(item)}}
+                </div>
+            </div>
+            <div class="row input-wrapper">
+                <div ng-style="getLogo(domain)"></div>
+                <input type="number"
+                       autocapitalize="off"
+                       autocomplete="off"
+                       ng-model="amount"
+                       placeholder="{{str.amount}}">
+                <button ng-click="setMax()"
+                        ng-hide="!account || account.balance == 0">
+                    {{str.max}}
+                </button>
+            </div>
+            <div ng-class="{'text-red': !account || account.balance < amount || account.balance == 0}">
+                {{str.available}}: {{formatAmount(account.balance, token.domain)}}
+            </div>
+            <button class="primary-button"
+                    ng-click="send(domain)"
+                    ng-disabled="in_progress || !to_address || to_address.length < 3 || !amount || (account.balance < amount)">
+                {{str.send}}
+            </button>
+            <div></div>
+        </div>
+    </div>
+</md-dialog>

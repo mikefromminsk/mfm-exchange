@@ -1,0 +1,16 @@
+<div class="col back-gray radius-default">
+    <div class="row p16 align-start-center ripple"
+         ng-repeat="token in search_result"
+         ng-click="openSearchResult(token.domain)">
+        <div ng-style="getLogo(token.domain)"></div>
+        <div class="flex col ml16">
+            <p class="uppercase">{{formatDomain(token.domain)}}</p>
+            <div class="row mt4 text2">
+                <p class="">{{formatPrice(token.price)}}</p>
+                <p class="ml4" ng-class="percentColor(token.price24)">
+                    {{formatChange(token.price24)}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

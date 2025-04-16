@@ -1,0 +1,352 @@
+[
+  {
+    "level": "Humorístico",
+    "questions": [
+      {
+        "question": "¿Cuál es el nombre de la criptomoneda nombrada en honor a un famoso perro meme?",
+        "answers": [
+          "Dogecoin",
+          "Catcoin",
+          "Birbcoin"
+        ],
+        "correct": "Dogecoin"
+      },
+      {
+        "question": "¿Qué necesitas para minar criptomonedas?",
+        "answers": [
+          "Pico y pala",
+          "Una computadora con una tarjeta gráfica potente",
+          "Una varita mágica"
+        ],
+        "correct": "Una computadora con una tarjeta gráfica potente"
+      },
+      {
+        "question": "¿Qué puedes comprar con bitcoins en el mundo real?",
+        "answers": [
+          "Pizza",
+          "Terreno en Marte",
+          "Tienda de dulces"
+        ],
+        "correct": "Pizza"
+      },
+      {
+        "question": "¿Qué animal es el símbolo de bitcoin?",
+        "answers": [
+          "Oso",
+          "Toro",
+          "Ninguno"
+        ],
+        "correct": "Ninguno"
+      },
+      {
+        "question": "¿Cómo se llama el lugar donde se almacena la criptomoneda?",
+        "answers": [
+          "Cajero automático",
+          "Refrigerador",
+          "Cartera"
+        ],
+        "correct": "Cartera"
+      }
+    ]
+  },
+  {
+    "level": "Principiante",
+    "questions": [
+      {
+        "question": "¿Qué es la criptomoneda?",
+        "answers": [
+          "Dinero electrónico",
+          "Monedas de madera",
+          "Lingotes de oro"
+        ],
+        "correct": "Dinero electrónico"
+      },
+      {
+        "question": "¿Cuál es el nombre de la criptomoneda más popular?",
+        "answers": [
+          "Ethereum",
+          "Bitcoin",
+          "Dogecoin"
+        ],
+        "correct": "Bitcoin"
+      },
+      {
+        "question": "¿Qué se puede usar para almacenar criptomonedas?",
+        "answers": [
+          "Cartera",
+          "Tarjeta bancaria",
+          "Efectivo"
+        ],
+        "correct": "Cartera"
+      },
+      {
+        "question": "¿Cómo se llama la tecnología subyacente a las criptomonedas?",
+        "answers": [
+          "Blockchain",
+          "Internet",
+          "Base de datos"
+        ],
+        "correct": "Blockchain"
+      },
+      {
+        "question": "¿Cómo se llama el proceso de creación de nuevas unidades de criptomonedas?",
+        "answers": [
+          "Minería",
+          "Cifrado",
+          "Carga"
+        ],
+        "correct": "Minería"
+      }
+    ]
+  },
+  {
+    "level": "Básico",
+    "questions": [
+      {
+        "question": "¿Qué es blockchain?",
+        "answers": [
+          "Base de datos tradicional",
+          "Cadena de bloques que contiene datos",
+          "Red para la transmisión de SMS"
+        ],
+        "correct": "Cadena de bloques que contiene datos"
+      },
+      {
+        "question": "¿Cuál es la principal ventaja de blockchain sobre las bases de datos tradicionales?",
+        "answers": [
+          "Gestión centralizada",
+          "Inmutabilidad de los datos",
+          "Seguridad reducida"
+        ],
+        "correct": "Inmutabilidad de los datos"
+      },
+      {
+        "question": "¿Qué es la descentralización en el contexto de blockchain?",
+        "answers": [
+          "Gestión centralizada",
+          "Gestión distribuida",
+          "Monopolización"
+        ],
+        "correct": "Gestión distribuida"
+      },
+      {
+        "question": "¿Cuál fue la primera criptomoneda basada en blockchain?",
+        "answers": [
+          "Ethereum",
+          "Bitcoin",
+          "Litecoin"
+        ],
+        "correct": "Bitcoin"
+      },
+      {
+        "question": "¿Cómo se llama el proceso de verificación y adición de transacciones a la blockchain?",
+        "answers": [
+          "Minería",
+          "Hashing",
+          "Cifrado"
+        ],
+        "correct": "Minería"
+      }
+    ]
+  },
+  {
+    "level": "Intermedio",
+    "questions": [
+      {
+        "question": "¿Qué es un contrato inteligente?",
+        "answers": [
+          "Contrato legal tradicional",
+          "Contrato automatizado en la blockchain",
+          "Tipo de criptomoneda"
+        ],
+        "correct": "Contrato automatizado en la blockchain"
+      },
+      {
+        "question": "¿Qué algoritmo de consenso se utiliza en Bitcoin?",
+        "answers": [
+          "Prueba de trabajo",
+          "Prueba de participación",
+          "Prueba de quema"
+        ],
+        "correct": "Prueba de trabajo"
+      },
+      {
+        "question": "¿Qué algoritmo de hash se utiliza en la blockchain de Bitcoin?",
+        "answers": [
+          "SHA-256",
+          "MD5",
+          "Blowfish"
+        ],
+        "correct": "SHA-256"
+      },
+      {
+        "question": "¿Qué es un nodo en la blockchain?",
+        "answers": [
+          "Servidor central",
+          "Nodo de la red blockchain",
+          "Tipo de criptomoneda"
+        ],
+        "correct": "Nodo de la red blockchain"
+      },
+      {
+        "question": "¿Cómo asegura blockchain la inmutabilidad de los datos?",
+        "answers": [
+          "Actualizaciones regulares de datos",
+          "Hashing de cada bloque y enlace al anterior",
+          "Uso de un servidor centralizado"
+        ],
+        "correct": "Hashing de cada bloque y enlace al anterior"
+      }
+    ]
+  },
+  {
+    "level": "Avanzado",
+    "questions": [
+      {
+        "question": "¿Qué es un \"fork\" en la blockchain?",
+        "answers": [
+          "División de la red en dos cadenas",
+          "Tipo de transacción",
+          "Algoritmo de hash"
+        ],
+        "correct": "División de la red en dos cadenas"
+      },
+      {
+        "question": "¿Cuál es la diferencia entre una blockchain pública y una privada?",
+        "answers": [
+          "En una blockchain pública, los datos son accesibles para todos, en una privada solo para ciertos participantes",
+          "La blockchain pública opera a nivel nacional, la privada a nivel local",
+          "Las blockchains privadas usan más energía"
+        ],
+        "correct": "En una blockchain pública, los datos son accesibles para todos, en una privada solo para ciertos participantes"
+      },
+      {
+        "question": "¿Qué es \"gas\" en la blockchain de Ethereum?",
+        "answers": [
+          "Combustible para transacciones y contratos inteligentes",
+          "Tipo de criptomoneda",
+          "Medida de seguridad"
+        ],
+        "correct": "Combustible para transacciones y contratos inteligentes"
+      },
+      {
+        "question": "¿Qué función realiza el protocolo de \"Prueba de Participación\"?",
+        "answers": [
+          "Minería de bloques basada en el poder computacional",
+          "Selección de validadores basada en la posesión de monedas",
+          "División de la cadena en dos partes"
+        ],
+        "correct": "Selección de validadores basada en la posesión de monedas"
+      },
+      {
+        "question": "Explique el concepto de un \"árbol de Merkle\" y su papel en la blockchain",
+        "answers": [
+          "Tipo de criptomoneda",
+          "Estructura en forma de árbol que proporciona un almacenamiento de datos eficiente y seguro",
+          "Algoritmo de consenso"
+        ],
+        "correct": "Estructura en forma de árbol que proporciona un almacenamiento de datos eficiente y seguro"
+      }
+    ]
+  },
+  {
+    "level": "Experto",
+    "questions": [
+      {
+        "question": "¿Qué es \"sharding\" en el contexto de las tecnologías blockchain?",
+        "answers": [
+          "División de datos en partes más pequeñas para aumentar el rendimiento",
+          "Protocolo de seguridad para la protección de datos",
+          "Mecanismo de gestión de contratos inteligentes"
+        ],
+        "correct": "División de datos en partes más pequeñas para aumentar el rendimiento"
+      },
+      {
+        "question": "¿Cómo funcionan los pools de minería?",
+        "answers": [
+          "Un grupo de mineros comparte su poder computacional y recibe recompensas proporcionalmente a su contribución",
+          "Un grupo de desarrolladores crea contratos inteligentes para mejorar la seguridad",
+          "Los usuarios intercambian criptomonedas entre sí"
+        ],
+        "correct": "Un grupo de mineros comparte su poder computacional y recibe recompensas proporcionalmente a su contribución"
+      },
+      {
+        "question": "Explique el concepto de \"bloques huérfanos\"",
+        "answers": [
+          "Bloques que no se incluyen en la cadena principal",
+          "Bloques que contienen errores de código",
+          "Bloques destinados a probar nuevas características"
+        ],
+        "correct": "Bloques que no se incluyen en la cadena principal"
+      },
+      {
+        "question": "¿Qué amenazas de seguridad existen para la blockchain?",
+        "answers": [
+          "Ataque del 51%, phishing, ingeniería social",
+          "Protección de contraseñas débiles, denegación de servicio (DDoS)",
+          "Rendimiento lento de los nodos, protocolos de seguridad obsoletos"
+        ],
+        "correct": "Ataque del 51%, phishing, ingeniería social"
+      },
+      {
+        "question": "¿Cómo se logra la escalabilidad en las redes blockchain?",
+        "answers": [
+          "Uso de sharding, aumento del tamaño del bloque, optimización de algoritmos de consenso",
+          "Aumento del número de mineros, reducción de la complejidad de las tareas, uso de servidores centralizados",
+          "Optimización de contratos inteligentes, reducción del tiempo de transacción, uso de inteligencia artificial"
+        ],
+        "correct": "Uso de sharding, aumento del tamaño del bloque, optimización de algoritmos de consenso"
+      }
+    ]
+  },
+  {
+    "level": "Maestro",
+    "questions": [
+      {
+        "question": "¿Qué es \"DeFi\" y cómo se relaciona con la blockchain?",
+        "answers": [
+          "Finanzas descentralizadas que utilizan contratos inteligentes en blockchains",
+          "Protocolo de seguridad para proteger datos financieros",
+          "Sistema de intercambio de divisas centralizado"
+        ],
+        "correct": "Finanzas descentralizadas que utilizan contratos inteligentes en blockchains"
+      },
+      {
+        "question": "¿Cómo se utiliza blockchain en la gestión de la cadena de suministro?",
+        "answers": [
+          "Para rastrear el movimiento de productos y garantizar la transparencia de las transacciones",
+          "Para almacenar datos sobre empleados y su rendimiento",
+          "Para almacenar datos confidenciales de clientes"
+        ],
+        "correct": "Para rastrear el movimiento de productos y garantizar la transparencia de las transacciones"
+      },
+      {
+        "question": "Explique el funcionamiento de la red Lightning en el contexto de Bitcoin",
+        "answers": [
+          "Una red que permite transacciones rápidas y económicas fuera de la cadena principal",
+          "Protocolo de seguridad para proteger contra ataques de hackers",
+          "Sistema de gestión de contratos inteligentes en la blockchain"
+        ],
+        "correct": "Una red que permite transacciones rápidas y económicas fuera de la cadena principal"
+      },
+      {
+        "question": "¿Qué soluciones de privacidad existen para la blockchain?",
+        "answers": [
+          "Pruebas de conocimiento cero, firmas de anillo, transacciones confidenciales",
+          "Cifrado simple de datos usando claves simétricas",
+          "Acceso público a los datos con restricciones de tiempo"
+        ],
+        "correct": "Pruebas de conocimiento cero, firmas de anillo, transacciones confidenciales"
+      },
+      {
+        "question": "¿Cómo funciona la interoperabilidad entre cadenas?",
+        "answers": [
+          "Permite que diferentes redes blockchain interactúen e intercambien datos",
+          "Usa servidores centralizados para gestionar transacciones",
+          "Almacena datos de transacciones en bases de datos separadas"
+        ],
+        "correct": "Permite que diferentes redes blockchain interactúen e intercambien datos"
+      }
+    ]
+  }
+]

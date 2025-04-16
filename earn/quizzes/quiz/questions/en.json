@@ -1,0 +1,352 @@
+[
+  {
+    "level": "Humorous",
+    "questions": [
+      {
+        "question": "What is the name of the cryptocurrency named after a famous meme dog?",
+        "answers": [
+          "Dogecoin",
+          "Catcoin",
+          "Birbcoin"
+        ],
+        "correct": "Dogecoin"
+      },
+      {
+        "question": "What do you need to mine cryptocurrency?",
+        "answers": [
+          "Pickaxe and shovel",
+          "A computer with a powerful graphics card",
+          "A magic wand"
+        ],
+        "correct": "A computer with a powerful graphics card"
+      },
+      {
+        "question": "What can you buy with bitcoins in the real world?",
+        "answers": [
+          "Pizza",
+          "Land on Mars",
+          "Candy store"
+        ],
+        "correct": "Pizza"
+      },
+      {
+        "question": "What animal is the symbol of bitcoin?",
+        "answers": [
+          "Bear",
+          "Bull",
+          "None"
+        ],
+        "correct": "None"
+      },
+      {
+        "question": "What is the place where cryptocurrency is stored called?",
+        "answers": [
+          "ATM",
+          "Refrigerator",
+          "Wallet"
+        ],
+        "correct": "Wallet"
+      }
+    ]
+  },
+  {
+    "level": "Beginner",
+    "questions": [
+      {
+        "question": "What is cryptocurrency?",
+        "answers": [
+          "Electronic money",
+          "Wooden coins",
+          "Gold bars"
+        ],
+        "correct": "Electronic money"
+      },
+      {
+        "question": "What is the name of the most popular cryptocurrency?",
+        "answers": [
+          "Ethereum",
+          "Bitcoin",
+          "Dogecoin"
+        ],
+        "correct": "Bitcoin"
+      },
+      {
+        "question": "What can be used to store cryptocurrency?",
+        "answers": [
+          "Wallet",
+          "Bank card",
+          "Cash"
+        ],
+        "correct": "Wallet"
+      },
+      {
+        "question": "What is the technology underlying cryptocurrencies called?",
+        "answers": [
+          "Blockchain",
+          "Internet",
+          "Database"
+        ],
+        "correct": "Blockchain"
+      },
+      {
+        "question": "What is the process of creating new cryptocurrency units called?",
+        "answers": [
+          "Mining",
+          "Encryption",
+          "Loading"
+        ],
+        "correct": "Mining"
+      }
+    ]
+  },
+  {
+    "level": "Basic",
+    "questions": [
+      {
+        "question": "What is blockchain?",
+        "answers": [
+          "Traditional database",
+          "Chain of blocks containing data",
+          "Network for SMS transmission"
+        ],
+        "correct": "Chain of blocks containing data"
+      },
+      {
+        "question": "What is the main advantage of blockchain over traditional databases?",
+        "answers": [
+          "Centralized management",
+          "Data immutability",
+          "Reduced security"
+        ],
+        "correct": "Data immutability"
+      },
+      {
+        "question": "What is decentralization in the context of blockchain?",
+        "answers": [
+          "Centralized management",
+          "Distributed management",
+          "Monopolization"
+        ],
+        "correct": "Distributed management"
+      },
+      {
+        "question": "Which cryptocurrency was the first based on blockchain?",
+        "answers": [
+          "Ethereum",
+          "Bitcoin",
+          "Litecoin"
+        ],
+        "correct": "Bitcoin"
+      },
+      {
+        "question": "What is the process of verifying and adding transactions to the blockchain called?",
+        "answers": [
+          "Mining",
+          "Hashing",
+          "Encryption"
+        ],
+        "correct": "Mining"
+      }
+    ]
+  },
+  {
+    "level": "Intermediate",
+    "questions": [
+      {
+        "question": "What is a smart contract?",
+        "answers": [
+          "Traditional legal contract",
+          "Automated contract in the blockchain",
+          "Type of cryptocurrency"
+        ],
+        "correct": "Automated contract in the blockchain"
+      },
+      {
+        "question": "What consensus algorithm is used in Bitcoin?",
+        "answers": [
+          "Proof of Work",
+          "Proof of Stake",
+          "Proof of Burn"
+        ],
+        "correct": "Proof of Work"
+      },
+      {
+        "question": "What hashing algorithm is used in the Bitcoin blockchain?",
+        "answers": [
+          "SHA-256",
+          "MD5",
+          "Blowfish"
+        ],
+        "correct": "SHA-256"
+      },
+      {
+        "question": "What is a node in the blockchain?",
+        "answers": [
+          "Central server",
+          "Blockchain network node",
+          "Type of cryptocurrency"
+        ],
+        "correct": "Blockchain network node"
+      },
+      {
+        "question": "How does blockchain ensure data immutability?",
+        "answers": [
+          "Regular data updates",
+          "Hashing each block and linking it to the previous one",
+          "Using a centralized server"
+        ],
+        "correct": "Hashing each block and linking it to the previous one"
+      }
+    ]
+  },
+  {
+    "level": "Advanced",
+    "questions": [
+      {
+        "question": "What is a \"fork\" in the blockchain?",
+        "answers": [
+          "Splitting the network into two chains",
+          "Type of transaction",
+          "Hashing algorithm"
+        ],
+        "correct": "Splitting the network into two chains"
+      },
+      {
+        "question": "What is the difference between a public and private blockchain?",
+        "answers": [
+          "In a public blockchain, data is accessible to everyone, in a private blockchain - only to certain participants",
+          "Public blockchain operates at the national level, private - at the local level",
+          "Private blockchains use more energy"
+        ],
+        "correct": "In a public blockchain, data is accessible to everyone, in a private blockchain - only to certain participants"
+      },
+      {
+        "question": "What is \"gas\" in the Ethereum blockchain?",
+        "answers": [
+          "Fuel for transactions and smart contracts",
+          "Type of cryptocurrency",
+          "Security measure"
+        ],
+        "correct": "Fuel for transactions and smart contracts"
+      },
+      {
+        "question": "What function does the \"Proof of Stake\" protocol perform?",
+        "answers": [
+          "Mining blocks based on computational power",
+          "Selecting validators based on coin ownership",
+          "Splitting the chain into two parts"
+        ],
+        "correct": "Selecting validators based on coin ownership"
+      },
+      {
+        "question": "Explain the concept of a \"Merkle tree\" and its role in the blockchain",
+        "answers": [
+          "Type of cryptocurrency",
+          "Tree-like structure providing efficient and secure data storage",
+          "Consensus algorithm"
+        ],
+        "correct": "Tree-like structure providing efficient and secure data storage"
+      }
+    ]
+  },
+  {
+    "level": "Expert",
+    "questions": [
+      {
+        "question": "What is \"sharding\" in the context of blockchain technologies?",
+        "answers": [
+          "Splitting data into smaller parts to increase performance",
+          "Security protocol for data protection",
+          "Smart contract management mechanism"
+        ],
+        "correct": "Splitting data into smaller parts to increase performance"
+      },
+      {
+        "question": "How do mining pools work?",
+        "answers": [
+          "A group of miners share their computational power and receive rewards proportional to their contribution",
+          "A group of developers create smart contracts to enhance security",
+          "Users exchange cryptocurrency with each other"
+        ],
+        "correct": "A group of miners share their computational power and receive rewards proportional to their contribution"
+      },
+      {
+        "question": "Explain the concept of \"orphan blocks\"",
+        "answers": [
+          "Blocks that are not included in the main chain",
+          "Blocks containing code errors",
+          "Blocks intended for testing new features"
+        ],
+        "correct": "Blocks that are not included in the main chain"
+      },
+      {
+        "question": "What security threats exist for blockchain?",
+        "answers": [
+          "51% attack, phishing, social engineering",
+          "Weak password protection, denial of service (DDoS)",
+          "Slow node performance, outdated security protocols"
+        ],
+        "correct": "51% attack, phishing, social engineering"
+      },
+      {
+        "question": "How is scaling achieved in blockchain networks?",
+        "answers": [
+          "Using sharding, increasing block size, optimizing consensus algorithms",
+          "Increasing the number of miners, reducing task complexity, using centralized servers",
+          "Optimizing smart contracts, reducing transaction time, using artificial intelligence"
+        ],
+        "correct": "Using sharding, increasing block size, optimizing consensus algorithms"
+      }
+    ]
+  },
+  {
+    "level": "Master",
+    "questions": [
+      {
+        "question": "What is \"DeFi\" and how is it related to blockchain?",
+        "answers": [
+          "Decentralized finance using smart contracts on blockchains",
+          "Security protocol for protecting financial data",
+          "Centralized currency exchange system"
+        ],
+        "correct": "Decentralized finance using smart contracts on blockchains"
+      },
+      {
+        "question": "How is blockchain used in supply chain management?",
+        "answers": [
+          "To track the movement of goods and ensure transaction transparency",
+          "To store data about employees and their performance",
+          "To store confidential customer data"
+        ],
+        "correct": "To track the movement of goods and ensure transaction transparency"
+      },
+      {
+        "question": "Explain the operation of the Lightning Network in the context of Bitcoin",
+        "answers": [
+          "A network that allows fast and cheap transactions off the main blockchain",
+          "Security protocol for protection against hacker attacks",
+          "Smart contract management system on the blockchain"
+        ],
+        "correct": "A network that allows fast and cheap transactions off the main blockchain"
+      },
+      {
+        "question": "What privacy solutions exist for blockchain?",
+        "answers": [
+          "Zero-Knowledge Proofs, Ring Signatures, Confidential Transactions",
+          "Simple data encryption using symmetric keys",
+          "Public data access with time restrictions"
+        ],
+        "correct": "Zero-Knowledge Proofs, Ring Signatures, Confidential Transactions"
+      },
+      {
+        "question": "How does cross-chain interoperability work?",
+        "answers": [
+          "Allows different blockchain networks to interact and exchange data",
+          "Uses centralized servers to manage transactions",
+          "Stores transaction data in separate databases"
+        ],
+        "correct": "Allows different blockchain networks to interact and exchange data"
+      }
+    ]
+  }
+]

@@ -1,0 +1,79 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <div class="row align-center-center img32 back-gray radius-default ripple"
+             ng-click="scrollTo('p2p_faq')">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/info.svg">
+        </div>
+        <p class="flex row align-center">{{str.new_order}}</p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll">
+        <div class="flex col block input-content">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <div class="col input-content p0 m0" ng-show="offer.is_sell == 1">
+                <p>{{str.you_give}}</p>
+                <div class="flex row input-wrapper">
+                    <div ng-style="getLogo(offer.domain)"></div>
+                    <input type="number"
+                           ng-model="amount"
+                           ng-change="changeAmount()"
+                           placeholder="{{str.amount}}">
+                    <button class="text-gray">{{formatDomain(offer.domain)}}</button>
+                </div>
+                <p>{{str.you_receive}}</p>
+                <div class="flex row input-wrapper">
+                    <div ng-style="getLogo(wallet.gas_domain)"></div>
+                    <input type="number"
+                           ng-model="total"
+                           ng-change="changeTotal()"
+                           placeholder="{{str.total}}">
+                    <button class="text-gray">{{formatDomain(wallet.gas_domain)}}</button>
+                </div>
+            </div>
+            <div class="col input-content p0 m0" ng-show="offer.is_sell == 0">
+                <p>{{str.you_give}}</p>
+                <div class="flex row input-wrapper">
+                    <div ng-style="getLogo(wallet.gas_domain)"></div>
+                    <input type="number"
+                           ng-model="total"
+                           ng-change="changeTotal()"
+                           placeholder="{{str.total}}">
+                    <button class="text-gray">{{formatDomain(wallet.gas_domain)}}</button>
+                </div>
+                <p>{{str.you_receive}}</p>
+                <div class="flex row input-wrapper">
+                    <div ng-style="getLogo(offer.domain)"></div>
+                    <input type="number"
+                           ng-model="amount"
+                           ng-change="changeAmount()"
+                           placeholder="{{str.amount}}">
+                    <button class="text-gray">{{formatDomain(offer.domain)}}</button>
+                </div>
+            </div>
+            <div class="row gap8">
+                <p class="text-gray">{{str.price}}</p>
+                <p> {{formatPrice(offer.price)}}</p>
+                <div class="flex"></div>
+                <p class="text-gray">{{str.limits}}</p>
+                {{formatAmount(offer.min, offer.domain)}} -
+                {{formatAmount(offer.max, offer.domain)}}
+            </div>
+            <div class="row input-wrapper">
+                <div ng-style="getLogo(payment)"></div>
+                <input type="text"
+                       ng-model="payment"
+                       placeholder="{{str.payment_type}}">
+                <button class="text-gray">{{payments[payment] || str.select}}</button>
+            </div>
+            <div></div>
+        </div>
+        <div class="primary-button"
+             ng-class="{'back-red': offer.is_sell == 0, ' back-green': offer.is_sell == 1}"
+             ng-click="place()"
+             ng-disabled="!offer || !payment || in_progress">
+            {{offer.is_sell == 1 ? str.buy : str.sell}} {{formatDomainShort(wallet.gas_domain)}}
+        </div>
+    </div>
+</md-dialog>

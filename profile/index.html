@@ -1,0 +1,40 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <div class="flex row gap16 align-start-center">
+            <div ng-style="getLogo(token.domain)"></div>
+            <div class="col">
+                <p class="uppercase text1">{{formatDomain(token.domain)}}</p>
+                <div class="row mt4 text2">
+                    <p class="">{{formatPrice(token.price)}}</p>
+                    <p class="ml4" ng-class="percentColor(token.price24)">
+                        {{formatChange(token.price24)}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll align-start-center">
+        <div class="flex col block">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <div class="input-content text-align-center" ng-show="domain != wallet.gas_domain">
+                <ng-include class="p0" src="'/mfm-wallet/wallet/profile/chart/chart.html'"></ng-include>
+                <ng-include src="'/mfm-wallet/wallet/profile/options.html?nocache'"></ng-include>
+            </div>
+            <ng-include src="'/mfm-wallet/wallet/profile/analytics.html'"></ng-include>
+            <ng-include class="ph16" src="'/mfm-wallet/trans/trans.html'"></ng-include>
+        </div>
+    </div>
+
+    <div class="col mh16 align-start-center" ng-show="domain == wallet.gas_domain">
+        <div class="row block">
+            <div class="flex mh0 primary-button back-green radius4 uppercase"
+                 ng-click="openSend(domain)">
+                {{str.send}}
+            </div>
+        </div>
+    </div>
+    <!--<div class="space"></div>-->
+</md-dialog>

@@ -1,0 +1,45 @@
+<md-dialog class="fill col">
+    <div class="row header align-center-center">
+        <div class="row block align-center">
+            <button ng-click="openOrder(order_id)">{{str.order}}</button>
+            <div class="flex"></div>
+            <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+                <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+            </div>
+        </div>
+    </div>
+    <div class="flex col scroll" style="flex-direction: column-reverse;">
+        <div class="col mh16 text-green" ng-repeat="day in chat">
+            <div class="row align-center text1 mt16">{{day.day}}</div>
+            <div class="col" ng-repeat="item in day.items">
+                <ng-include src="'/mfm-wallet/products/p2p/chat/text_message.html'"></ng-include>
+            </div>
+        </div>
+        <div class="col align-center-center text1 text-gray"
+             ng-hide="chat.length > 0"
+             style="height: 500px">
+            {{str.there_is_no_messages_yet}}
+        </div>
+        <div></div>
+    </div>
+    <div class="row p16 align-start-center gap16">
+        <div class="flex col">
+            <div class="flex row input-wrapper">
+                <img class="img-gray300"
+                     style="left: 12px"
+                     src="/mfm-wallet/img/circle-plus.svg"/>
+                <input type="text"
+                       id="chat_input"
+                       autocomplete="off"
+                       style="border-radius: 32px; padding-right: 50px"
+                       ng-model="message"
+                       placeholder="{{str.type_message}}">
+                <div class="row align-center-center img32 back-gray radius-default ripple"
+                     style="position: absolute; right: 14px; top: 8px"
+                     ng-click="send()">
+                    <img class="img16 img-gray400" src="/mfm-wallet/img/send.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+</md-dialog>

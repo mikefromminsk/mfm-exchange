@@ -1,0 +1,28 @@
+<md-dialog class="fill col">
+    <md-tabs class="flex col" md-selected="selectedIndex">
+        <md-tab label="0">
+            <ng-include class="fill col" src="'/mfm-wallet/products/p2p/history.html?nocache'"></ng-include>
+        </md-tab>
+        <md-tab label="1">
+            <ng-include class="fill col" src="'/mfm-wallet/products/p2p/offers.html?nocache'"></ng-include>
+        </md-tab>
+        <md-tab label="2">
+            <ng-include class="fill col" src="'/mfm-wallet/products/p2p/profile.html?nocache'"></ng-include>
+        </md-tab>
+    </md-tabs>
+    <div class="col align-start-center fill-width p16 pt8 back-black ng-cloak"
+         style="position: absolute; bottom: 0;">
+        <div class="row block">
+            <div class="flex col pv8 align-start-center ripple"
+                 ng-repeat="item in menu"
+                 ng-click="selectTab($index)">
+                <img class="img18" src="/mfm-wallet/img/{{item}}.svg"
+                     ng-class="{'img-accent': selectedIndex == $index, 'img-gray': selectedIndex != $index}">
+                <p class="mt8"
+                   ng-class="{'text-accent': selectedIndex == $index, 'text-gray': selectedIndex != $index}">
+                    {{str[item]}}
+                </p>
+            </div>
+        </div>
+    </div>
+</md-dialog>

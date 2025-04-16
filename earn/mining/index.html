@@ -1,0 +1,92 @@
+<div class="fill col block">
+    <div class="row header align-start-center">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
+        </div>
+        <div class="flex row align-center">
+            {{str.mining}}
+        </div>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll align-start-center">
+        <div class="flex col block">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <div class="col mh16 align-start-center"
+                 style="position: relative; padding-top: 100px">
+                <p class="size12 uppercase">{{str.last_reward}}</p>
+                <p class="size40 bold">{{formatAmount(last_reward, null, 4)}}</p>
+                <p class="size12"
+                   ng-class="{'text-red': !bank || bank.balance == 0}">
+                    {{formatAmount(bank.balance, domain)}} {{str.in_bank}}
+                </p>
+                <div class="row mt8 align-start-center">
+                    <p class="size10">{{str.difficulty}} {{formatAmount(difficulty, '', 2)}}</p>
+                    <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg"
+                         ng-click="openChartWithAccumulate(token.domain + '_difficulty')">
+                </div>
+                <p class="size10 mt8" ng-show="speed > 0">{{str.speed}} {{formatAmount(speed, '', 2)}} h/s</p>
+                <p class="size10 mt8 text-black" ng-hide="speed > 0">.</p>
+
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     viewBox="100 100 800 500" xml:space="preserve">
+<!-- Stroke ring -->
+<circle class="st0" cx="500" cy="500" r="302.8">
+  <animateTransform attributeType="xml"
+                    attributeName="transform"
+                    type="rotate"
+                    from="0 500 500"
+                    to="360 500 500"
+                    dur="100s"
+                    repeatCount="indefinite"/>
+</circle>
+                    <!-- Inner ring -->
+                    <circle class="st1" cx="500" cy="500" r="237.7">
+    <animateTransform attributeType="xml"
+                      attributeName="transform"
+                      type="rotate"
+                      from="0 500 500"
+                      to="360 500 500"
+                      dur="40s"
+                      repeatCount="indefinite"/>
+</circle>
+                    <!-- Outer ring -->
+                    <circle class="st2" cx="500" cy="500" r="366.8" transform="rotate(0 500 500)" ;>
+  <animateTransform attributeType="xml"
+                    attributeName="transform"
+                    type="rotate"
+                    from="0 500 500"
+                    to="-360 500 500"
+                    dur="50s"
+                    repeatCount="indefinite"/>
+</circle>
+                    <!-- Outer thin ring -->
+                    <circle class="st3" cx="500" cy="500" r="385.1"/>
+</svg>
+
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="flex primary-button relative"
+                         ng-click="startMining()"
+                         ng-disabled="account.balance == 0 || bank == 0 || !loaded"
+                         ng-hide="in_progress">
+                        <div class="focus" ng-show="isChecked('finish_quiz') && isNotChecked('start_mining')" ng-click="check('start_mining')"></div>
+                        {{str.start}}
+                    </div>
+                    <div class="flex primary-button back-red"
+                         ng-click="stopMining()"
+                         ng-show="in_progress">
+                        {{str.stop}}
+                    </div>
+                </div>
+            </div>
+            <ng-include class="col mh16 mt16" src="'/mfm-wallet/wallet/accounts.html?nocache'"></ng-include>
+            <ng-include class="ph16" src="'/mfm-wallet/trans/trans.html'"></ng-include>
+            <div class="nowrap-disabled m16"
+                 ng-include="'/mfm-wallet/earn/mining/faq/' + getLanguage() + '.html'"></div>
+        </div>
+    </div>
+</div>

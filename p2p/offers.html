@@ -1,0 +1,96 @@
+<div class="fill col">
+    <div class="row header align-start-center">
+        <div class="row align-center-center img32 back-gray radius-default ripple"
+             ng-click="openOfferPlace(domain, swipeToRefresh)">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/plus.svg">
+        </div>
+        <p class="flex row align-center-center">{{str.p2p}}</p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="backToMain()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll">
+        <div class="flex col block input-content">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <div class="row">
+                <div class="flex-50 row">
+                    <div class="flex p4 row align-center-center radius3"
+                         ng-class="{'back-green static-text-white': !is_sell, 'text-green': is_sell}"
+                         ng-click="setIsSell(false)">
+                        {{str.buy}}
+                    </div>
+                    <div class="flex p4 row align-center-center radius3"
+                         ng-class="{'back-red static-text-white': is_sell, 'text-red': !is_sell}"
+                         ng-click="setIsSell(true)">
+                        {{str.sell}}
+                    </div>
+                </div>
+                <div class="flex row align-end">
+                    <button class="uppercase" ng-click="openSelectDomain(selectDomain)">{{domain}}</button>
+                </div>
+            </div>
+
+            <div class="col mt16" ng-repeat="item in offers">
+                <div class="row size12 align-start-center">
+                    <div class="col">
+                        <div class="row align-start-center">
+                            <div class="radius-default back-black"
+                                 ng-style="getIdenticon(item.address)"></div>
+                            <div class="col ml8">
+                                <div class="row gap4">
+                                    <p>{{formatAddress(item.address)}}</p>
+                                    <img class="img12 img-gray" src="/mfm-wallet/img/like.svg">
+                                    <p class="text2">{{formatPercent(item.user.successOrders / item.user.finishedOrders)}}</p>
+                                </div>
+                                <div class="row text2 mt2">
+                                    {{str.orders}}
+                                    {{item.user.finishedOrders}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gap8 align-start-end">
+                            <p class="uppercase text-gray">{{item.domain}}</p>
+                            <p class="size32">{{formatPrice(item.price)}}</p>
+                            <p class="uppercase text-gray">/{{wallet.gas_domain}}</p>
+                        </div>
+
+                        <div class="row mt8 size12 gap8">
+                            <p class="text-gray">{{str.limits}}</p>
+                            {{formatAmount(item.min, domain)}} -
+                            {{formatAmount(item.max, domain)}}
+                        </div>
+                        <div class="row mt8 size12 gap8">
+                            <p class="text-gray">{{str.available}}</p>
+                            {{formatAmount(item.amount - item.filled - item.blocked, domain)}}
+                        </div>
+                    </div>
+                    <div class="flex col align-end-end">
+                        <div class="row align-start-center" ng-repeat="payment in item.user.payments.split(',')">
+                            {{payment}}
+                            <div class="ml4"
+                                 style="width: 2px; height: 8px"
+                                 ng-style="{'background-color': getColor(payment)}"></div>
+                        </div>
+                        <div class="row gap8 align-start-center mt4">
+                            <img class="img14 img-gray" src="/mfm-wallet/img/history.svg">
+                            <p class="mt4 size10 text-gray">{{formatTime(item.user.avgSuccessTime)}}</p>
+                        </div>
+                        <div class="primary-button uppercase p8 size12 m0 mt8"
+                             ng-class="{'back-red': is_sell, ' back-green': !is_sell}"
+                             ng-click="openOrderPlace(item.id)">
+                            {{is_sell ? str.sell : str.buy}}
+                        </div>
+                    </div>
+                </div>
+                <div class="divider mt16"></div>
+            </div>
+
+            <div class="row align-center-center text1 text-gray"
+                 ng-show="offers.length == 0"
+                 style="height: 200px">
+                {{str.there_is_no_offers_yet}}
+            </div>
+            <div></div>
+        </div>
+    </div>
+</div>

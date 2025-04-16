@@ -1,0 +1,352 @@
+[
+  {
+    "level": "Humor",
+    "questions": [
+      {
+        "question": "Apa nama cryptocurrency yang dinamai setelah anjing meme terkenal?",
+        "answers": [
+          "Dogecoin",
+          "Catcoin",
+          "Birbcoin"
+        ],
+        "correct": "Dogecoin"
+      },
+      {
+        "question": "Apa yang Anda butuhkan untuk menambang cryptocurrency?",
+        "answers": [
+          "Cangkul dan sekop",
+          "Komputer dengan kartu grafis yang kuat",
+          "Tongkat sihir"
+        ],
+        "correct": "Komputer dengan kartu grafis yang kuat"
+      },
+      {
+        "question": "Apa yang bisa Anda beli dengan bitcoin di dunia nyata?",
+        "answers": [
+          "Pizza",
+          "Tanah di Mars",
+          "Toko permen"
+        ],
+        "correct": "Pizza"
+      },
+      {
+        "question": "Hewan apa yang menjadi simbol bitcoin?",
+        "answers": [
+          "Beruang",
+          "Banteng",
+          "Tidak ada"
+        ],
+        "correct": "Tidak ada"
+      },
+      {
+        "question": "Apa tempat penyimpanan cryptocurrency disebut?",
+        "answers": [
+          "ATM",
+          "Kulkas",
+          "Dompet"
+        ],
+        "correct": "Dompet"
+      }
+    ]
+  },
+  {
+    "level": "Pemula",
+    "questions": [
+      {
+        "question": "Apa itu cryptocurrency?",
+        "answers": [
+          "Uang elektronik",
+          "Koin kayu",
+          "Batangan emas"
+        ],
+        "correct": "Uang elektronik"
+      },
+      {
+        "question": "Apa nama cryptocurrency paling populer?",
+        "answers": [
+          "Ethereum",
+          "Bitcoin",
+          "Dogecoin"
+        ],
+        "correct": "Bitcoin"
+      },
+      {
+        "question": "Apa yang bisa digunakan untuk menyimpan cryptocurrency?",
+        "answers": [
+          "Dompet",
+          "Kartu bank",
+          "Uang tunai"
+        ],
+        "correct": "Dompet"
+      },
+      {
+        "question": "Apa teknologi yang mendasari cryptocurrency disebut?",
+        "answers": [
+          "Blockchain",
+          "Internet",
+          "Basis data"
+        ],
+        "correct": "Blockchain"
+      },
+      {
+        "question": "Apa proses pembuatan unit cryptocurrency baru disebut?",
+        "answers": [
+          "Menambang",
+          "Enkripsi",
+          "Memuat"
+        ],
+        "correct": "Menambang"
+      }
+    ]
+  },
+  {
+    "level": "Dasar",
+    "questions": [
+      {
+        "question": "Apa itu blockchain?",
+        "answers": [
+          "Basis data tradisional",
+          "Rantai blok yang berisi data",
+          "Jaringan untuk transmisi SMS"
+        ],
+        "correct": "Rantai blok yang berisi data"
+      },
+      {
+        "question": "Apa keuntungan utama blockchain dibandingkan basis data tradisional?",
+        "answers": [
+          "Manajemen terpusat",
+          "Ketidakberubahan data",
+          "Keamanan berkurang"
+        ],
+        "correct": "Ketidakberubahan data"
+      },
+      {
+        "question": "Apa itu desentralisasi dalam konteks blockchain?",
+        "answers": [
+          "Manajemen terpusat",
+          "Manajemen terdistribusi",
+          "Monopoli"
+        ],
+        "correct": "Manajemen terdistribusi"
+      },
+      {
+        "question": "Cryptocurrency mana yang pertama kali didasarkan pada blockchain?",
+        "answers": [
+          "Ethereum",
+          "Bitcoin",
+          "Litecoin"
+        ],
+        "correct": "Bitcoin"
+      },
+      {
+        "question": "Apa proses verifikasi dan penambahan transaksi ke blockchain disebut?",
+        "answers": [
+          "Menambang",
+          "Hashing",
+          "Enkripsi"
+        ],
+        "correct": "Menambang"
+      }
+    ]
+  },
+  {
+    "level": "Menengah",
+    "questions": [
+      {
+        "question": "Apa itu kontrak pintar?",
+        "answers": [
+          "Kontrak hukum tradisional",
+          "Kontrak otomatis di blockchain",
+          "Jenis cryptocurrency"
+        ],
+        "correct": "Kontrak otomatis di blockchain"
+      },
+      {
+        "question": "Algoritma konsensus apa yang digunakan dalam Bitcoin?",
+        "answers": [
+          "Bukti Kerja",
+          "Bukti Kepemilikan",
+          "Bukti Pembakaran"
+        ],
+        "correct": "Bukti Kerja"
+      },
+      {
+        "question": "Algoritma hashing apa yang digunakan dalam blockchain Bitcoin?",
+        "answers": [
+          "SHA-256",
+          "MD5",
+          "Blowfish"
+        ],
+        "correct": "SHA-256"
+      },
+      {
+        "question": "Apa itu node dalam blockchain?",
+        "answers": [
+          "Server pusat",
+          "Node jaringan blockchain",
+          "Jenis cryptocurrency"
+        ],
+        "correct": "Node jaringan blockchain"
+      },
+      {
+        "question": "Bagaimana blockchain memastikan ketidakberubahan data?",
+        "answers": [
+          "Pembaruan data reguler",
+          "Hashing setiap blok dan menghubungkannya ke yang sebelumnya",
+          "Menggunakan server terpusat"
+        ],
+        "correct": "Hashing setiap blok dan menghubungkannya ke yang sebelumnya"
+      }
+    ]
+  },
+  {
+    "level": "Lanjutan",
+    "questions": [
+      {
+        "question": "Apa itu \"fork\" dalam blockchain?",
+        "answers": [
+          "Memisahkan jaringan menjadi dua rantai",
+          "Jenis transaksi",
+          "Algoritma hashing"
+        ],
+        "correct": "Memisahkan jaringan menjadi dua rantai"
+      },
+      {
+        "question": "Apa perbedaan antara blockchain publik dan pribadi?",
+        "answers": [
+          "Dalam blockchain publik, data dapat diakses oleh semua orang, dalam blockchain pribadi - hanya untuk peserta tertentu",
+          "Blockchain publik beroperasi di tingkat nasional, blockchain pribadi - di tingkat lokal",
+          "Blockchain pribadi menggunakan lebih banyak energi"
+        ],
+        "correct": "Dalam blockchain publik, data dapat diakses oleh semua orang, dalam blockchain pribadi - hanya untuk peserta tertentu"
+      },
+      {
+        "question": "Apa itu \"gas\" dalam blockchain Ethereum?",
+        "answers": [
+          "Bahan bakar untuk transaksi dan kontrak pintar",
+          "Jenis cryptocurrency",
+          "Langkah keamanan"
+        ],
+        "correct": "Bahan bakar untuk transaksi dan kontrak pintar"
+      },
+      {
+        "question": "Apa fungsi dari protokol \"Bukti Kepemilikan\"?",
+        "answers": [
+          "Menambang blok berdasarkan kekuatan komputasi",
+          "Memilih validator berdasarkan kepemilikan koin",
+          "Memisahkan rantai menjadi dua bagian"
+        ],
+        "correct": "Memilih validator berdasarkan kepemilikan koin"
+      },
+      {
+        "question": "Jelaskan konsep \"pohon Merkle\" dan perannya dalam blockchain",
+        "answers": [
+          "Jenis cryptocurrency",
+          "Struktur seperti pohon yang menyediakan penyimpanan data yang efisien dan aman",
+          "Algoritma konsensus"
+        ],
+        "correct": "Struktur seperti pohon yang menyediakan penyimpanan data yang efisien dan aman"
+      }
+    ]
+  },
+  {
+    "level": "Ahli",
+    "questions": [
+      {
+        "question": "Apa itu \"sharding\" dalam konteks teknologi blockchain?",
+        "answers": [
+          "Memisahkan data menjadi bagian yang lebih kecil untuk meningkatkan kinerja",
+          "Protokol keamanan untuk perlindungan data",
+          "Mekanisme manajemen kontrak pintar"
+        ],
+        "correct": "Memisahkan data menjadi bagian yang lebih kecil untuk meningkatkan kinerja"
+      },
+      {
+        "question": "Bagaimana cara kerja kolam penambangan?",
+        "answers": [
+          "Sekelompok penambang berbagi kekuatan komputasi mereka dan menerima hadiah yang proporsional dengan kontribusi mereka",
+          "Sekelompok pengembang membuat kontrak pintar untuk meningkatkan keamanan",
+          "Pengguna saling bertukar cryptocurrency"
+        ],
+        "correct": "Sekelompok penambang berbagi kekuatan komputasi mereka dan menerima hadiah yang proporsional dengan kontribusi mereka"
+      },
+      {
+        "question": "Jelaskan konsep \"blok yatim piatu\"",
+        "answers": [
+          "Blok yang tidak termasuk dalam rantai utama",
+          "Blok yang mengandung kesalahan kode",
+          "Blok yang dimaksudkan untuk menguji fitur baru"
+        ],
+        "correct": "Blok yang tidak termasuk dalam rantai utama"
+      },
+      {
+        "question": "Ancaman keamanan apa yang ada untuk blockchain?",
+        "answers": [
+          "Serangan 51%, phishing, rekayasa sosial",
+          "Perlindungan kata sandi yang lemah, penolakan layanan (DDoS)",
+          "Kinerja node yang lambat, protokol keamanan yang ketinggalan zaman"
+        ],
+        "correct": "Serangan 51%, phishing, rekayasa sosial"
+      },
+      {
+        "question": "Bagaimana penskalaan dicapai dalam jaringan blockchain?",
+        "answers": [
+          "Menggunakan sharding, meningkatkan ukuran blok, mengoptimalkan algoritma konsensus",
+          "Meningkatkan jumlah penambang, mengurangi kompleksitas tugas, menggunakan server terpusat",
+          "Mengoptimalkan kontrak pintar, mengurangi waktu transaksi, menggunakan kecerdasan buatan"
+        ],
+        "correct": "Menggunakan sharding, meningkatkan ukuran blok, mengoptimalkan algoritma konsensus"
+      }
+    ]
+  },
+  {
+    "level": "Master",
+    "questions": [
+      {
+        "question": "Apa itu \"DeFi\" dan bagaimana hubungannya dengan blockchain?",
+        "answers": [
+          "Keuangan terdesentralisasi menggunakan kontrak pintar di blockchain",
+          "Protokol keamanan untuk melindungi data keuangan",
+          "Sistem pertukaran mata uang terpusat"
+        ],
+        "correct": "Keuangan terdesentralisasi menggunakan kontrak pintar di blockchain"
+      },
+      {
+        "question": "Bagaimana blockchain digunakan dalam manajemen rantai pasokan?",
+        "answers": [
+          "Untuk melacak pergerakan barang dan memastikan transparansi transaksi",
+          "Untuk menyimpan data tentang karyawan dan kinerja mereka",
+          "Untuk menyimpan data pelanggan yang bersifat rahasia"
+        ],
+        "correct": "Untuk melacak pergerakan barang dan memastikan transparansi transaksi"
+      },
+      {
+        "question": "Jelaskan operasi Jaringan Petir dalam konteks Bitcoin",
+        "answers": [
+          "Jaringan yang memungkinkan transaksi cepat dan murah di luar blockchain utama",
+          "Protokol keamanan untuk perlindungan terhadap serangan hacker",
+          "Sistem manajemen kontrak pintar di blockchain"
+        ],
+        "correct": "Jaringan yang memungkinkan transaksi cepat dan murah di luar blockchain utama"
+      },
+      {
+        "question": "Solusi privasi apa yang ada untuk blockchain?",
+        "answers": [
+          "Bukti Tanpa Pengetahuan, Tanda Tangan Cincin, Transaksi Rahasia",
+          "Enkripsi data sederhana menggunakan kunci simetris",
+          "Akses data publik dengan batasan waktu"
+        ],
+        "correct": "Bukti Tanpa Pengetahuan, Tanda Tangan Cincin, Transaksi Rahasia"
+      },
+      {
+        "question": "Bagaimana interoperabilitas lintas rantai bekerja?",
+        "answers": [
+          "Memungkinkan jaringan blockchain yang berbeda untuk berinteraksi dan bertukar data",
+          "Menggunakan server terpusat untuk mengelola transaksi",
+          "Menyimpan data transaksi dalam basis data terpisah"
+        ],
+        "correct": "Memungkinkan jaringan blockchain yang berbeda untuk berinteraksi dan bertukar data"
+      }
+    ]
+  }
+]

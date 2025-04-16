@@ -1,0 +1,352 @@
+[
+  {
+    "level": "Humoristisch",
+    "questions": [
+      {
+        "question": "Wat is de naam van de cryptocurrency die is vernoemd naar een beroemde meme-hond?",
+        "answers": [
+          "Dogecoin",
+          "Catcoin",
+          "Birbcoin"
+        ],
+        "correct": "Dogecoin"
+      },
+      {
+        "question": "Wat heb je nodig om cryptocurrency te minen?",
+        "answers": [
+          "Pikhouweel en schop",
+          "Een computer met een krachtige grafische kaart",
+          "Een toverstok"
+        ],
+        "correct": "Een computer met een krachtige grafische kaart"
+      },
+      {
+        "question": "Wat kun je in de echte wereld kopen met bitcoins?",
+        "answers": [
+          "Pizza",
+          "Land op Mars",
+          "Snoepwinkel"
+        ],
+        "correct": "Pizza"
+      },
+      {
+        "question": "Welk dier is het symbool van bitcoin?",
+        "answers": [
+          "Beer",
+          "Stier",
+          "Geen"
+        ],
+        "correct": "Geen"
+      },
+      {
+        "question": "Hoe heet de plaats waar cryptocurrency wordt opgeslagen?",
+        "answers": [
+          "Geldautomaat",
+          "Koelkast",
+          "Portemonnee"
+        ],
+        "correct": "Portemonnee"
+      }
+    ]
+  },
+  {
+    "level": "Beginner",
+    "questions": [
+      {
+        "question": "Wat is cryptocurrency?",
+        "answers": [
+          "Elektronisch geld",
+          "Houten munten",
+          "Goudstaven"
+        ],
+        "correct": "Elektronisch geld"
+      },
+      {
+        "question": "Wat is de naam van de populairste cryptocurrency?",
+        "answers": [
+          "Ethereum",
+          "Bitcoin",
+          "Dogecoin"
+        ],
+        "correct": "Bitcoin"
+      },
+      {
+        "question": "Wat kan worden gebruikt om cryptocurrency op te slaan?",
+        "answers": [
+          "Portemonnee",
+          "Bankkaart",
+          "Contant geld"
+        ],
+        "correct": "Portemonnee"
+      },
+      {
+        "question": "Hoe heet de technologie die ten grondslag ligt aan cryptocurrencies?",
+        "answers": [
+          "Blockchain",
+          "Internet",
+          "Database"
+        ],
+        "correct": "Blockchain"
+      },
+      {
+        "question": "Hoe heet het proces van het creëren van nieuwe cryptocurrency-eenheden?",
+        "answers": [
+          "Mining",
+          "Versleuteling",
+          "Laden"
+        ],
+        "correct": "Mining"
+      }
+    ]
+  },
+  {
+    "level": "Basis",
+    "questions": [
+      {
+        "question": "Wat is blockchain?",
+        "answers": [
+          "Traditionele database",
+          "Keten van blokken met gegevens",
+          "Netwerk voor SMS-transmissie"
+        ],
+        "correct": "Keten van blokken met gegevens"
+      },
+      {
+        "question": "Wat is het belangrijkste voordeel van blockchain ten opzichte van traditionele databases?",
+        "answers": [
+          "Gecentraliseerd beheer",
+          "Onveranderlijkheid van gegevens",
+          "Verminderde beveiliging"
+        ],
+        "correct": "Onveranderlijkheid van gegevens"
+      },
+      {
+        "question": "Wat is decentralisatie in de context van blockchain?",
+        "answers": [
+          "Gecentraliseerd beheer",
+          "Gedecentraliseerd beheer",
+          "Monopolisatie"
+        ],
+        "correct": "Gedecentraliseerd beheer"
+      },
+      {
+        "question": "Welke cryptocurrency was de eerste die gebaseerd was op blockchain?",
+        "answers": [
+          "Ethereum",
+          "Bitcoin",
+          "Litecoin"
+        ],
+        "correct": "Bitcoin"
+      },
+      {
+        "question": "Hoe heet het proces van het verifiëren en toevoegen van transacties aan de blockchain?",
+        "answers": [
+          "Mining",
+          "Hashing",
+          "Versleuteling"
+        ],
+        "correct": "Mining"
+      }
+    ]
+  },
+  {
+    "level": "Gemiddeld",
+    "questions": [
+      {
+        "question": "Wat is een smart contract?",
+        "answers": [
+          "Traditioneel juridisch contract",
+          "Geautomatiseerd contract in de blockchain",
+          "Type cryptocurrency"
+        ],
+        "correct": "Geautomatiseerd contract in de blockchain"
+      },
+      {
+        "question": "Welk consensusalgoritme wordt gebruikt in Bitcoin?",
+        "answers": [
+          "Proof of Work",
+          "Proof of Stake",
+          "Proof of Burn"
+        ],
+        "correct": "Proof of Work"
+      },
+      {
+        "question": "Welk hash-algoritme wordt gebruikt in de Bitcoin-blockchain?",
+        "answers": [
+          "SHA-256",
+          "MD5",
+          "Blowfish"
+        ],
+        "correct": "SHA-256"
+      },
+      {
+        "question": "Wat is een node in de blockchain?",
+        "answers": [
+          "Centraal server",
+          "Blockchain-netwerkknooppunt",
+          "Type cryptocurrency"
+        ],
+        "correct": "Blockchain-netwerkknooppunt"
+      },
+      {
+        "question": "Hoe zorgt blockchain voor onveranderlijkheid van gegevens?",
+        "answers": [
+          "Regelmatige gegevensupdates",
+          "Hashing van elk blok en het koppelen aan het vorige blok",
+          "Gebruik van een gecentraliseerde server"
+        ],
+        "correct": "Hashing van elk blok en het koppelen aan het vorige blok"
+      }
+    ]
+  },
+  {
+    "level": "Gevorderd",
+    "questions": [
+      {
+        "question": "Wat is een \"fork\" in de blockchain?",
+        "answers": [
+          "Het splitsen van het netwerk in twee ketens",
+          "Type transactie",
+          "Hashing-algoritme"
+        ],
+        "correct": "Het splitsen van het netwerk in twee ketens"
+      },
+      {
+        "question": "Wat is het verschil tussen een publieke en private blockchain?",
+        "answers": [
+          "In een publieke blockchain zijn gegevens toegankelijk voor iedereen, in een private blockchain - alleen voor bepaalde deelnemers",
+          "Publieke blockchain opereert op nationaal niveau, private - op lokaal niveau",
+          "Private blockchains gebruiken meer energie"
+        ],
+        "correct": "In een publieke blockchain zijn gegevens toegankelijk voor iedereen, in een private blockchain - alleen voor bepaalde deelnemers"
+      },
+      {
+        "question": "Wat is \"gas\" in de Ethereum-blockchain?",
+        "answers": [
+          "Brandstof voor transacties en smart contracts",
+          "Type cryptocurrency",
+          "Beveiligingsmaatregel"
+        ],
+        "correct": "Brandstof voor transacties en smart contracts"
+      },
+      {
+        "question": "Welke functie vervult het \"Proof of Stake\"-protocol?",
+        "answers": [
+          "Blokken minen op basis van rekenkracht",
+          "Selecteren van validators op basis van muntbezit",
+          "Het splitsen van de keten in twee delen"
+        ],
+        "correct": "Selecteren van validators op basis van muntbezit"
+      },
+      {
+        "question": "Leg het concept van een \"Merkle tree\" uit en de rol ervan in de blockchain",
+        "answers": [
+          "Type cryptocurrency",
+          "Boomstructuur die efficiënte en veilige gegevensopslag biedt",
+          "Consensusalgoritme"
+        ],
+        "correct": "Boomstructuur die efficiënte en veilige gegevensopslag biedt"
+      }
+    ]
+  },
+  {
+    "level": "Expert",
+    "questions": [
+      {
+        "question": "Wat is \"sharding\" in de context van blockchain-technologieën?",
+        "answers": [
+          "Het splitsen van gegevens in kleinere delen om de prestaties te verhogen",
+          "Beveiligingsprotocol voor gegevensbescherming",
+          "Mechanisme voor het beheer van smart contracts"
+        ],
+        "correct": "Het splitsen van gegevens in kleinere delen om de prestaties te verhogen"
+      },
+      {
+        "question": "Hoe werken mining pools?",
+        "answers": [
+          "Een groep miners deelt hun rekenkracht en ontvangt beloningen naar verhouding van hun bijdrage",
+          "Een groep ontwikkelaars maakt smart contracts om de beveiliging te verbeteren",
+          "Gebruikers wisselen cryptocurrency met elkaar uit"
+        ],
+        "correct": "Een groep miners deelt hun rekenkracht en ontvangt beloningen naar verhouding van hun bijdrage"
+      },
+      {
+        "question": "Leg het concept van \"weesblokken\" uit",
+        "answers": [
+          "Blokken die niet zijn opgenomen in de hoofdketen",
+          "Blokken die codefouten bevatten",
+          "Blokken bedoeld voor het testen van nieuwe functies"
+        ],
+        "correct": "Blokken die niet zijn opgenomen in de hoofdketen"
+      },
+      {
+        "question": "Welke beveiligingsbedreigingen bestaan er voor blockchain?",
+        "answers": [
+          "51\% aanval, phishing, social engineering",
+          "Zwakke wachtwoordbescherming, denial of service (DDoS)",
+          "Langzame knooppuntprestaties, verouderde beveiligingsprotocollen"
+        ],
+        "correct": "51\% aanval, phishing, social engineering"
+      },
+      {
+        "question": "Hoe wordt schaalvergroting bereikt in blockchain-netwerken?",
+        "answers": [
+          "Gebruik van sharding, vergroten van blokgrootte, optimaliseren van consensusalgoritmen",
+          "Verhogen van het aantal miners, verminderen van taakcomplexiteit, gebruik van gecentraliseerde servers",
+          "Optimaliseren van smart contracts, verkorten van transactietijd, gebruik van kunstmatige intelligentie"
+        ],
+        "correct": "Gebruik van sharding, vergroten van blokgrootte, optimaliseren van consensusalgoritmen"
+      }
+    ]
+  },
+  {
+    "level": "Meester",
+    "questions": [
+      {
+        "question": "Wat is \"DeFi\" en hoe is het gerelateerd aan blockchain?",
+        "answers": [
+          "Gedecentraliseerde financiën met behulp van smart contracts op blockchains",
+          "Beveiligingsprotocol voor het beschermen van financiële gegevens",
+          "Gecentraliseerd valutawisselsysteem"
+        ],
+        "correct": "Gedecentraliseerde financiën met behulp van smart contracts op blockchains"
+      },
+      {
+        "question": "Hoe wordt blockchain gebruikt in supply chain management?",
+        "answers": [
+          "Om de beweging van goederen te volgen en de transparantie van transacties te waarborgen",
+          "Om gegevens over werknemers en hun prestaties op te slaan",
+          "Om vertrouwelijke klantgegevens op te slaan"
+        ],
+        "correct": "Om de beweging van goederen te volgen en de transparantie van transacties te waarborgen"
+      },
+      {
+        "question": "Leg de werking van het Lightning Network uit in de context van Bitcoin",
+        "answers": [
+          "Een netwerk dat snelle en goedkope transacties buiten de hoofdblockchain mogelijk maakt",
+          "Beveiligingsprotocol voor bescherming tegen hacker-aanvallen",
+          "Systeem voor het beheer van smart contracts op de blockchain"
+        ],
+        "correct": "Een netwerk dat snelle en goedkope transacties buiten de hoofdblockchain mogelijk maakt"
+      },
+      {
+        "question": "Welke privacyoplossingen bestaan er voor blockchain?",
+        "answers": [
+          "Zero-Knowledge Proofs, Ring Signatures, Confidential Transactions",
+          "Eenvoudige gegevensversleuteling met behulp van symmetrische sleutels",
+          "Openbare gegevens toegang met tijdsbeperkingen"
+        ],
+        "correct": "Zero-Knowledge Proofs, Ring Signatures, Confidential Transactions"
+      },
+      {
+        "question": "Hoe werkt cross-chain interoperabiliteit?",
+        "answers": [
+          "Maakt het mogelijk dat verschillende blockchain-netwerken met elkaar communiceren en gegevens uitwisselen",
+          "Gebruikt gecentraliseerde servers om transacties te beheren",
+          "Slaat transactiegegevens op in afzonderlijke databases"
+        ],
+        "correct": "Maakt het mogelijk dat verschillende blockchain-netwerken met elkaar communiceren en gegevens uitwisselen"
+      }
+    ]
+  }
+]
