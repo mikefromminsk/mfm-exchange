@@ -1,7 +1,7 @@
 function getAccount(domain, success, error) {
     postContract("mfm-token", "profile", {
         domain: domain,
-        address: user.login(),
+        address: user.username(),
     }, success, error)
 }
 
@@ -24,7 +24,7 @@ function openTokenProfile(domain, success) {
 
             postApi("balance", {
                 domain: domain,
-                address: user.login(),
+                address: user.username(),
             }, function (response) {
                 $scope.balance = response.balance
                 $scope.$apply()
@@ -32,7 +32,7 @@ function openTokenProfile(domain, success) {
 
             postContract("mfm-token", "trans_account", {
                 domain: domain,
-                address: user.login(),
+                address: user.username(),
             }, function (response) {
                 $scope.trans = $scope.groupByTimePeriod(response.trans)
                 $scope.$apply()

@@ -14,7 +14,7 @@ function openPaymentAdd(success) {
             getPin(function (pin) {
                 calcPass(wallet.gas_domain, pin, function (pass) {
                     postApi("p2p/payment_add", {
-                        address: user.login(),
+                        address: user.username(),
                         payment: payment,
                         pass: pass,
                     }, function () {

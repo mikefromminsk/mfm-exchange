@@ -16,10 +16,11 @@ function openLogin(success) {
                 $scope.in_progress = true
                 let token = hash($scope.password)
                 postApi("login", {
-                    login: $scope.username,
+                    username: $scope.username,
                     token: token,
                 }, function () {
-                    user.saveLogin(token)
+                    user.saveUsername($scope.username)
+                    user.saveToken(token)
                     $scope.close()
                 })
             }

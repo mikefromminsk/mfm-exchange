@@ -42,7 +42,7 @@
     </div>
 
     <div class="col input-content shadow"
-         ng-show="token.owner != user.login() && stake.to != staking_address">
+         ng-show="token.owner != user.username() && stake.to != staking_address">
         <div class="flex row input-wrapper">
             <div ng-style="getLogo(domain)"></div>
             <input type="number"
@@ -50,10 +50,10 @@
                    autocomplete="off"
                    maxlength="16"
                    ng-model="amount"
-                   ng-disabled="token.owner == user.login()"
+                   ng-disabled="token.owner == user.username()"
                    placeholder="{{str.amount}}">
             <button ng-click="setMax()"
-                    ng-hide="(account.balance || 0) == 0 || token.owner == user.login()">
+                    ng-hide="(account.balance || 0) == 0 || token.owner == user.username()">
                 {{str.max}}
             </button>
         </div>
@@ -70,7 +70,7 @@
         </div>
     </div>
     <div class="col input-content shadow"
-         ng-show="token.owner != user.login() && stake.to == staking_address">
+         ng-show="token.owner != user.username() && stake.to == staking_address">
         <div class="col align-start-center">
             <p class="size12 uppercase">{{str.reward}}</p>
             <p class="size32 bold mono">{{shortNumber(reward, 8).toFixed(8)}} {{formatDomain(domain)}}</p>
@@ -85,7 +85,7 @@
         </div>
     </div>
     <div class="col input-content shadow"
-         ng-show="token.owner == user.login()">
+         ng-show="token.owner == user.username()">
         <div class="col align-start-center">
             <p class="size12 uppercase">{{str.staking_bank}}</p>
             <p class="size32 bold">{{formatAmount(bank.balance, domain)}}</p>

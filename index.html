@@ -46,9 +46,6 @@
 <div class="flex col" ng-cloak style="visibility: hidden"
      ng-style="{'visibility': showBody ? 'visible' : 'hidden'}">
     <md-tabs class="flex col" md-selected="selectedIndex">
-        <md-tab label="0">
-            <ng-include class="fill col" src="'/mfm-exchange/trans/index.html?nocache'"></ng-include>
-        </md-tab>
         <md-tab label="1">
             <ng-include class="fill col" src="'/mfm-exchange/home/index.html?nocache'"></ng-include>
         </md-tab>
@@ -61,8 +58,7 @@
         <div class="row block">
             <div class="flex col pv8 align-start-center ripple relative"
                  ng-repeat="item in menu"
-                 ng-click="selectTab($index); (item == 'wallet' && check('open_wallet'))">
-                <div class="focus" ng-show="item == 'wallet' && isNotChecked('open_wallet')"></div>
+                 ng-click="selectTab($index)">
                 <img class="img18" src="/mfm-wallet/img/{{item}}.svg"
                      ng-class="{'img-accent': selectedIndex == $index, 'img-gray': selectedIndex != $index}">
                 <p class="mt8"

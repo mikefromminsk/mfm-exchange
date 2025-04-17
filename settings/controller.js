@@ -41,7 +41,7 @@ function openSettings(success) {
         $scope.init = function () {
             postContract("mfm-token", "account", {
                 domain: wallet.gas_domain,
-                address: user.login(),
+                address: user.username(),
             }, function (response) {
                 $scope.account = response.account
                 $scope.$apply()

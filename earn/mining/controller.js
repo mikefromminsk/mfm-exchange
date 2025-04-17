@@ -11,7 +11,7 @@ function addMining($scope, domain) {
     function loadMiningInfo(startMiningAfterRequest) {
         postContract("mfm-mining", "mining_info", {
             domain: domain,
-            address: user.login(),
+            address: user.username(),
         }, function (response) {
             $scope.loaded = true
             $scope.last_hash = response.last_hash || ""
@@ -34,7 +34,7 @@ function addMining($scope, domain) {
             wallet.reg(domain, pin, function () {
                 postContract("mfm-token", "account", {
                     domain: wallet.gas_domain,
-                    address: user.login(),
+                    address: user.username(),
                 }, function (response) {
                     if (response.account.balance > 0) {
                         loadMiningInfo(true)
@@ -90,7 +90,7 @@ function addMining($scope, domain) {
         $scope.balance = data.balance
         $scope.difficulty = data.difficulty
         $scope.$apply()
-        if (data.gas_address == user.login())
+        if (data.gas_address == user.username())
             loadAccounts()
         if ($scope.in_progress)
             startMiningProcess(data.last_hash, data.difficulty)
@@ -106,7 +106,7 @@ function addMining($scope, domain) {
 
     function loadAccounts() {
         postContract("mfm-token", "accounts", {
-            address: user.login(),
+            address: user.username(),
         }, function (response) {
             let accounts = []
             for (const account of response.accounts)
@@ -125,7 +125,7 @@ function addMining($scope, domain) {
         postContract("mfm-token", "dialog_trans", {
             domain: domain,
             from: wallet.MINING_ADDRESS,
-            to: user.login(),
+            to: user.username(),
         }, function (response) {
             $scope.trans = $scope.groupByTimePeriod(response.trans)
             $scope.$apply()

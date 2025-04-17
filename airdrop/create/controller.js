@@ -26,7 +26,7 @@ function openAirdropCreate(domain, success) {
                     calcPass(domain, pin, function (pass) {
                         postContract("mfm-token", "send", {
                             domain: domain,
-                            from: user.login(),
+                            from: user.username(),
                             to: address,
                             pass: pass,
                             amount: $scope.amount
@@ -70,7 +70,7 @@ function openAirdropCreate(domain, success) {
             })
         }
 
-        subscribe("account:" + user.login(), function (data) {
+        subscribe("account:" + user.username(), function (data) {
             init()
         })
 

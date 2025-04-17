@@ -12,7 +12,7 @@ function openP2P(success) {
             } else if (tab == 1) {
                 openOffers($scope)
             } else if (tab == 2) {
-                addP2PProfile($scope, user.login())
+                addP2PProfile($scope, user.username())
             }
             swipeToRefresh($scope.backToMain)
         }
@@ -76,7 +76,7 @@ function openOrders($scope) {
 
     $scope.loadOrders = function () {
         postApi("p2p/orders", {
-            address: user.login(),
+            address: user.username(),
         }, function (response) {
             $scope.orders.offers = response.offers
             $scope.orders.active = response.active

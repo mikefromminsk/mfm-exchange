@@ -62,8 +62,8 @@ function openWallet($scope) {
     }
 
     function subscribeAccount() {
-        $scope.subscribe("account:" + user.login(), function (data) {
-            if (data.amount != 0 && data.to == user.login()) {
+        $scope.subscribe("account:" + user.username(), function (data) {
+            if (data.amount != 0 && data.to == user.username()) {
                 showSuccess(str.you_have_received + " " + $scope.formatAmount(data.amount, data.domain))
                 setTimeout(function () {
                     new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
@@ -74,7 +74,7 @@ function openWallet($scope) {
     }
 
     function subscribeNewOrders() {
-        $scope.subscribe("new_order:" + user.login(), function (data) {
+        $scope.subscribe("new_order:" + user.username(), function (data) {
             showSuccess(str.new_p2p_order)
             setTimeout(function () {
                 new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
@@ -83,9 +83,9 @@ function openWallet($scope) {
     }
 
     function loadOrders() {
-        if (user.login() != "") {
+        if (user.username() != "") {
             postApi("user_orders_active", {
-                address: user.login(),
+                address: user.username(),
             }, function (response) {
                 $scope.orders = response.orders
                 $scope.$apply()
@@ -117,12 +117,12 @@ function openWallet($scope) {
         loadTrans()
     }
 
-    if (user.login() != "") {
+    if (user.username() != "") {
         $scope.refresh()
         subscribeAccount()
         subscribeNewOrders()
     } else {
-        openLogin($scope, function () {
+        openLogin(function () {
             $scope.refresh()
             subscribeAccount()
             subscribeNewOrders()

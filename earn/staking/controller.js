@@ -14,7 +14,7 @@ function addStaking($scope, domain) {
                 postContract("mfm-token", "stake", {
                     domain: domain,
                     amount: $scope.amount,
-                    address: user.login(),
+                    address: user.username(),
                     pass: pass,
                 }, function (response) {
                     showSuccessDialog(str.you_have_staked + " " + $scope.formatAmount(response.staked, domain), init)
@@ -30,7 +30,7 @@ function addStaking($scope, domain) {
                 $scope.startRequest()
                 postContract("mfm-token", "unstake", {
                     domain: domain,
-                    address: user.login(),
+                    address: user.username(),
                     pass: pass,
                 }, function (response) {
                     $scope.finishRequest()
@@ -54,7 +54,7 @@ function addStaking($scope, domain) {
 
     $scope.getStakes = function () {
         postContract("mfm-token", "staked", {
-            address: user.login(),
+            address: user.username(),
         }, function (response) {
             $scope.stake = null
             $scope.reward = null

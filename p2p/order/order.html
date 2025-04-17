@@ -1,9 +1,9 @@
 <div class="row gap4">
-    <p ng-show="(order.offer.is_sell == 1 && order.offer.address == user.login()) ||
-                (order.offer.is_sell == 0 && order.offer.address != user.login())"
+    <p ng-show="(order.offer.is_sell == 1 && order.offer.address == user.username()) ||
+                (order.offer.is_sell == 0 && order.offer.address != user.username())"
        class="text-red">{{str.sell}} {{formatDomain(wallet.gas_domain)}}</p>
-    <p ng-hide="(order.offer.is_sell == 1 && order.offer.address == user.login()) ||
-                (order.offer.is_sell == 0 && order.offer.address != user.login())"
+    <p ng-hide="(order.offer.is_sell == 1 && order.offer.address == user.username()) ||
+                (order.offer.is_sell == 0 && order.offer.address != user.username())"
        class="text-green">{{str.buy}} {{formatDomain(wallet.gas_domain)}}</p>
     <p class="flex uppercase">{{order.domain}}</p>
     <p ng-show="order.status == 'active'" class="text-green">{{str.active}}</p>

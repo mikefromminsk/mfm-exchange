@@ -58,7 +58,7 @@ function openExchange(domain, is_sell) {
         }
 
         $scope.loadOrders = function () {
-            if (user.login() != "") {
+            if (user.username() != "") {
                 postApi("user_orders", {
                     domain: domain,
                 }, function (response) {
@@ -116,7 +116,7 @@ function openExchange(domain, is_sell) {
                 }
                 $scope.$apply()
             })
-            if (user.login() != "")
+            if (user.username() != "")
                 $scope.loadOrders()
         }
 
@@ -131,7 +131,7 @@ function openExchange(domain, is_sell) {
             $scope.$apply()
         });
 
-        $scope.subscribe("account:" + user.login(), function (data) {
+        $scope.subscribe("account:" + user.username(), function (data) {
             $scope.refresh()
         })
 

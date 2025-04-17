@@ -10,7 +10,7 @@ function openOfferPlace(domain, success) {
                 calcPass(wallet.gas_domain, pin, function (pass) {
                     postApi("p2p/offer_place", {
                         domain: domain,
-                        address: user.login(),
+                        address: user.username(),
                         price: $scope.price,
                         is_sell: $scope.is_sell ? 1 : 0,
                         amount: $scope.amount,
@@ -27,7 +27,7 @@ function openOfferPlace(domain, success) {
 
         function init() {
             postApi("p2p/profile", {
-                address: user.login(),
+                address: user.username(),
             }, function (response) {
                 $scope.profile = response.profile
                 if (storage.getString(storageKeys.default_payment_type) == "")

@@ -9,21 +9,23 @@
     <div class="flex col">
         <div class="col input-content">
             <div class="row input-wrapper">
-                <div class="input-label">{{str.username}}</div>
+                <img class="img-white" src="/mfm-wallet/img/user-circle.svg">
                 <input id="login_address"
                        type="text"
                        autocapitalize="off"
                        autocomplete="off"
                        maxlength="16"
+                       placeholder="{{str.username}}"
                        oninput="this.value = this.value.replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();"
                        ng-model="username">
             </div>
             <div class="row input-wrapper">
-                <div class="input-label">{{str.password}}</div>
+                <img class="img-white" src="/mfm-wallet/img/password.svg">
                 <input id="login_password"
                        type="password"
                        autocapitalize="off"
                        autocomplete="off"
+                       placeholder="{{str.password}}"
                        ng-model="password">
             </div>
             <div class="row align-start-center gap8">

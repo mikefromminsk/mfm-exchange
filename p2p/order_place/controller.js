@@ -12,7 +12,7 @@ function openOrderPlace(offer_id, success) {
                 calcPass(wallet.gas_domain, pin, function (pass) {
                     postApi("p2p/order_place", {
                         offer_id: offer_id,
-                        address: user.login(),
+                        address: user.username(),
                         amount: $scope.amount,
                         payment: $scope.payment,
                         pass: pass
@@ -37,7 +37,7 @@ function openOrderPlace(offer_id, success) {
 
         function init() {
             postApi("p2p/profile", {
-                address: user.login(),
+                address: user.username(),
             }, function (response) {
                 $scope.profile = response.profile
             }, function () {

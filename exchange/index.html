@@ -90,7 +90,7 @@
 
                     <div class="primary-button uppercase back-accent p8 text1"
                          ng-click="openLogin()"
-                         ng-hide="user.login()">
+                         ng-hide="user.username()">
                         {{str.login}}
                     </div>
 
@@ -98,7 +98,7 @@
                          ng-class="{'back-red': is_sell, ' back-green': !is_sell}"
                          ng-click="place()"
                          ng-disabled="in_progress"
-                         ng-show="user.login()">
+                         ng-show="user.username()">
                         {{is_sell ? str.sell : str.buy}}
                     </div>
                 </div>
@@ -129,13 +129,13 @@
                     </div>
 
 
-                    <div ng-show="token.owner == user.login()"
+                    <div ng-show="token.owner == user.username()"
                          class="primary-button m0 pv4 mt4"
                          ng-click="openExchangeBot(domain)">
                         {{str.bot_settings}}
                     </div>
                     <div class="row pv16"
-                         ng-hide="token.owner == user.login()">
+                         ng-hide="token.owner == user.username()">
                         <p class="flex bold"
                            ng-click="changePrice(token.price)">
                             {{formatPrice(token.price)}}

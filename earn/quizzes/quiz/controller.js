@@ -75,7 +75,7 @@ function openQuiz(success) {
                 postContract("mfm-token", "send", {
                     domain: wallet.gas_domain,
                     from: admin_address,
-                    to: user.login(),
+                    to: user.username(),
                     amount: $scope.rating,
                     pass: key + ":" + next_hash,
                 }, function () {

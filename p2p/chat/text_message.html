@@ -1,4 +1,4 @@
-<div class="row" ng-show="item.address != user.login()">
+<div class="row" ng-show="item.address != user.username()">
   <div class="row mt16 p16 radius-default back-gray ripple">
     <div ng-style="getIdenticon(item.to)"></div>
     <div class="col ml8">
@@ -7,7 +7,7 @@
     </div>
   </div>
 </div>
-<div class="row" ng-show="item.address == user.login()">
+<div class="row" ng-show="item.address == user.username()">
   <div class="flex"></div>
   <div class="row mt16 p16 radius-default back-gray ripple">
     <div class="col align-start-end">

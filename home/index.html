@@ -3,18 +3,9 @@
         <img class="refresh-icon img-gray" src="/mfm-wallet/img/reload.svg">
         <div class="row header align-start-center">
             <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/support.svg" ng-click="openSupport()">
-            <div class="flex row align-center-center">
-                <div class="row align-start-center p8 back-gray radius-default ripple"
-                     ng-show="user.login()"
-                     ng-click="openSettings()">
-                    <div class="radius-default back-black" ng-style="getIdenticon(user.login())"></div>
-                    <p class="ml8">{{formatAddress(user.login())}}</p>
-                </div>
-                <div class="ph16 pv8 back-gray radius-default ripple"
-                     ng-hide="user.login()"
-                     ng-click="openLogin()">
-                    <p>{{str.login}}</p>
-                </div>
+            <div class="flex row align-center-center gap8">
+                <img class="img40 img-gray" src="/mfm-exchange/logo.svg">
+                <p>Vavichange</p>
             </div>
             <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch()">
         </div>

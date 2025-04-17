@@ -27,7 +27,7 @@ function openAirdrop(promo, success) {
                                 postContract(app, path.join("/"), {
                                     domain: domain,
                                     address: address,
-                                    receiver: user.login(),
+                                    receiver: user.username(),
                                 }, function (response) {
                                     $scope.finishRequest()
                                     showSuccessDialog(str.you_have_received + " " + $scope.formatAmount(response.received), $scope.back)
@@ -41,7 +41,7 @@ function openAirdrop(promo, success) {
             }
         }
 
-        if (user.login() == "") {
+        if (user.username() == "") {
             $scope.openLogin()
         } else {
             if (promo == null) {
