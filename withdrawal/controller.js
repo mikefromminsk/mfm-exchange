@@ -1,37 +1,20 @@
 function openWithdrawal(domain, success) {
     trackCall(arguments)
-    showBottomSheet("withdrawal", success, function ($scope) {
-
+    showDialog("withdrawal", success, function ($scope) {
+            $scope.domain = domain
             $scope.withdrawal_address = ""
             $scope.amount = ""
 
-            if (DEBUG){
-                $scope.withdrawal_address = "TCS4FD9XJ4abux72qy21Dc4DC7XWAHjvje"
+            if (DEBUG) {
+                $scope.withdrawal_address = "14b6539449b0528429cfd5e52493d53551231b49997cbaa83c5f698bf5b744ee"
                 $scope.amount = 0.1
             }
 
             $scope.withdrawal = function () {
-                // demo withdrawal address
-                if (!$scope.withdrawal_address.startsWith("T") || !$scope.withdrawal_address.length == 34) {
-                    $scope.errorAddress = "Invalid address"
-                    return
-                }
-                if (!$scope.amount) {
-                    return
-                }
-                if ($scope.total <= 0){
-                    $scope.errorAmount = "Amount too low"
-                    return;
-                }
-                postContractWithGas("mfm-data", "withdrawal/start", function (key, nexthash) {
-                    return {
-                        address: user.login(),
-                        key: key,
-                        next_hash: nexthash,
-                        withdrawal_address: $scope.withdrawal_address,
-                        amount: $scope.amount,
-                        provider: "TRON",
-                    }
+                postApi("withdrawal", {
+                    domain: $scope.domain,
+                    address: $scope.withdrawal_address,
+                    amount: $scope.amount,
                 }, function (response) {
                     showSuccessDialog("Your withdrawal in progress", success)
                 })
@@ -51,16 +34,9 @@ function openWithdrawal(domain, success) {
                     $scope.token = response.token
                     $scope.$apply()
                 })
-                postContract("mfm-data", "withdrawal/providers", {
-                }, function (response) {
-                    $scope.providers = response
-                    $scope.provider = response["TRON"]
-                    $scope.$apply()
-                })
             }
 
             init()
         }
-
     )
 }

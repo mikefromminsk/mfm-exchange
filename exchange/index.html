@@ -79,12 +79,12 @@
                             {{str.available}}
                         </div>
                         <div ng-show="is_sell"
-                             ng-class="{'text-red': amount > account.balance}">
-                            {{formatAmount(account.balance, domain)}}
+                             ng-class="{'text-red': amount > base}">
+                            {{formatAmount(base, domain)}}
                         </div>
                         <div ng-hide="is_sell"
-                             ng-class="{'text-red': total > quote.balance}">
-                            {{formatAmount(quote.balance, wallet.gas_domain)}}
+                             ng-class="{'text-red': total > quote}">
+                            {{formatAmount(quote, wallet.gas_domain)}}
                         </div>
                     </div>
 
@@ -168,7 +168,7 @@
                         </div>
                     </div>
                     <p class="mt16" ng-show="orders.length > 0 && $index == 1">{{str.history}}</p>
-                    <ng-include src="'/mfm-wallet/products/exchange/orders.html'"></ng-include>
+                    <ng-include src="'/mfm-exchange/exchange/orders.html'"></ng-include>
                 </div>
                 <div class="col align-center-center text1 text-gray"
                      ng-show="active_orders.length == 0 && history_orders.length == 0"

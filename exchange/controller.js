@@ -21,30 +21,28 @@ function openExchange(domain, is_sell) {
         $scope.setPortion = function (new_value) {
             $scope.portion = new_value
             if ($scope.is_sell) {
-                $scope.changeAmount($scope.account.balance * (new_value / 100))
+                $scope.changeAmount($scope.base * (new_value / 100))
             } else {
-                $scope.changeTotal($scope.quote.balance)
+                $scope.changeTotal($scope.quote)
             }
         }
 
         $scope.place = function place() {
             trackCall(arguments)
             $scope.startRequest()
-            getPin(function (pin) {
-                calcPassList([domain, wallet.gas_domain], pin, function (passes) {
-                    postApi("place", {
-                        order_type: "limit",
-                        domain: domain,
-                        is_sell: $scope.is_sell ? 1 : 0,
-                        address: user.login(),
-                        price: $scope.price,
-                        amount: $scope.amount,
-                        total: $scope.total,
-                        pass: passes[$scope.is_sell ? domain : wallet.gas_domain]
-                    }, function () {
-                        $scope.finishRequest()
-                        showSuccessDialog(str.order_placed, $scope.loadOrderbook)
-                    }, $scope.finishRequest)
+            postApi("place", {
+                order_type: "limit",
+                domain: domain,
+                is_sell: $scope.is_sell ? 1 : 0,
+                price: $scope.price,
+                amount: $scope.amount,
+                total: $scope.total,
+            }, function () {
+                $scope.finishRequest()
+                showSuccessDialog(str.order_placed, function () {
+                    $scope.loadBaseBalance()
+                    $scope.loadQuoteBalance()
+                    $scope.loadOrderbook()
                 })
             }, $scope.finishRequest)
         }
@@ -63,7 +61,6 @@ function openExchange(domain, is_sell) {
             if (user.login() != "") {
                 postApi("user_orders", {
                     domain: domain,
-                    address: user.login(),
                 }, function (response) {
                     $scope.active_orders = response.active
                     $scope.history_orders = response.history
@@ -82,23 +79,26 @@ function openExchange(domain, is_sell) {
         $scope.loadBaseProfile = function () {
             getAccount(domain, function (response) {
                 $scope.token = response.token
-                $scope.account = response.account
+                $scope.$apply()
+            })
+        }
+
+        $scope.loadBaseBalance = function () {
+            postApi("balance", {
+                domain: domain
+            }, function (response) {
+                $scope.base = response.balance
                 $scope.$apply()
             })
         }
 
         $scope.loadQuoteBalance = function () {
-            if (user.login() != "") {
-                postContract("mfm-token", "account", {
-                    domain: wallet.gas_domain,
-                    address: user.login(),
-                }, function (response) {
-                    $scope.quote = response.account
-                    $scope.$apply()
-                }, function (message) {
-                    console.log(message)
-                })
-            }
+            postApi("balance", {
+                domain: wallet.gas_domain
+            }, function (response) {
+                $scope.quote = response.balance
+                $scope.$apply()
+            })
         }
 
         $scope.loadOrderbook = function () {
@@ -107,7 +107,7 @@ function openExchange(domain, is_sell) {
             }, function (response) {
                 $scope.sell = (response.sell || []).reverse()
                 $scope.buy = response.buy
-                if ($scope.is_sell){
+                if ($scope.is_sell) {
                     if (response.buy.length > 0)
                         $scope.price = $scope.round(response.buy[0].price * 0.95)
                 } else {
@@ -137,6 +137,7 @@ function openExchange(domain, is_sell) {
 
         $scope.refresh = function () {
             $scope.loadBaseProfile()
+            $scope.loadBaseBalance()
             $scope.loadQuoteBalance()
             $scope.loadOrderbook()
         }
