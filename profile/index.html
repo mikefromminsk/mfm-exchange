@@ -21,20 +21,25 @@
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <div class="input-content text-align-center" ng-show="domain != wallet.gas_domain">
                 <ng-include class="p0" src="'/mfm-wallet/wallet/profile/chart/chart.html'"></ng-include>
-                <ng-include src="'/mfm-wallet/wallet/profile/options.html?nocache'"></ng-include>
+                <ng-include src="'/mfm-exchange/profile/options.html?nocache'"></ng-include>
             </div>
             <ng-include src="'/mfm-wallet/wallet/profile/analytics.html'"></ng-include>
             <ng-include class="ph16" src="'/mfm-wallet/trans/trans.html'"></ng-include>
         </div>
     </div>
 
-    <div class="col mh16 align-start-center" ng-show="domain == wallet.gas_domain">
-        <div class="row block">
+    <div class="col mh16 align-start-center" ng-show="domain != wallet.gas_domain">
+        <div class="row block gap16">
+            <div class="flex mh0 primary-button back-red radius4 uppercase"
+                 ng-click="openSell(domain)"
+                 ng-show="balance > 0">
+                {{str.sell}}
+            </div>
             <div class="flex mh0 primary-button back-green radius4 uppercase"
-                 ng-click="openSend(domain)">
-                {{str.send}}
+                 ng-click="openBuy(domain)">
+                {{str.buy}}
             </div>
         </div>
     </div>
-    <!--<div class="space"></div>-->
+    <div class="space"></div>
 </md-dialog>
