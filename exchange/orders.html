@@ -1,13 +1,14 @@
 <div class="row mt16 size12 align-start-center ripple"
      ng-repeat="item in orders">
-    <div class="row align-end-end" ng-style="getLogo(domain)">
-        <p class="ph4 size10 back-green text-white radius-default" ng-show="item.is_sell == 0">
-            {{str.buy}}</p>
-        <p class="ph4 size10 back-red text-white radius-default" ng-show="item.is_sell == 1">
-            {{str.sell}}</p>
-    </div>
+    <div class="row" ng-style="getLogo(domain)"></div>
     <div class="flex col ml8">
-        <p>{{formatDomain(domain)}}</p>
+        <div class="row gap8">
+            <p class="size10 text-green" ng-show="item.is_sell == 0">
+                {{str.buy}}</p>
+            <p class="size10 text-red" ng-show="item.is_sell == 1">
+                {{str.sell}}</p>
+            <p>{{formatDomain(domain)}}</p>
+        </div>
         <p class="mt4 size10 text-gray">{{formatTime(item.timestamp)}}</p>
     </div>
     <div class="flex col align-start-end">

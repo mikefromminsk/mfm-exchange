@@ -17,12 +17,11 @@
                 <img class="img-white" src="/mfm-wallet/img/user-circle.svg">
                 <input type="text"
                        id="send_address"
-                       ng-disabled="block_to_address"
                        autocapitalize="none"
                        autocomplete="off"
                        oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '')"
                        ng-model="to_address"
-                       placeholder="{{str.address}}">
+                       placeholder="{{str.username}}">
             </div>
             <div class="row wrap ph8 pt0">
                 <div class="text2 ml8 p8 back-gray radius-default ripple"
@@ -39,16 +38,16 @@
                        ng-model="amount"
                        placeholder="{{str.amount}}">
                 <button ng-click="setMax()"
-                        ng-hide="!account || account.balance == 0">
+                        ng-hide="balance == 0">
                     {{str.max}}
                 </button>
             </div>
-            <div ng-class="{'text-red': !account || account.balance < amount || account.balance == 0}">
-                {{str.available}}: {{formatAmount(account.balance, token.domain)}}
+            <div ng-class="{'text-red': balance < amount || balance == 0}">
+                {{str.available}}: {{formatAmount(balance, domain)}}
             </div>
             <button class="primary-button"
                     ng-click="send(domain)"
-                    ng-disabled="in_progress || !to_address || to_address.length < 3 || !amount || (account.balance < amount)">
+                    ng-disabled="in_progress || !to_address || to_address.length < 3 || !amount || (balance < amount)">
                 {{str.send}}
             </button>
             <div></div>

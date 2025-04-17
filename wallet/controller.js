@@ -93,6 +93,14 @@ function openWallet($scope) {
         }
     }
 
+    function loadTrans(){
+        postApi("transfers", {
+        }, function (response) {
+            $scope.trans = $scope.groupByTimePeriod(response.trans)
+            $scope.$apply()
+        })
+    }
+
     $scope.cancel = function (order_id) {
         openAskSure(str.are_you_sure, str.yes, str.no, function () {
             postApi("cancel", {
@@ -106,6 +114,7 @@ function openWallet($scope) {
     $scope.refresh = function () {
         loadTokens()
         loadOrders()
+        loadTrans()
     }
 
     if (user.login() != "") {
