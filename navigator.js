@@ -248,4 +248,8 @@ function addNavigator($scope) {
     $scope.openQuiz = function (success) {
         openQuiz(success)
     }
+
+    $scope.openNetwork = function (success) {
+        openNetwork(success)
+    }
 }

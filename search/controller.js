@@ -1,8 +1,6 @@
 function openSearch(success) {
     trackCall(arguments)
     showDialog("search", success, function () {
-
-
         setTimeout(function () {
             document.getElementById('search_input').focus()
         }, 500)

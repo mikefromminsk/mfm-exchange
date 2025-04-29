@@ -10,7 +10,7 @@ function openTokenProfile(domain, success) {
     showDialog("profile", success, function ($scope) {
         $scope.domain = domain
 
-        addChart($scope, domain + "_pool_price", domain + "_pool_volume")
+        addChart($scope, domain + "_price", domain + "_volume")
         addTokenProfile($scope, domain)
 
         $scope.subscribe("price:" + domain, function (data) {
