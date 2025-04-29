@@ -1,16 +1,16 @@
 :root {
-    --black: #0f1620;
-    --gray100: #1d2733;
-    --gray200: #303A4D;
-    --gray300: #86909c;
-    --gray400: #AEB9CB;
-    --gray500: #F7F7FB;
-    --white: #feffff;
-    --accent2: #3b8fca;
-    --accent: #46aef5;
-    --pay: #da5c9f;
-    --green: #45be88;
-    --red: #FF3347;
-    --front: var(--gray100);
-    --back: var(--black);
+    --black: #100b27;
+    --gray100: #211b33;
+    --gray200: #2c2749;
+    --gray300: #827a9e;
+    --gray400: #aca4d1;
+    --accent2: #743bca;
+    --accent: #8646f5;
+}
+
+
+/*https://codepen.io/sosuke/pen/Pjoqqp*/
+
+.img-accent {
+    filter: invert(23%) sepia(58%) saturate(3028%) hue-rotate(252deg) brightness(93%) contrast(85%);
 }

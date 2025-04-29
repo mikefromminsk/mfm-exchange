@@ -1,7 +1,7 @@
 <div class="flex col">
     <div class="row header align-start-center">
         <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openSettings(refresh)">
-        <div class="flex row align-center text1">{{str.wallet}}</div>
+        <div class="flex row align-center text1">{{str.assets}}</div>
         <!--<img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch(refresh)">-->
     </div>
     <div class="flex col align-center-start" ng-hide="user.username()">
@@ -17,7 +17,8 @@
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/reload.svg">
             <div class="col align-center-center">
                 <div class="row align-center text0" style="margin-top: 40px;">
-                    $<div id="total">0</div>
+                    $
+                    <div id="total">0</div>
                 </div>
                 <div class="row align-start-center mt8">
                     <div class="radius-default back-black" ng-style="getIdenticon(user.username())"></div>
@@ -68,7 +69,25 @@
                 </div>
                 <p class="text1" ng-show="orders.length > 0">{{str.active_orders}}</p>
                 <ng-include src="'/mfm-exchange/exchange/orders.html'"></ng-include>
-                <ng-include src="'/mfm-wallet/trans/trans.html'"></ng-include>
+                <div class="col" ng-repeat="tran in trans">
+                    <div class="text1 mt16">{{tran.day}}</div>
+                    <div class="row mt16 p16 radius-default back-gray ripple"
+                         ng-repeat="item in tran.items"
+                         ng-click="selectTran(item)">
+                        <div ng-style="getLogo(item.domain)"></div>
+                        <div class="col ml16">
+                            <p class="">{{formatAddress(item.txid)}}</p>
+                            <p class="mt4 text2 lowercase">
+                                {{formatSec(item.time)}}</p>
+                        </div>
+                        <div class="flex col align-start-end">
+                            <div ng-class="{'text-red': item.amount < 0, 'text-green': item.amount > 0}">
+                                {{(item.amount > 0 ? "+" : "") + formatAmount(item.amount, item.domain)}}
+                            </div>
+                            <p class="mt4 text2">{{formatPrice(item.amount * item.token.price)}}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -141,6 +141,10 @@ function addNavigator($scope) {
         window.open("https://t.me/vavilon_org_bot")
     }
 
+    $scope.openSupport = function () {
+       location.href = "/mfm-landing"
+    }
+
     $scope.openShareLink = function (title, text, url) {
         if (navigator.share) {
             navigator.share({

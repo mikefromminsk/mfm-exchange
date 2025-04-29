@@ -3,7 +3,7 @@ function start($scope) {
 
     document.title = window.location.hostname
 
-    $scope.menu = ["home", "wallet"]
+    $scope.menu = ["main", "assets"]
     $scope.selectedIndex = 0
     $scope.selectTab = function (tab) {
         $scope.selectedIndex = tab
