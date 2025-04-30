@@ -1,15 +1,40 @@
 function openHome($scope) {
 
-    $scope.refresh = function () {
-        postApi("home", {
-        }, function (response) {
-            $scope.tokens = response.tokens
-            $scope.showBody = true
-            if (!DEBUG)
-                startAnimation()
-            $scope.$apply()
-        })
+    $scope.searchEnabled = false
+
+    $scope.searchToggle = function () {
+        $scope.searchEnabled = !$scope.searchEnabled
+        if ($scope.searchEnabled == false) {
+            $scope.search_text = false
+            $scope.search()
+        }
     }
+
+    addSearch($scope)
+
+    const TOP_SEARCH = "top_search"
+    $scope.selectedTop = TOP_SEARCH
+    $scope.selectTop = function (filter) {
+        if ($scope.selectedTop == filter) {
+            $scope.selectedTop = TOP_SEARCH
+        }
+        $scope.selectedTop = filter
+        if ($scope.selectedTop == TOP_SEARCH) {
+            $scope.search()
+        } else {
+            postApi("top", {
+                filter: $scope.selectedTop,
+            }, function (response) {
+                $scope.tokens = response.tokens
+                $scope.$apply()
+            })
+        }
+    }
+
+    $scope.refresh = function () {
+        $scope.search()
+    }
+    $scope.showBody = true
 
     $scope.swipeToRefresh = function () {
         $scope.refresh()

@@ -1,13 +1,34 @@
 <div class="flex col scroll align-start-center">
     <div class="flex col block">
         <img class="refresh-icon img-gray" src="/mfm-wallet/img/reload.svg">
-        <div class="row header align-start-center">
+        <div class="row header align-start-center"  ng-show="!searchEnabled">
             <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/home.svg" ng-click="openSupport()">
             <div class="flex row align-center-center gap8">
                 <img class="img40 img-gray" src="/mfm-exchange/logo.svg">
                 <p>Exchanger</p>
             </div>
-            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch()">
+            <img class="img40 p8 img-gray" src="/mfm-wallet/img/search.svg" ng-click="searchToggle()">
+        </div>
+        <div class="row header  align-start-center gap16" style="padding: 10px 16px 0 16px;" ng-show="searchEnabled">
+            <div class="flex col">
+                <div class="flex row radius-default border-gray">
+                    <img class="img24 img-gray"
+                         style="position: absolute; left: 32px; top: 24px"
+                         src="/mfm-wallet/img/search.svg"/>
+                    <input type="text"
+                           class="border-none radius-default"
+                           id="search_input"
+                           autocomplete="off"
+                           style="padding: 20px 0 20px 48px;"
+                           oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '')"
+                           ng-model="search_text"
+                           ng-change="search()"
+                           placeholder="{{str.type_token_name}}">
+                </div>
+            </div>
+            <div class="row align-center-center img32" ng-click="searchToggle()">
+                <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+            </div>
         </div>
 
         <md-tabs md-selected="slideIndex" class="col p0 mt16 no-swipe" md-swipe-content md-dynamic-height>
@@ -30,42 +51,16 @@
                      src="/mfm-wallet/img/circle.svg">
             </div>
         </div>
-
-        <!--<div class="row mt16 ph16 scroll-horizontal" style="min-height: 40px">
-            <div class="col" ng-repeat="top in ['top_exchange', 'top_new', 'top_search', 'top_mining']"
+        <div class="row mt16 ph16 scroll-horizontal" style="min-height: 40px">
+            <div class="col" ng-repeat="top in ['top_search', 'top_exchange', 'top_mining']"
                  ng-click="selectTop(top)">
                 <p class="pb8 ph16"
                    ng-class="{'text-gray': selectedTop != top}">{{str[top]}}</p>
                 <div style="height: 3px; width: 100%"
                      ng-class="{'back-accent': selectedTop == top, 'back-gray': selectedTop != top}"></div>
             </div>
-        </div>-->
-
-        <div class="row ph16 mt8 align-start-center">
-            <p style="min-width: 20px">#</p>
-            <p class="flex ml8">{{str.name}}</p>
-            <p class="flex-10 row align-end">{{str.price}}</p>
-            <p class="flex-20 row align-end">{{str._24h}}</p>
         </div>
-        <div class="mt8 ph16 divider"></div>
-        <div class="col">
-            <div class="row p16 align-start-center ripple gap8"
-                 ng-repeat="token in tokens"
-                 ng-click="openExchange(token.domain)">
-                <p style="min-width: 20px">{{$index + 1}}</p>
-                <div ng-style="getLogo(token.domain)"></div>
-                <p class="flex">{{formatDomain(token.domain)}}</p>
-                <p class="flex-10 row align-end">{{formatPrice(token.price)}}</p>
-                <p class="flex-20 row align-end" ng-class="percentColor(token.price24)">
-                    {{formatChange(token.price24)}}
-                </p>
-            </div>
-        </div>
-        <div class="col align-center-center text1 text-gray"
-             ng-hide="tokens.length > 0"
-             style="height: 500px">
-            {{str.there_is_no_tokens_yet}}
-        </div>
+        <ng-include class="fill col" src="'/mfm-wallet/search/index.html?nocache'"></ng-include>
         <div></div>
     </div>
 </div>

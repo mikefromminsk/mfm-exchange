@@ -30,7 +30,7 @@ function openWallet($scope) {
     function loadTokens() {
         postApi("balances", {
         }, function (response) {
-            $scope.balances = response.balances
+            $scope.accounts = response.balances
             setTimeout(function () {
                 createOdometer(document.getElementById("total"), $scope.getTotalBalance())
             }, 100)

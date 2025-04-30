@@ -30,26 +30,7 @@
             </div>
             <ng-include src="'/mfm-exchange/profile/options.html?nocache'"></ng-include>
             <div class="col gap16" ng-hide="!user.username()">
-                <div class="col back-gray radius-default">
-                    <div class="row p16 align-start-center ripple"
-                         ng-repeat="(domain, balance) in balances"
-                         ng-click="selectAccount(domain)">
-                        <div ng-style="getLogo(domain)"></div>
-                        <div class="flex col ml16">
-                            <p>{{formatDomain(domain)}}</p>
-                            <div class="row mt4 text2">
-                                <p class="">{{formatPrice(account.token.price)}}</p>
-                                <p class="ml4" ng-class="percentColor(account.token.price24)">
-                                    {{formatChange(account.token.price24)}}
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col align-end-end">
-                            <p>{{formatAmount(balance)}}</p>
-                            <p class="mt4 text2">{{formatPrice(account.token.price * account.balance)}}</p>
-                        </div>
-                    </div>
-                </div>
+                <ng-include src="'/mfm-wallet/wallet/accounts.html?nocache'"></ng-include>
                 <p class="text1" ng-show="staked.length > 0">{{str.staking}}</p>
                 <div class="col back-gray radius-default"
                      ng-show="staked.length > 0">
