@@ -1,9 +1,10 @@
 function openLogin(success) {
+    trackCall(arguments)
     showDialog("login", success, function ($scope) {
             $scope.username = ""
             if (DEBUG) {
-                $scope.username = "user3"
-                $scope.password = "pass"
+                $scope.username = "olga5"
+                $scope.password = "12345"
             }
 
             if ($scope.username == "") {

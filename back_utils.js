@@ -18,6 +18,6 @@ window.user = {
 
 function postApi(path, params, success, error) {
     params = params || {}
-    params.token = storage.getString(EXCHANGE_TOKEN)
+    params.token = params.token || storage.getString(EXCHANGE_TOKEN)
     postContract("mfm-exchange", path, params, success, error)
 }
