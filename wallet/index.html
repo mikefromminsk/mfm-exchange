@@ -28,9 +28,9 @@
                     </div>
                 </div>
             </div>
-            <ng-include src="'/mfm-exchange/profile/options.html?nocache'"></ng-include>
+            <ng-include src="'/mfm-exchange/profile/options.html'"></ng-include>
             <div class="col gap16" ng-hide="!user.username()">
-                <ng-include src="'/mfm-wallet/wallet/accounts.html?nocache'"></ng-include>
+                <ng-include src="'/mfm-wallet/wallet/accounts.html'"></ng-include>
                 <p class="text1" ng-show="staked.length > 0">{{str.staking}}</p>
                 <div class="col back-gray radius-default"
                      ng-show="staked.length > 0">

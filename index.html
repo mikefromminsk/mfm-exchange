@@ -47,10 +47,10 @@
      ng-style="{'visibility': showBody ? 'visible' : 'hidden'}">
     <md-tabs class="flex col" md-selected="selectedIndex">
         <md-tab label="1">
-            <ng-include class="fill col" src="'/mfm-exchange/home/index.html?nocache'"></ng-include>
+            <ng-include class="fill col" src="'/mfm-exchange/home/index.html'"></ng-include>
         </md-tab>
         <md-tab label="2">
-            <ng-include class="fill col" src="'/mfm-exchange/wallet/index.html?nocache'"></ng-include>
+            <ng-include class="fill col" src="'/mfm-exchange/wallet/index.html'"></ng-include>
         </md-tab>
     </md-tabs>
     <div class="col align-start-center fill-width p16 pt8 back-black ng-cloak"
@@ -75,7 +75,7 @@
 <script src="/angular-messages/angular-messages.min.js"></script>
 <script src="/angular-material/angular-material.min.js"></script>
 <link href="/angular-material/angular-material.css" rel="stylesheet">
-<link href="/mfm-wallet/utils/angular-bugfixes.css?nocache" rel="stylesheet">
+<link href="/mfm-wallet/utils/angular-bugfixes.css" rel="stylesheet">
 
 <script src="/mfm-wallet/utils/lightweight-charts.standalone.production.js"></script>
 
@@ -84,70 +84,70 @@
 <script src="/mfm-wallet/utils/swipeToRefresh.js"></script>
 <script src="/mfm-wallet/utils/qrcode.min.js"></script>
 
-<link href="/mfm-wallet/colors.css?nocache" rel="stylesheet">
-<link href="colors.css?nocache" rel="stylesheet">
-<link href="/mfm-wallet/style.css?nocache" rel="stylesheet">
-<link href="/mfm-wallet/style_async.css?nocache" rel="stylesheet">
-<link href="style.css?nocache" rel="stylesheet">
+<link href="/mfm-wallet/colors.css" rel="stylesheet">
+<link href="colors.css" rel="stylesheet">
+<link href="/mfm-wallet/style.css" rel="stylesheet">
+<link href="/mfm-wallet/style_async.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
 
 <link href="/mfm-flex/flex.css" rel="stylesheet">
-<link href="/mfm-flex/shorts.css?nocache" rel="stylesheet">
+<link href="/mfm-flex/shorts.css" rel="stylesheet">
 
-<script src="/mfm-wallet/utils/formats.js?nocache"></script>
-<script src="/mfm-exchange/navigator.js?nocache"></script>
-<script src="/mfm-wallet/utils/front_utils.js?nocache"></script>
+<script src="/mfm-wallet/utils/formats.js"></script>
+<script src="/mfm-exchange/navigator.js"></script>
+<script src="/mfm-wallet/utils/front_utils.js"></script>
 
-<script src="/crypto-js/crypto-js.js?nocache"></script>
-<script src="/mfm-wallet/utils/back_utils.js?nocache"></script>
-<script src="/mfm-exchange/back_utils.js?nocache"></script>
+<script src="/crypto-js/crypto-js.js"></script>
+<script src="/mfm-wallet/utils/back_utils.js"></script>
+<script src="/mfm-exchange/back_utils.js"></script>
 
-<script src="/mfm-wallet/strings/default.js?nocache"></script>
-<script async src="/mfm-wallet/dialogs/success/controller.js?nocache"></script>
-<script async src="/mfm-wallet/dialogs/pin/controller.js?nocache"></script>
-<script async src="/mfm-wallet/dialogs/ask/controller.js?nocache"></script>
+<script src="/mfm-wallet/strings/default.js"></script>
+<script async src="/mfm-wallet/dialogs/success/controller.js"></script>
+<script async src="/mfm-wallet/dialogs/pin/controller.js"></script>
+<script async src="/mfm-wallet/dialogs/ask/controller.js"></script>
 
-<script src="controller.js?nocache"></script>
-<script src="/mfm-wallet/trans/controller.js?nocache"></script>
-<script src="/mfm-exchange/wallet/controller.js?nocache"></script>
-<script src="/mfm-wallet/search/controller.js?nocache"></script>
-<script src="/mfm-exchange/home/controller.js?nocache"></script>
+<script src="controller.js"></script>
+<script src="/mfm-wallet/trans/controller.js"></script>
+<script src="/mfm-exchange/wallet/controller.js"></script>
+<script src="/mfm-wallet/search/controller.js"></script>
+<script src="/mfm-exchange/home/controller.js"></script>
 <script>
     controller(start)
 </script>
 <script async src="/mfm-wallet/utils/bip39.js"></script>
 <script async src="/mfm-wallet/utils/pnglib.js"></script>
 <script async src="/mfm-wallet/utils/identicon.js"></script>
-<script async onload="loaded()" src="/mfm-wallet/trans/tran/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/login/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/profile/chart/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/profile/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/send/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/settings/analytics/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/settings/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/settings/lang/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/settings/review/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/settings/reviews/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/settings/version/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/airdrop/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/earn/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/earn/mining/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/earn/staking/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/earn/quizzes/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/earn/quizzes/quiz/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/deposit/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/deposit/network/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/withdrawal/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/airdrop/create/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/exchange/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/exchange/bot/controller.js?nocache"></script>
+<script async onload="loaded()" src="/mfm-wallet/trans/tran/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/login/controller.js"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/profile/chart/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/profile/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/send/controller.js"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/settings/analytics/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/settings/controller.js"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/settings/lang/controller.js"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/settings/review/controller.js"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/settings/reviews/controller.js"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/settings/version/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/airdrop/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/earn/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/earn/mining/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/earn/staking/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/earn/quizzes/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/earn/quizzes/quiz/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/deposit/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/deposit/network/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/withdrawal/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/airdrop/create/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/exchange/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/exchange/bot/controller.js"></script>
 
-<script async onload="loaded()" src="/mfm-exchange/p2p/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/p2p/offer_place/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/p2p/payment/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/p2p/order/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/p2p/domain/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/p2p/chat/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-exchange/p2p/order_place/controller.js?nocache"></script>
+<script async onload="loaded()" src="/mfm-exchange/p2p/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/p2p/offer_place/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/p2p/payment/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/p2p/order/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/p2p/domain/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/p2p/chat/controller.js"></script>
+<script async onload="loaded()" src="/mfm-exchange/p2p/order_place/controller.js"></script>
 
 
 </body>
