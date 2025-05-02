@@ -40,14 +40,6 @@ function openHome($scope) {
         $scope.refresh()
     }
 
-    /*$scope.selectedTop = "top_exchange"
-    $scope.selectTop = function (top) {
-        $scope.selectedTop = top
-        $scope.refresh()
-    }*/
-
-    $scope.refresh()
-
     $scope.slides = []
     $scope.addSlide = function (title, text, image) {
         $scope.slides.push({
@@ -79,8 +71,12 @@ function openHome($scope) {
         }
     }
 
+    if (!DEBUG){
+        startAnimation()
+    }
+
     $scope.subscribe("price", function (data) {
-        for (const token of $scope.tokens) {
+        for (const token of ($scope.tokens || [])) {
             if (token.domain == data.domain) {
                 token.price = data.price
                 token.price24 = data.price24

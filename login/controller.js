@@ -3,8 +3,8 @@ function openLogin(success) {
     showDialog("login", success, function ($scope) {
             $scope.username = ""
             if (DEBUG) {
-                $scope.username = "olga5"
-                $scope.password = "12345"
+                $scope.username = "user3"
+                $scope.password = "pass"
             }
 
             if ($scope.username == "") {

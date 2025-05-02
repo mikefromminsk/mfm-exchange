@@ -28,8 +28,7 @@ function openWallet($scope) {
     $scope.domain = "usdt"
 
     function loadTokens() {
-        postApi("balances", {
-        }, function (response) {
+        postApi("balances", {}, function (response) {
             $scope.accounts = response.balances
             setTimeout(function () {
                 createOdometer(document.getElementById("total"), $scope.getTotalBalance())
@@ -63,12 +62,10 @@ function openWallet($scope) {
 
     function subscribeAccount() {
         $scope.subscribe("account:" + user.username(), function (data) {
-            if (data.amount != 0 && data.to == user.username()) {
-                showSuccess(str.you_have_received + " " + $scope.formatAmount(data.amount, data.domain))
-                setTimeout(function () {
-                    new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
-                })
-            }
+            showSuccess(str.you_have_received + " " + $scope.formatAmount(data.amount, data.domain))
+            setTimeout(function () {
+                new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
+            })
             $scope.refresh()
         })
     }
@@ -79,6 +76,7 @@ function openWallet($scope) {
             setTimeout(function () {
                 new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
             })
+            $scope.refresh()
         })
     }
 
@@ -93,9 +91,8 @@ function openWallet($scope) {
         }
     }
 
-    function loadTrans(){
-        postApi("transfers", {
-        }, function (response) {
+    function loadTrans() {
+        postApi("transfers", {}, function (response) {
             $scope.trans = $scope.groupByTimePeriod(response.trans)
             $scope.$apply()
         })
@@ -119,8 +116,6 @@ function openWallet($scope) {
 
     if (user.username() != "") {
         $scope.refresh()
-        subscribeAccount()
-        subscribeNewOrders()
     } else {
         openLogin(function () {
             $scope.refresh()

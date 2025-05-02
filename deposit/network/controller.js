@@ -1,6 +1,6 @@
 function openNetwork(success) {
     trackCall(arguments)
-    showDialog("network", success, function () {
+    showDialog("deposit/network", success, function () {
 
     })
 }

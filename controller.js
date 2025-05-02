@@ -29,5 +29,16 @@ function start($scope) {
         $scope.close()
     })
 
+    function subscribeAccount() {
+        $scope.subscribe("account:" + user.username(), function (data) {
+            showSuccess(str.you_have_received + " " + $scope.formatAmount(data.amount, data.domain))
+            setTimeout(function () {
+                new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
+            })
+            $scope.refresh()
+        })
+    }
+
+    subscribeAccount()
     connectWs()
 }
