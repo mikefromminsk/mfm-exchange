@@ -18,19 +18,23 @@
                 <input type="text"
                        ng-model="withdrawal_address">
             </div>
-            <p class="text-red" ng-show="errorAddress">{{errorAddress}}</p>
             <div class="row input-wrapper">
-                <div ng-style="getLogo(wallet.gas_domain)"></div>
+                <div ng-style="getLogo(domain)"></div>
                 <div class="input-label">{{str.amount}}</div>
                 <input type="number"
                        ng-model="amount"
-                       ng-change="calcTotal()"
                        placeholder="{{str.amount}} {{formatAmount(domain)}}">
+                <button ng-click="setMax()"
+                        ng-hide="balance == 0">
+                    {{str.max}}
+                </button>
             </div>
-            <p class="text-red" ng-show="errorAmount">{{errorAmount}}</p>
+            <div ng-class="{'text-red': balance < amount || balance == 0}">
+                {{str.available}}: {{formatAmount(balance, domain)}}
+            </div>
             <div class="primary-button"
                     ng-click="withdrawal()"
-                    ng-disabled="!withdrawal_address || !amount || total == 0">
+                    ng-disabled="!withdrawal_address || withdrawal_address.length < 64 || !amount || amount > balance">
                 {{str.withdrawal}}
             </div>
             <div></div>

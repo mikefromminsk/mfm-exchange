@@ -21,17 +21,12 @@ function openWithdrawal(domain, success) {
             }
 
             $scope.setMax = function () {
-                $scope.amount = $scope.account.balance
-                $scope.calcTotal()
-            }
-
-            $scope.calcTotal = function () {
-                $scope.total = Math.max(0, $scope.amount - $scope.provider.fee)
+                $scope.amount = $scope.balance
             }
 
             function init() {
-                getAccount(wallet.gas_domain, function (response) {
-                    $scope.token = response.token
+                postApi("balance", {domain: domain}, function (response) {
+                    $scope.balance = response.balance
                     $scope.$apply()
                 })
             }

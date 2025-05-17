@@ -19,17 +19,12 @@
                        ng-model="domain">
             </div>
 
-            <div class="row input-wrapper" ng-click="openNetwork(setNetwork)">
+            <div class="row input-wrapper">
                 <div ng-style="getLogo(network)"></div>
                 <input type="text"
                        class="uppercase"
                        placeholder="{{str.crypto_network}}"
                        ng-model="network">
-                <div class="col align-center-center" style="position: relative">
-                    <div class="focus" ng-hide="network"></div>
-                    <img class="img40 p8 ripple img-white"
-                         src="/mfm-wallet/img/arrow-up-down.svg">
-                </div>
             </div>
             <div class="col align-start-center" ng-show="deposit_address">
                 <div id="qrcode" style="margin: 50px 0"></div>

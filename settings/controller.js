@@ -19,7 +19,7 @@ function openSettings(success) {
             } else {
                 getPin(function (old_pin) {
                     let password = decode(passhash, old_pin)
-                    authorize(address, password, function () {
+                    wallet.login(address, password, function () {
                         setPincode(password)
                     })
                 })
