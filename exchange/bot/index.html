@@ -12,8 +12,18 @@
         <div class="flex col block input-content">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <ng-include src="'/mfm-wallet/wallet/accounts.html'"></ng-include>
+            <div class="primary-button"
+                 ng-show="accounts.length == 0"
+                 ng-click="botRegistration()">
+                {{str.start}}
+            </div>
+            <div class="primary-button"
+                 ng-hide="accounts.length == 0"
+                 ng-click="addLiquidity()">
+                {{str.add_liquidity}}
+            </div>
 
             <div class="nowrap-disabled" id="bot_faq"
-                 ng-include="'/mfm-wallet/products/exchange/bot/faq/' + getLanguage() + '.html'"></div>
+                 ng-include="'/mfm-exchange/exchange/bot/faq/' + getLanguage() + '.html'"></div>
         </div>
 </md-dialog>

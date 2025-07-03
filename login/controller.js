@@ -16,7 +16,7 @@ function openLogin(success) {
             $scope.login = function () {
                 $scope.in_progress = true
                 let token = hash($scope.username + $scope.password)
-                postApi("login", {
+                tradeApi("login", {
                     username: $scope.username,
                     token: token,
                 }, function () {

@@ -11,7 +11,7 @@ function openWithdrawal(domain, success) {
             }
 
             $scope.withdrawal = function () {
-                postApi("withdrawal", {
+                tradeApi("withdrawal", {
                     domain: $scope.domain,
                     address: $scope.withdrawal_address,
                     amount: $scope.amount,
@@ -25,7 +25,7 @@ function openWithdrawal(domain, success) {
             }
 
             function init() {
-                postApi("balance", {domain: domain}, function (response) {
+                tradeApi("balance", {domain: domain}, function (response) {
                     $scope.balance = response.balance
                     $scope.$apply()
                 })

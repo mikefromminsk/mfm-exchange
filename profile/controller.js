@@ -22,7 +22,7 @@ function openTokenProfile(domain, success) {
         $scope.init = function () {
             $scope.loadTokenProfile(domain)
 
-            postApi("balance", {
+            tradeApi("balance", {
                 domain: domain,
                 address: user.username(),
             }, function (response) {

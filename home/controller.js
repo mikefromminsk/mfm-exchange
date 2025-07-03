@@ -22,7 +22,7 @@ function openHome($scope) {
         if ($scope.selectedTop == TOP_SEARCH) {
             $scope.search()
         } else {
-            postApi("top", {
+            tradeApi("top", {
                 filter: $scope.selectedTop,
             }, function (response) {
                 $scope.tokens = response.tokens

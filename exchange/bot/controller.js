@@ -2,27 +2,34 @@ function openExchangeBot(domain, success) {
     trackCall(arguments)
     showDialog("exchange/bot", success, function ($scope) {
         $scope.domain = domain
-        $scope.bot_address = wallet.getBotAddress(domain)
+        $scope.accounts = []
+        let bot_username = wallet.getBotUsername(domain)
+        let bot_address = wallet.getBotAddress(domain)
 
         $scope.selectAccount = function (domain) {
-            openSend(domain, $scope.bot_address, null, init)
+            openSend(domain, bot_address, null, init)
+        }
+
+        $scope.addLiquidity = function () {
+            openSend(domain, bot_username, null, function () {
+                init()
+                openSend(wallet.gas_domain, bot_username, null, init)
+            })
+        }
+
+        $scope.botRegistration = function () {
+            tradeApi("login", {
+                username: bot_username,
+                token: bot_address,
+            }, init)
         }
 
         function init() {
-            getAccount(domain, function (response) {
-                $scope.token = response.token
-                $scope.account = response.account
-                $scope.$apply()
-            })
-            postContract("mfm-token", "accounts", {
-                domain: wallet.gas_domain,
-                address: $scope.bot_address,
+            tradeApi("balances", {
+                address: bot_address,
+                token: bot_address,
             }, function (response) {
-                let accounts = []
-                for (const account of response.accounts)
-                    if (account.domain == domain || account.domain == wallet.gas_domain)
-                        accounts.push(account)
-                $scope.accounts = accounts
+                $scope.accounts = response.balances
                 $scope.$apply()
             })
         }

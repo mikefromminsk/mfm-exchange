@@ -20,7 +20,7 @@
                        autocapitalize="none"
                        autocomplete="off"
                        oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '')"
-                       ng-model="to_address"
+                       ng-model="username"
                        placeholder="{{str.username}}">
             </div>
             <div class="row wrap ph8 pt0">
@@ -33,10 +33,11 @@
             <div class="row input-wrapper">
                 <div ng-style="getLogo(domain)"></div>
                 <input type="number"
+                       id="send_amount"
                        autocapitalize="off"
                        autocomplete="off"
                        ng-model="amount"
-                       placeholder="{{str.amount}}">
+                       placeholder="{{str.amount}} {{formatDomain(domain)}}">
                 <button ng-click="setMax()"
                         ng-hide="balance == 0">
                     {{str.max}}

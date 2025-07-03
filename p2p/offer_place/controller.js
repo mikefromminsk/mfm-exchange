@@ -8,7 +8,7 @@ function openOfferPlace(domain, success) {
             $scope.startRequest()
             getPin(function (pin) {
                 calcPass(wallet.gas_domain, pin, function (pass) {
-                    postApi("p2p/offer_place", {
+                    tradeApi("p2p/offer_place", {
                         domain: domain,
                         address: user.username(),
                         price: $scope.price,
@@ -26,7 +26,7 @@ function openOfferPlace(domain, success) {
         }
 
         function init() {
-            postApi("p2p/profile", {
+            tradeApi("p2p/profile", {
                 address: user.username(),
             }, function (response) {
                 $scope.profile = response.profile

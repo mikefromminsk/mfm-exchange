@@ -13,7 +13,7 @@ function openPaymentAdd(success) {
         $scope.paymentTypeSelect = function (payment) {
             getPin(function (pin) {
                 calcPass(wallet.gas_domain, pin, function (pass) {
-                    postApi("p2p/payment_add", {
+                    tradeApi("p2p/payment_add", {
                         address: user.username(),
                         payment: payment,
                         pass: pass,

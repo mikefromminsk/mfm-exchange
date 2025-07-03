@@ -4,7 +4,7 @@ function openP2PChat(order_id, success) {
         $scope.order_id = order_id
 
         $scope.loadChat = function () {
-            postApi("p2p/chat", {
+            tradeApi("p2p/chat", {
                 order_id: order_id,
             }, function (response) {
                 $scope.chat = $scope.groupByTimePeriod(response.chat)
@@ -25,7 +25,7 @@ function openP2PChat(order_id, success) {
         $scope.send = function () {
             getPin(function (pin) {
                 calcPass(wallet.gas_domain, pin, function (pass) {
-                    postApi("p2p/chat_send", {
+                    tradeApi("p2p/chat_send", {
                         order_id: order_id,
                         address: user.username(),
                         message: $scope.message,

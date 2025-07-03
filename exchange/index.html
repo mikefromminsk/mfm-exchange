@@ -101,6 +101,11 @@
                          ng-show="user.username()">
                         {{is_sell ? str.sell : str.buy}}
                     </div>
+                    <div ng-show="sell.length == 0 || buy.length == 0"
+                         class="primary-button p8"
+                         ng-click="openExchangeBot(domain)">
+                        {{str.bot_settings}}
+                    </div>
                 </div>
 
 
@@ -110,7 +115,7 @@
                         Chart
                     </div>-->
                     <div class="row text2 mv16">
-                        <div class="flex">{{str.price}}</div>
+                        <div class="flex">{{formatDomainShort(wallet.gas_domain)}}</div>
                         <div>{{formatDomainShort(domain)}}</div>
                     </div>
 
@@ -128,19 +133,12 @@
                         </div>
                     </div>
 
-
-                    <div ng-show="token.owner == user.username()"
-                         class="primary-button m0 pv4 mt4"
-                         ng-click="openExchangeBot(domain)">
-                        {{str.bot_settings}}
-                    </div>
                     <div class="row pv16"
                          ng-hide="token.owner == user.username()">
                         <p class="flex bold"
                            ng-click="changePrice(token.price)">
                             {{formatPrice(token.price)}}
                         </p>
-                        <p class="text2 lowercase">{{str.volume24}} ${{formatAmount(token.volume24, '', 0)}}</p>
                     </div>
 
                     <div class="col align-start mono" style="height: calc(20px * 6)">
@@ -158,16 +156,15 @@
                 </div>
             </div>
             <div class="col mh16">
-                <div class="col" ng-repeat="orders in [active_orders, history_orders]">
-                    <div class="row mt16 align-start-end" ng-show="orders.length > 0 && $index == 0">
-                        <p class="">{{str.active_orders}}</p>
-                        <p class="flex row align-end text2">{{str.amount}}</p>
-                        <div class="flex-30 row align-end-end">
-                            <p class="text2">{{str.total}}</p>
-                            <div class="mh16"></div>
-                        </div>
+                <div class="row mt16 align-start-end">
+                    <p class="">{{str.history}}</p>
+                    <p class="flex row align-end text2">{{str.amount}}</p>
+                    <div class="flex-30 row align-end-end">
+                        <p class="text2">{{str.total}}</p>
+                        <div class="mh16"></div>
                     </div>
-                    <p class="mt16" ng-show="orders.length > 0 && $index == 1">{{str.history}}</p>
+                </div>
+                <div class="col" ng-repeat="orders in [active_orders, history_orders]">
                     <ng-include src="'/mfm-exchange/exchange/orders.html'"></ng-include>
                 </div>
                 <div class="col align-center-center text1 text-gray"

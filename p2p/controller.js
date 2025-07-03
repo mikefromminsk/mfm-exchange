@@ -40,7 +40,7 @@ function openOffers($scope) {
     }
 
     $scope.loadOrderbook = function () {
-        postApi("p2p/offers", {
+        tradeApi("p2p/offers", {
             domain: $scope.domain,
         }, function (response) {
             $scope.sell = (response.sell || []).reverse()
@@ -75,7 +75,7 @@ function openOrders($scope) {
     $scope.orders = {}
 
     $scope.loadOrders = function () {
-        postApi("p2p/orders", {
+        tradeApi("p2p/orders", {
             address: user.username(),
         }, function (response) {
             $scope.orders.offers = response.offers
@@ -103,7 +103,7 @@ function openP2PProfile(address, success) {
 
 function addP2PProfile($scope, address) {
     $scope.swipeToRefresh = function () {
-        postApi("p2p/profile", {
+        tradeApi("p2p/profile", {
             address: address,
         }, function (response) {
             $scope.profile = response.profile

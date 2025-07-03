@@ -20,6 +20,9 @@
         <div class="flex col block">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <div class="input-content text-align-center" ng-show="domain != wallet.gas_domain">
+                <div class="row align-center-center">
+                    <p class="text2 lowercase">{{str.volume24}} ${{formatAmount(token.volume24, '', 0)}}</p>
+                </div>
                 <ng-include class="p0" src="'/mfm-wallet/wallet/profile/chart/chart.html'"></ng-include>
                 <ng-include src="'/mfm-exchange/profile/options.html'"></ng-include>
             </div>
@@ -30,14 +33,14 @@
 
     <div class="col mh16 align-start-center" ng-show="domain != wallet.gas_domain">
         <div class="row block gap16">
+            <div class="flex mh0 primary-button back-green radius4 uppercase"
+                 ng-click="openBuy(domain)">
+                {{str.buy}}
+            </div>
             <div class="flex mh0 primary-button back-red radius4 uppercase"
                  ng-click="openSell(domain)"
                  ng-show="balance > 0">
                 {{str.sell}}
-            </div>
-            <div class="flex mh0 primary-button back-green radius4 uppercase"
-                 ng-click="openBuy(domain)">
-                {{str.buy}}
             </div>
         </div>
     </div>

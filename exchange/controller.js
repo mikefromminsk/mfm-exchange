@@ -23,14 +23,14 @@ function openExchange(domain, is_sell) {
             if ($scope.is_sell) {
                 $scope.changeAmount($scope.base * (new_value / 100))
             } else {
-                $scope.changeTotal($scope.quote)
+                $scope.changeTotal($scope.quote * (new_value / 100))
             }
         }
 
         $scope.place = function place() {
             trackCall(arguments)
             $scope.startRequest()
-            postApi("place", {
+            tradeApi("place", {
                 order_type: "limit",
                 domain: domain,
                 is_sell: $scope.is_sell ? 1 : 0,
@@ -49,7 +49,7 @@ function openExchange(domain, is_sell) {
 
         $scope.cancel = function (order_id) {
             openAskSure(str.are_you_sure, str.yes, str.no, function () {
-                postApi("cancel", {
+                tradeApi("cancel", {
                     order_id: order_id,
                 }, function () {
                     showSuccess(str.order_canceled, $scope.refresh)
@@ -59,7 +59,7 @@ function openExchange(domain, is_sell) {
 
         $scope.loadOrders = function () {
             if (user.username() != "") {
-                postApi("user_orders", {
+                tradeApi("user_orders", {
                     domain: domain,
                 }, function (response) {
                     $scope.active_orders = response.active
@@ -84,7 +84,7 @@ function openExchange(domain, is_sell) {
         }
 
         $scope.loadBaseBalance = function () {
-            postApi("balance", {
+            tradeApi("balance", {
                 domain: domain
             }, function (response) {
                 $scope.base = response.balance
@@ -93,7 +93,7 @@ function openExchange(domain, is_sell) {
         }
 
         $scope.loadQuoteBalance = function () {
-            postApi("balance", {
+            tradeApi("balance", {
                 domain: wallet.gas_domain
             }, function (response) {
                 $scope.quote = response.balance
@@ -102,7 +102,8 @@ function openExchange(domain, is_sell) {
         }
 
         $scope.loadOrderbook = function () {
-            postApi("orderbook", {
+            console.log(11)
+            tradeApi("orderbook", {
                 domain: domain,
             }, function (response) {
                 $scope.sell = (response.sell || []).reverse()

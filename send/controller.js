@@ -1,18 +1,18 @@
-function openSend(domain, to_address, amount, success) {
+function openSend(domain, username, amount, success) {
     trackCall(arguments)
     showDialog("send", success, function ($scope) {
         addPriceAmountTotal($scope)
         $scope.domain = domain
+        $scope.username = username
 
         $scope.send = function send(domain) {
             trackCall(arguments)
             $scope.startRequest()
-            postApi("send", {
+            tradeApi("send", {
                 domain: domain,
-                to: $scope.to_address,
+                to: $scope.username,
                 amount: $scope.amount,
             }, function (response) {
-                storage.pushToArray(storageKeys.user_history, $scope.to_address, 3)
                 showSuccessDialog(str.success, $scope.close)
             }, $scope.finishRequest)
         }
@@ -21,13 +21,8 @@ function openSend(domain, to_address, amount, success) {
             $scope.amount = $scope.balance
         }
 
-        $scope.setToAddress = function (to_address) {
-            $scope.to_address = to_address
-        }
-
         function init() {
-            $scope.recent = storage.getStringArray(storageKeys.user_history).reverse()
-            postApi("balance", {domain: domain}, function (response) {
+            tradeApi("balance", {domain: domain}, function (response) {
                 $scope.balance = response.balance
                 $scope.$apply()
             })
@@ -36,7 +31,7 @@ function openSend(domain, to_address, amount, success) {
         init()
 
         setTimeout(function () {
-            document.getElementById('send_address').focus()
+            document.getElementById(!username ? 'send_address' : 'send_amount').focus()
         }, 500)
     })
 }

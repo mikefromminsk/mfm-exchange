@@ -57,12 +57,12 @@
                          ng-click="selectTran(item)">
                         <div ng-style="getLogo(item.domain)"></div>
                         <div class="col ml16">
-                            <p class="">{{formatAddress(item.txid)}}</p>
+                            <p class="">{{formatPartner(item.username, item.partner)}}</p>
                             <p class="mt4 text2 lowercase">
                                 {{formatSec(item.time)}}</p>
                         </div>
                         <div class="flex col align-start-end">
-                            <div ng-class="{'text-red': item.amount < 0, 'text-green': item.amount > 0}">
+                            <div ng-class="{'text-red': item.username == user.username(), 'text-green': item.username != user.username()}">
                                 {{(item.amount > 0 ? "+" : "") + formatAmount(item.amount, item.domain)}}
                             </div>
                             <p class="mt4 text2">{{formatPrice(item.amount * item.token.price)}}</p>

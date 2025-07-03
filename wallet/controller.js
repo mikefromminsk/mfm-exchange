@@ -28,7 +28,7 @@ function openWallet($scope) {
     $scope.domain = "usdt"
 
     function loadTokens() {
-        postApi("balances", {}, function (response) {
+        tradeApi("balances", {}, function (response) {
             $scope.accounts = response.balances
             setTimeout(function () {
                 createOdometer(document.getElementById("total"), $scope.getTotalBalance())
@@ -82,7 +82,7 @@ function openWallet($scope) {
 
     function loadOrders() {
         if (user.username() != "") {
-            postApi("user_orders_active", {
+            tradeApi("user_orders_active", {
                 address: user.username(),
             }, function (response) {
                 $scope.orders = response.orders
@@ -91,8 +91,18 @@ function openWallet($scope) {
         }
     }
 
+    $scope.formatPartner = function (username, partner) {
+        if (username == user.username()) return $scope.formatAddress(partner)
+        return $scope.formatAddress(username)
+    }
+
+    $scope.isIncome = function (username) {
+        if (username == user.username()) return false
+        return true
+    }
+
     function loadTrans() {
-        postApi("transfers", {}, function (response) {
+        tradeApi("transfers", {}, function (response) {
             $scope.trans = $scope.groupByTimePeriod(response.trans)
             $scope.$apply()
         })
@@ -100,7 +110,7 @@ function openWallet($scope) {
 
     $scope.cancel = function (order_id) {
         openAskSure(str.are_you_sure, str.yes, str.no, function () {
-            postApi("cancel", {
+            tradeApi("cancel", {
                 order_id: order_id,
             }, function () {
                 showSuccess(str.order_canceled, $scope.refresh)
