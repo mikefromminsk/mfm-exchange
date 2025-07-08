@@ -30,7 +30,7 @@ function openTokenProfile(domain, success) {
                 $scope.$apply()
             })
 
-            postContract("mfm-token", "trans_account", {
+            postContract("mfm-token", "trans", {
                 domain: domain,
                 address: user.username(),
             }, function (response) {
@@ -47,7 +47,7 @@ function openTokenProfile(domain, success) {
 function addTokenProfile($scope) {
 
     $scope.loadTokenProfile = function (domain) {
-        postContract("mfm-token", "token_info", {
+        postContract("mfm-token", "token", {
             domain: domain,
         }, function (response) {
             $scope.token = response.token
