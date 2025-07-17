@@ -9,7 +9,7 @@ function openDeposit(address, success) {
                 $scope.domain = domain
         }
 
-        tradeApi("deposit", {
+        tradeApi("deposit_address", {
             domain: $scope.domain,
         }, function (response) {
             $scope.deposit_address = response.deposit_address
